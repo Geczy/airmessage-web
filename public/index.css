@@ -32,6 +32,7 @@ code {
 
 .thin-scrollbar::-webkit-scrollbar {
   width: 11px;
+  background-color: transparent;
 }
 
 .thin-scrollbar::-webkit-scrollbar-thumb {
@@ -43,23 +44,18 @@ code {
   display: none;
 }
 
+.thin-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
 @media (prefers-color-scheme: dark) {
   html,
   body {
     background-color: #1e1e1e;
   }
 
-  .thin-scrollbar::-webkit-scrollbar {
-    background-color: transparent;
-  }
-
-  .thin-scrollbar::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
   .thin-scrollbar::-webkit-scrollbar-thumb {
     background-color: #a09f9f;
-    border-color: transparent;
   }
 }
 
@@ -69,16 +65,7 @@ code {
     background-color: #fff;
   }
 
-  .thin-scrollbar::-webkit-scrollbar {
-    background-color: #fff;
-  }
-
-  .thin-scrollbar::-webkit-scrollbar-track {
-    background-color: #fff;
-  }
-
   .thin-scrollbar::-webkit-scrollbar-thumb {
     background-color: #babac0;
-    border-color: #fff;
   }
 }
