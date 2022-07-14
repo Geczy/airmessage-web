@@ -57,7 +57,11 @@ export default function ListConversation(props: {
         },
       };
 
-  const secondaryStyle: TypographyProps = props.highlighted
+  const secondaryStyle: TypographyProps = props.selected
+    ? {
+        color: "#ffffff",
+      }
+    : props.highlighted
     ? {
         color: "textPrimary",
         sx: {
@@ -70,6 +74,7 @@ export default function ListConversation(props: {
     <ListItemButton
       key={props.conversation.localID}
       onClick={props.onSelected}
+      disableRipple
       selected={props.selected}
       sx={{
         marginX: 1,
@@ -78,11 +83,13 @@ export default function ListConversation(props: {
         paddingX: 1.5,
         paddingY: 0.5,
         "&&.Mui-selected, &&.Mui-selected:hover": {
-          backgroundColor: "action.selected",
+          backgroundColor: "#3478f6",
+          color: "#ffffff",
         },
         "&&:hover": {
           backgroundColor: "action.hover",
         },
+        transitionDuration: "0s !important",
       }}
     >
       <ListItemAvatar>
@@ -109,7 +116,7 @@ export default function ListConversation(props: {
           flexShrink: 0,
         }}
         variant="body2"
-        color="textSecondary"
+        color={`${props.selected ? "#ffffff" : "textSecondary"}`}
       >
         {getLastUpdateStatusTime(props.conversation.preview.date)}
       </Typography>

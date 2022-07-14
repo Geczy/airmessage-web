@@ -185,7 +185,17 @@ export default function Sidebar(props: {
             </IconButton>
           )}
 
-          <IconButton size="large" onClick={() => setDarkMode(!darkMode)}>
+          <IconButton
+            size="large"
+            onClick={() => {
+              if (!darkMode) {
+                document.body.classList.add("dark");
+              } else {
+                document.body.classList.toggle("dark");
+              }
+              setDarkMode(!darkMode);
+            }}
+          >
             {darkMode ? <DarkMode /> : <LightMode />}
           </IconButton>
 

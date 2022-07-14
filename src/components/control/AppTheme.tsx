@@ -9,6 +9,11 @@ export default function AppTheme(props: { children: React.ReactNode }) {
 
   useEffect(() => {
     setDarkMode(prefersDarkMode);
+    if (prefersDarkMode) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.toggle("dark");
+    }
   }, [prefersDarkMode]);
 
   const theme = React.useMemo(
@@ -37,15 +42,15 @@ export default function AppTheme(props: { children: React.ReactNode }) {
           },
           messageIncoming: darkMode
             ? {
-                main: "#393939",
-                contrastText: "#FFF",
+                main: "#3b3b3d",
+                contrastText: "#dedede",
               }
             : {
                 main: "#e9e9eb",
                 contrastText: "#363637",
               },
           messageOutgoing: {
-            main: "#3478f6",
+            main: "#3c83f7",
             contrastText: "#FFF",
           },
           messageOutgoingTextMessage: {

@@ -4,12 +4,11 @@ import MessageBubbleWrapper from "shared/components/messaging/thread/item/bubble
 import { StickerItem, TapbackItem } from "shared/data/blocks";
 import { styled, Typography } from "@mui/material";
 import { getFlowBorderRadius, MessagePartFlow } from "shared/util/messageFlow";
+import cn from "classnames";
+import styles from "../bubble/messages.module.scss";
+import { DarkModeContext } from "shared/components/DarkModeContext";
 
 const MessageBubbleTypography = styled(Typography)(({ theme }) => ({
-  paddingLeft: theme.spacing(1.5),
-  paddingRight: theme.spacing(1.5),
-  paddingTop: theme.spacing(0.75),
-  paddingBottom: theme.spacing(0.75),
   overflowWrap: "break-word",
   wordBreak: "break-word",
   hyphens: "auto",
@@ -28,6 +27,7 @@ export default function MessageBubbleText(props: {
   stickers: StickerItem[];
   tapbacks: TapbackItem[];
 }) {
+  const { darkMode } = React.useContext(DarkModeContext);
   return (
     <MessageBubbleWrapper
       flow={props.flow}
@@ -38,9 +38,15 @@ export default function MessageBubbleText(props: {
       <MessageBubbleTypography
         color={props.flow.color}
         bgcolor={props.flow.backgroundColor}
-        borderRadius={getFlowBorderRadius(props.flow)}
         variant="body2"
         style={{ whiteSpace: "pre-wrap" }}
+        className={cn(
+          styles.shared,
+          props.flow.isOutgoing ? styles.sent : styles.received,
+          props.flow.isText ? styles.sentText : null,
+          props.flow.anchorBottom && styles.noTail,
+          darkMode ? styles.dark : null
+        )}
       >
         <Linkify options={{ target: "_blank" }}>{props.text}</Linkify>
       </MessageBubbleTypography>

@@ -56,6 +56,7 @@ export default function Message(props: {
   service: string;
   flow: MessageFlow;
   showStatus?: boolean;
+  className?: string;
 }) {
   const [dialogState, setDialogState] = useState<MessageDialog | undefined>(
     undefined
@@ -194,6 +195,7 @@ export default function Message(props: {
       <MessageBubbleText
         key="messagetext"
         flow={{
+          isText: props.service !== appleServiceAppleMessage,
           isOutgoing: isOutgoing,
           isUnconfirmed: isUnconfirmed,
           color: `${colorPalette}.contrastText`,
@@ -315,7 +317,7 @@ export default function Message(props: {
 
           {/* Message parts */}
           <Stack
-            sx={{ marginLeft: 1 }}
+            sx={{ marginLeft: 1.5 }}
             gap={getBubbleSpacing(false)}
             flexGrow={1}
             direction="column"

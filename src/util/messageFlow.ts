@@ -29,6 +29,9 @@ export interface MessagePartFlow {
 
   //Whether this message should be anchored to the message below
   anchorBottom: boolean;
+
+  //Whether this message is a text message
+  isText?: boolean;
 }
 
 const radiusLinked = "4px";
