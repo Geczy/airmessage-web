@@ -20,6 +20,8 @@ import {
 } from "../../../data/stateCodes";
 import {
   AddRounded,
+  DarkMode,
+  LightMode,
   MoreVertRounded,
   SyncProblem,
   Update,
@@ -42,6 +44,8 @@ import {
 import UpdateRequiredDialog from "../dialog/UpdateRequiredDialog";
 import ConversationSkeleton from "shared/components/skeleton/ConversationSkeleton";
 import { TransitionGroup } from "react-transition-group";
+import { DarkModeSwitch } from "react-toggle-dark-mode";
+import { DarkModeContext } from "shared/components/DarkModeContext";
 
 export default function Sidebar(props: {
   conversations: Conversation[] | undefined;
@@ -51,6 +55,7 @@ export default function Sidebar(props: {
   errorBanner?: ConnectionErrorCode;
   needsServerUpdate?: boolean;
 }) {
+  const { darkMode, setDarkMode } = React.useContext(DarkModeContext);
   const displaySnackbar = useContext(SnackbarContext);
 
   //The anchor element for the overflow menu
@@ -180,6 +185,10 @@ export default function Sidebar(props: {
               <VideoCallOutlined />
             </IconButton>
           )}
+
+          <IconButton size="large" onClick={() => setDarkMode(!darkMode)}>
+            {darkMode ? <DarkMode /> : <LightMode />}
+          </IconButton>
 
           <IconButton
             size="large"
