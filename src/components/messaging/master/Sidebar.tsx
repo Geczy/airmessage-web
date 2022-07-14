@@ -1,6 +1,12 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import styles from "./Sidebar.module.css";
-import AirMessageLogo from "../../logo/AirMessageLogo";
+import {
+  AddRounded,
+  DarkMode,
+  LightMode,
+  MoreVertRounded,
+  SyncProblem,
+  Update,
+  VideoCallOutlined,
+} from "@mui/icons-material";
 import {
   Box,
   Collapse,
@@ -11,41 +17,34 @@ import {
   Stack,
   Toolbar,
 } from "@mui/material";
-import ListConversation from "./ListConversation";
-import { Conversation } from "../../../data/blocks";
-import ConnectionBanner from "./ConnectionBanner";
-import {
-  ConnectionErrorCode,
-  FaceTimeLinkErrorCode,
-} from "../../../data/stateCodes";
-import {
-  AddRounded,
-  DarkMode,
-  LightMode,
-  MoreVertRounded,
-  SyncProblem,
-  Update,
-  VideoCallOutlined,
-} from "@mui/icons-material";
-import ChangelogDialog from "../dialog/ChangelogDialog";
-import FeedbackDialog from "shared/components/messaging/dialog/FeedbackDialog";
-import SignOutDialog from "shared/components/messaging/dialog/SignOutDialog";
-import RemoteUpdateDialog from "shared/components/messaging/dialog/RemoteUpdateDialog";
-import ServerUpdateData from "shared/data/serverUpdateData";
-import * as ConnectionManager from "../../../connection/connectionManager";
-import { RemoteUpdateListener } from "../../../connection/connectionManager";
-import SidebarBanner from "shared/components/messaging/master/SidebarBanner";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { TransitionGroup } from "react-transition-group";
 import { SnackbarContext } from "shared/components/control/SnackbarProvider";
+import { DarkModeContext } from "shared/components/DarkModeContext";
 import FaceTimeLinkDialog from "shared/components/messaging/dialog/FaceTimeLinkDialog";
+import FeedbackDialog from "shared/components/messaging/dialog/FeedbackDialog";
+import RemoteUpdateDialog from "shared/components/messaging/dialog/RemoteUpdateDialog";
+import SignOutDialog from "shared/components/messaging/dialog/SignOutDialog";
+import SidebarBanner from "shared/components/messaging/master/SidebarBanner";
+import ConversationSkeleton from "shared/components/skeleton/ConversationSkeleton";
+import ServerUpdateData from "shared/data/serverUpdateData";
 import {
   useIsFaceTimeSupported,
   useNonNullableCacheState,
 } from "shared/util/hookUtils";
+import * as ConnectionManager from "../../../connection/connectionManager";
+import { RemoteUpdateListener } from "../../../connection/connectionManager";
+import { Conversation } from "../../../data/blocks";
+import {
+  ConnectionErrorCode,
+  FaceTimeLinkErrorCode,
+} from "../../../data/stateCodes";
+import AirMessageLogo from "../../logo/AirMessageLogo";
+import ChangelogDialog from "../dialog/ChangelogDialog";
 import UpdateRequiredDialog from "../dialog/UpdateRequiredDialog";
-import ConversationSkeleton from "shared/components/skeleton/ConversationSkeleton";
-import { TransitionGroup } from "react-transition-group";
-import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { DarkModeContext } from "shared/components/DarkModeContext";
+import ConnectionBanner from "./ConnectionBanner";
+import ListConversation from "./ListConversation";
+import styles from "./Sidebar.module.css";
 
 export default function Sidebar(props: {
   conversations: Conversation[] | undefined;

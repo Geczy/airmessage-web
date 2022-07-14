@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, useMediaQuery } from "@mui/material";
-import { DarkModeSwitch } from "react-toggle-dark-mode";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import React, { useEffect } from "react";
 import { DarkModeContext } from "../DarkModeContext";
 
 export default function AppTheme(props: { children: React.ReactNode }) {
