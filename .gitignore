@@ -291,6 +291,3 @@ $RECYCLE.BIN/
 /webpack.crt
 /webpack.key
 /windows/AirMessageWindows/AirMessageWindows/webassets
-
-# Private config
-/src/secrets.ts

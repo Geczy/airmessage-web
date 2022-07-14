@@ -1,5 +1,6 @@
 /* eslint-env node */
 const webpack = require("webpack");
+const Dotenv = require("dotenv-webpack");
 const path = require("path");
 const fs = require("fs");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
@@ -85,11 +86,8 @@ module.exports = (env) => ({
     usedExports: true,
   },
   plugins: [
+    new Dotenv({ defaults: true }),
     new ForkTsCheckerWebpackPlugin(),
-    /* new ESLintPlugin({
-			files: ["src", "browser", "electron-main", "electron-renderer"],
-			extensions: ["js", "jsx", "ts", "tsx"]
-		}), */
     new CopyPlugin({
       patterns: [{ from: "public" }],
     }),

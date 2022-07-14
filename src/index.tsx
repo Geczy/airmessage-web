@@ -4,7 +4,6 @@ import * as Sentry from "@sentry/react";
 import SignInGate from "shared/components/SignInGate";
 import AppTheme from "./components/control/AppTheme";
 import { initializeApp } from "firebase/app";
-import * as secrets from "./secrets";
 import { setPeopleUtils } from "shared/interface/people/peopleUtils";
 import GooglePeopleUtils from "shared/interface/people/googlePeopleUtils";
 import { setNotificationUtils } from "shared/interface/notification/notificationUtils";
@@ -20,14 +19,14 @@ setPlatformUtils(new BrowserPlatformUtils());
 //Initializing Sentry
 if (WPEnv.ENVIRONMENT === "production") {
   Sentry.init({
-    dsn: secrets.sentryDSN,
+    dsn: process.env.sentryDSN,
     release: "airmessage-web@" + WPEnv.PACKAGE_VERSION,
     environment: WPEnv.ENVIRONMENT,
   });
 }
 
 //Initializing Firebase
-initializeApp(secrets.firebaseConfig);
+initializeApp(JSON.parse(process.env.firebaseConfig as string));
 
 // Check that service workers are supported
 if (WPEnv.ENVIRONMENT === "production" && "serviceWorker" in navigator) {

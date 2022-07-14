@@ -2,9 +2,6 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import Onboarding from "shared/components/Onboarding";
 import Messaging from "shared/components/messaging/master/Messaging";
-
-import * as secrets from "shared/secrets";
-
 import * as Sentry from "@sentry/react";
 import { promiseGAPI } from "shared/index";
 import { googleScope } from "shared/constants";
@@ -70,7 +67,7 @@ export default function SignInGate() {
           .then(() => new Promise((resolve) => gapi.load("auth2", resolve)))
           .then(() =>
             gapi.auth2.init({
-              client_id: secrets.googleClientID,
+              client_id: process.env.googleClientID as string,
               scope: googleScope,
             })
           )

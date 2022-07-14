@@ -21,7 +21,7 @@ AirMessage for web uses [React](https://reactjs.org) and [TypeScript](https://ww
 - [TypeScript for JavaScript Programmers](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
 
 AirMessage for web uses a configuration file to associate with online services like Firebase and Sentry.
-The app will not build without a valid configuration, so to get started quickly, you can copy the `src/secrets.default.ts` file to `src/secrets.ts` to use a pre-configured Firebase project, or you may provide your own Firebase configuration file.
+The app will not build without a valid configuration, so to get started quickly, you can copy the `.env.defaults` file to `.env` to use a pre-configured Firebase project, or you may provide your own Firebase configuration file.
 
 To launch a development server, run `npm start`. To build a production-optimized bundle, run `npm run build`.
 

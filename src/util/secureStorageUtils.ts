@@ -1,4 +1,3 @@
-import * as secrets from "../secrets";
 import { decodeBase64, encodeBase64 } from "shared/util/encodingUtils";
 
 const ivLen = 12;
@@ -9,7 +8,7 @@ export enum SecureStorageKey {
 
 const cryptoKey: Promise<CryptoKey> = crypto.subtle.importKey(
   "jwk",
-  secrets.jwkLocalEncryption,
+  JSON.parse(process.env.jwkLocalEncryption as string) as JsonWebKey,
   "AES-GCM",
   false,
   ["encrypt", "decrypt"]

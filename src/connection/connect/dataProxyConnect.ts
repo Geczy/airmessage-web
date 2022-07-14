@@ -6,7 +6,6 @@ import ByteBuffer from "bytebuffer";
 import { getAuth, getIdToken } from "firebase/auth";
 import { getInstallationID } from "shared/util/installationUtils";
 import { ConnectionErrorCode } from "shared/data/stateCodes";
-import { connectHostname } from "shared/secrets";
 import {
   decryptData,
   encryptData,
@@ -30,7 +29,7 @@ export default class DataProxyConnect extends DataProxy {
     getIdToken(getAuth().currentUser!)
       .then((idToken: string) => {
         //Building the URL
-        const url = new URL(connectHostname);
+        const url = new URL(process.env.connectHostname as string);
         url.searchParams.set("communications", String(NHT.commVer));
         url.searchParams.set("is_server", String(false));
         url.searchParams.set("installation_id", getInstallationID());
