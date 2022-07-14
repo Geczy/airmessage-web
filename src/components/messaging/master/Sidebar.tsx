@@ -202,12 +202,12 @@ export default function Sidebar(props: {
             size="large"
             edge="end"
             onClick={openOverflowMenu}
-            disabled={props.conversations === undefined}
           >
             <MoreVertRounded />
           </IconButton>
 
           <Menu
+            transitionDuration={500}
             anchorEl={overflowMenu}
             anchorOrigin={{
               vertical: "top",
@@ -223,7 +223,12 @@ export default function Sidebar(props: {
           >
             <MenuItem onClick={showChangelogDialog}>What&apos;s new</MenuItem>
             <MenuItem onClick={showFeedbackDialog}>Help and feedback</MenuItem>
-            <MenuItem onClick={showSignOutDialog}>Sign out</MenuItem>
+            <MenuItem
+              onClick={showSignOutDialog}
+              disabled={props.conversations === undefined}
+            >
+              Sign out
+            </MenuItem>
           </Menu>
         </Box>
       </Toolbar>
