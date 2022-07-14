@@ -88,6 +88,7 @@ export default class MessageList extends React.Component<Props, State> {
         }}
         ref={this.scrollRef}
         onScroll={this.handleScroll}
+        className="thin-scrollbar"
       >
         <Stack
           sx={{

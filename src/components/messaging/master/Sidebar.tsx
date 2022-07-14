@@ -243,7 +243,7 @@ export default function Sidebar(props: {
       )}
 
       {props.conversations !== undefined ? (
-        <List className={styles.sidebarList}>
+        <List className={`${styles.sidebarList} thin-scrollbar`}>
           <TransitionGroup>
             {props.conversations.map((conversation) => (
               <Collapse key={conversation.localID}>
