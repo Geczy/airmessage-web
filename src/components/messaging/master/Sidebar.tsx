@@ -207,7 +207,7 @@ export default function Sidebar(props: {
           </IconButton>
 
           <Menu
-            transitionDuration={500}
+            transitionDuration={200}
             anchorEl={overflowMenu}
             anchorOrigin={{
               vertical: "top",
