@@ -23,11 +23,11 @@ code {
 }
 
 .thin-scrollbar {
-  overflow: hidden !important;
+  overflow-y: scroll;
 }
 
-.thin-scrollbar:hover {
-  overflow-y: scroll !important;
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
 }
 
 .thin-scrollbar::-webkit-scrollbar {
@@ -54,7 +54,7 @@ code {
     background-color: #1e1e1e;
   }
 
-  .thin-scrollbar::-webkit-scrollbar-thumb {
+  .thin-scrollbar:hover::-webkit-scrollbar-thumb {
     background-color: #a09f9f;
   }
 }
@@ -65,7 +65,7 @@ code {
     background-color: #fff;
   }
 
-  .thin-scrollbar::-webkit-scrollbar-thumb {
+  .thin-scrollbar:hover::-webkit-scrollbar-thumb {
     background-color: #babac0;
   }
 }
