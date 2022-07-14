@@ -80,7 +80,6 @@
     "@mui/utils": "^5.9.0",
     "@sentry/react": "^7.0.0",
     "bytebuffer": "^5.0.1",
-    "dark-mode-context": "^1.0.0-alpha.3",
     "emoji-picker-react": "^3.5.1",
     "firebase": "^9.0.1",
     "js-base64": "^3.6.1",
