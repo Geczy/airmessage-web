@@ -9,8 +9,8 @@
     "./{browser,windows/web}/init.ts"
   ],
   "scripts": {
-    "dev:p": "pnpm dev -p 3001",
-    "dev:ssl": "local-ssl-proxy --source 443 --target 3001 --cert ./web.airmessage.org.pem --key ./web.airmessage.org-key.pem",
+    "dev:ssl1": "pnpm dev -p 3001",
+    "dev:ssl2": "local-ssl-proxy --source 443 --target 3001 --cert ./web.airmessage.org.pem --key ./web.airmessage.org-key.pem",
     "dev:local": "pnpm dev -p 3001 | local-ssl-proxy --source 443 --target 3001 --cert ./localhost.pem --key ./localhost-key.pem",
     "dev": "next dev",
     "build": "next build",
