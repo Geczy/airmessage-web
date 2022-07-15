@@ -5,6 +5,7 @@ import { Avatar, Box } from "@mui/material";
 import { PersonData, findPerson } from "lib/interface/people/peopleUtils";
 import { SxProps } from "@mui/system";
 import { Theme } from "@mui/material/styles";
+import { DarkModeContext } from "components/DarkModeContext";
 
 export default function GroupAvatar(props: { members: string[] }) {
   const members = props.members;
@@ -38,13 +39,7 @@ export default function GroupAvatar(props: { members: string[] }) {
       body = [<PersonAvatar key="default" />];
       break;
     case 1:
-      body = [
-        <PersonAvatar
-          key={"1-" + members[0]}
-          person={personArray[0]}
-          style={{ backgroundColor: "#969aa5" }}
-        />,
-      ];
+      body = [<PersonAvatar key={"1-" + members[0]} person={personArray[0]} />];
       break;
     case 2:
       body = [
@@ -52,13 +47,11 @@ export default function GroupAvatar(props: { members: string[] }) {
           key={"1-" + members[0]}
           className={styles.avatar2first}
           person={personArray[0]}
-          style={{ backgroundColor: "#969aa5" }}
         />,
         <PersonAvatar
           key={"2-" + members[1]}
           className={styles.avatar2second}
           person={personArray[1]}
-          style={{ backgroundColor: "#969aa5" }}
         />,
       ];
       break;
@@ -68,19 +61,16 @@ export default function GroupAvatar(props: { members: string[] }) {
           key={"1-" + members[0]}
           className={styles.avatar3first}
           person={personArray[0]}
-          style={{ backgroundColor: "#969aa5" }}
         />,
         <PersonAvatar
           key={"2-" + members[1]}
           className={styles.avatar3second}
           person={personArray[1]}
-          style={{ backgroundColor: "#969aa5" }}
         />,
         <PersonAvatar
           key={"3-" + members[2]}
           className={styles.avatar3third}
           person={personArray[2]}
-          style={{ backgroundColor: "#969aa5" }}
         />,
       ];
       break;
@@ -91,25 +81,21 @@ export default function GroupAvatar(props: { members: string[] }) {
           key={"1-" + members[0]}
           className={styles.avatar4first}
           person={personArray[0]}
-          style={{ backgroundColor: "#969aa5" }}
         />,
         <PersonAvatar
           key={"2-" + members[1]}
           className={styles.avatar4second}
           person={personArray[1]}
-          style={{ backgroundColor: "#969aa5" }}
         />,
         <PersonAvatar
           key={"3-" + members[2]}
           className={styles.avatar4third}
           person={personArray[2]}
-          style={{ backgroundColor: "#969aa5" }}
         />,
         <PersonAvatar
           key={"4-" + members[3]}
           className={styles.avatar4fourth}
           person={personArray[3]}
-          style={{ backgroundColor: "#969aa5" }}
         />,
       ];
   }
@@ -123,10 +109,16 @@ function PersonAvatar(props: {
   style?: React.CSSProperties;
   className?: string;
 }) {
+  const { darkMode } = React.useContext(DarkModeContext);
+
   return (
     <Avatar
       sx={props.sx}
-      style={props.style}
+      style={{
+        color: "white",
+        backgroundColor: darkMode ? "rgb(157,161,172)" : "rgb(154,159,170)",
+        ...props.style,
+      }}
       className={props.className}
       alt={props.person?.name}
       src={props.person?.avatar}
