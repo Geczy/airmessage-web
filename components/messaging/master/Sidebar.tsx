@@ -171,7 +171,9 @@ export default function Sidebar(props: {
 
       <Toolbar
         style={{
-          boxShadow: "0 4px 4px -4px rgb(0 0 0 / 0.2)",
+          boxShadow: !darkMode
+            ? "0 4px 4px -4px rgb(0 0 0 / 0.2)"
+            : "0 4px 4px -4px rgb(225 225 225 / 0.2)",
         }}
       >
         <AirMessageLogo />
