@@ -2,10 +2,10 @@ import React, { useCallback, useState } from "react";
 import styles from "./DetailError.module.css";
 import { Button, TextField, Typography } from "@mui/material";
 import { LockRounded, WifiOffRounded } from "@mui/icons-material";
-import { ConnectionErrorCode } from "../../../data/stateCodes";
-import { connect } from "../../../connection/connectionManager";
-import { setCryptoPassword } from "util/encryptionUtils";
-import { SecureStorageKey, setSecureLS } from "util/secureStorageUtils";
+import { ConnectionErrorCode } from "lib/data/stateCodes";
+import { connect } from "lib/connection/connectionManager";
+import { setCryptoPassword } from "lib/util/encryptionUtils";
+import { SecureStorageKey, setSecureLS } from "lib/util/secureStorageUtils";
 import { getAuth, signOut } from "firebase/auth";
 
 interface ErrorDisplay {

@@ -1,12 +1,9 @@
 import React from "react";
 
 import { Typography, Button, Box, Stack, styled } from "@mui/material";
-import iconAirMessage from "resources/icons/tile-airmessage.svg";
-import iconMac from "resources/icons/tile-mac.svg";
-import iconGoogle from "resources/icons/logo-google.svg";
 
 import AirMessageLogo from "components/logo/AirMessageLogo";
-import { googleScope } from "constants";
+import { googleScope } from "lib/constants";
 import Image from "next/image";
 
 const OnboardingColumn = styled(Stack)({
@@ -32,7 +29,7 @@ export default function Onboarding() {
         <Stack direction="row" gap={6}>
           <OnboardingColumn gap={3}>
             <Stack direction="row" gap={3}>
-              <Image alt="Onboarding steps" src={iconMac} />
+              <Image alt="Onboarding steps" src="/assets/icons/tile-mac.svg" />
 
               <Stack>
                 <Typography variant="h5" gutterBottom>
@@ -56,7 +53,10 @@ export default function Onboarding() {
             </Stack>
 
             <Stack direction="row" gap={3}>
-              <Image alt="Onboarding steps" src={iconAirMessage} />
+              <Image
+                alt="Onboarding steps"
+                src="/assets/icons/tile-airmessage.svg"
+              />
 
               <Stack>
                 <Typography variant="h5" gutterBottom>
@@ -85,7 +85,7 @@ export default function Onboarding() {
                 },
               }}
               variant="contained"
-              startIcon={<Image src={iconGoogle} alt="" />}
+              startIcon={<Image src="/assets/icons/logo-google.svg" alt="" />}
               onClick={signInGoogle}
               fullWidth
             >

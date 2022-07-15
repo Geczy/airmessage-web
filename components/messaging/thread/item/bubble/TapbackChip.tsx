@@ -1,5 +1,5 @@
 import React from "react";
-import { TapbackType } from "data/stateCodes";
+import { TapbackType } from "lib/data/stateCodes";
 import TapbackLoveIcon from "components/icon/TapbackLoveIcon";
 import TapbackLikeIcon from "components/icon/TapbackLikeIcon";
 import TapbackDislikeIcon from "components/icon/TapbackDislikeIcon";

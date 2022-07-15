@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { ChatRenameAction } from "../../../../data/blocks";
-import { findPerson } from "../../../../interface/people/peopleUtils";
+import { ChatRenameAction } from "lib/data/blocks";
+import { findPerson } from "lib/interface/people/peopleUtils";
 import ConversationActionLine from "./ConversationActionLine";
 
 export default function ConversationActionRename(props: {

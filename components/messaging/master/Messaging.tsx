@@ -1,26 +1,26 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Sidebar from "./Sidebar";
-import * as ConnectionManager from "../../../connection/connectionManager";
+import * as ConnectionManager from "lib/connection/connectionManager";
 import {
   ConnectionListener,
   warnCommVer,
-} from "../../../connection/connectionManager";
-import { initializePeople } from "../../../interface/people/peopleUtils";
-import { ConnectionErrorCode, MessageError } from "../../../data/stateCodes";
-import { Conversation } from "../../../data/blocks";
+} from "lib/connection/connectionManager";
+import { initializePeople } from "lib/interface/people/peopleUtils";
+import { ConnectionErrorCode, MessageError } from "lib/data/stateCodes";
+import { Conversation } from "lib/data/blocks";
 import SnackbarProvider from "../../control/SnackbarProvider";
-import { getNotificationUtils } from "interface/notification/notificationUtils";
-import { getPlatformUtils } from "interface/platform/platformUtils";
+import { getNotificationUtils } from "lib/interface/notification/notificationUtils";
+import { getPlatformUtils } from "lib/interface/platform/platformUtils";
 import { Box, Divider, Stack } from "@mui/material";
 import CallOverlay from "components/calling/CallOverlay";
-import useConversationState from "state/conversationState";
+import useConversationState from "lib/state/conversationState";
 import DetailCreate from "components/messaging/create/DetailCreate";
 import DetailLoading from "components/messaging/detail/DetailLoading";
 import DetailError from "components/messaging/detail/DetailError";
 import DetailWelcome from "components/messaging/detail/DetailWelcome";
-import { arrayContainsAll } from "util/arrayUtils";
-import { normalizeAddress } from "util/addressHelper";
-import { compareVersions } from "util/versionUtils";
+import { arrayContainsAll } from "lib/util/arrayUtils";
+import { normalizeAddress } from "lib/util/addressHelper";
+import { compareVersions } from "lib/util/versionUtils";
 import DetailThread from "components/messaging/thread/DetailThread";
 
 export default function Messaging(props: { onReset?: VoidFunction }) {

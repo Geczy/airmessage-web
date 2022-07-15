@@ -1,7 +1,7 @@
 import React from "react";
-import { StickerItem } from "data/blocks";
+import { StickerItem } from "lib/data/blocks";
 import { Box, BoxProps, styled } from "@mui/material";
-import { useBlobURL } from "util/hookUtils";
+import { useBlobURL } from "lib/util/hookUtils";
 
 const BoxStackContainer = styled(Box, {
   shouldForwardProp: (prop) => prop !== "peek",

@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
-import { TapbackItem } from "data/blocks";
-import { TapbackType } from "data/stateCodes";
+import { TapbackItem } from "lib/data/blocks";
+import { TapbackType } from "lib/data/stateCodes";
 import { Stack } from "@mui/material";
 import TapbackChip from "components/messaging/thread/item/bubble/TapbackChip";
 

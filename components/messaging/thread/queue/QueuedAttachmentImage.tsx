@@ -1,6 +1,6 @@
 import React from "react";
 import QueuedAttachment, { QueuedAttachmentProps } from "./QueuedAttachment";
-import { useBlobURL } from "util/hookUtils";
+import { useBlobURL } from "lib/util/hookUtils";
 import { styled } from "@mui/material";
 
 const AttachmentImage = styled("img")(({ theme }) => ({

@@ -1,13 +1,10 @@
 import React from "react";
 import { Box, CircularProgress, Stack } from "@mui/material";
 import Message from "./item/Message";
-import { getMessageFlow } from "../../../util/conversationUtils";
-import { Conversation, ConversationItem } from "../../../data/blocks";
-import {
-  ConversationItemType,
-  MessageStatusCode,
-} from "../../../data/stateCodes";
-import EventEmitter from "../../../util/eventEmitter";
+import { getMessageFlow } from "../../../lib/util/conversationUtils";
+import { Conversation, ConversationItem } from "lib/data/blocks";
+import { ConversationItemType, MessageStatusCode } from "lib/data/stateCodes";
+import EventEmitter from "../../../lib/util/eventEmitter";
 import ConversationActionParticipant from "./item/ConversationActionParticipant";
 import ConversationActionRename from "./item/ConversationActionRename";
 import styles from "./item/bubble/messages.module.scss";

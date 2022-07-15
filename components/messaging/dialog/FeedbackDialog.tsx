@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
-import { getPlatformUtils } from "interface/platform/platformUtils";
-import { appVersion } from "data/releaseInfo";
+import { getPlatformUtils } from "lib/interface/platform/platformUtils";
+import { appVersion } from "lib/data/releaseInfo";
 import {
   getActiveCommVer,
   getActiveProxyType,
@@ -8,8 +8,8 @@ import {
   getServerSystemVersion,
   targetCommVer,
   targetCommVerString,
-} from "connection/connectionManager";
-import { communityPage, supportEmail } from "data/linkConstants";
+} from "lib/connection/connectionManager";
+import { communityPage, supportEmail } from "lib/data/linkConstants";
 import {
   Button,
   Dialog,

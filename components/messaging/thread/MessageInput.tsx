@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useCallback, useState } from "react";
 import { Box, IconButton, InputBase, Stack } from "@mui/material";
 import PushIcon from "../../icon/PushIcon";
-import { QueuedFile } from "../../../data/blocks";
+import { QueuedFile } from "lib/data/blocks";
 import { QueuedAttachmentImage } from "./queue/QueuedAttachmentImage";
 import QueuedAttachmentGeneric from "./queue/QueuedAttachmentGeneric";
 import { QueuedAttachmentProps } from "./queue/QueuedAttachment";

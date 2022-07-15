@@ -19,15 +19,18 @@ import {
   Typography,
 } from "@mui/material";
 import Markdown from "components/Markdown";
-import ServerUpdateData from "data/serverUpdateData";
-import * as ConnectionManager from "../../../connection/connectionManager";
-import { compareVersions } from "util/versionUtils";
-import { ConnectionErrorCode, RemoteUpdateErrorCode } from "data/stateCodes";
+import ServerUpdateData from "lib/data/serverUpdateData";
+import * as ConnectionManager from "lib/connection/connectionManager";
+import { compareVersions } from "lib/util/versionUtils";
+import {
+  ConnectionErrorCode,
+  RemoteUpdateErrorCode,
+} from "lib/data/stateCodes";
 import {
   ConnectionListener,
   RemoteUpdateListener,
-} from "../../../connection/connectionManager";
-import { remoteUpdateErrorCodeToDisplay } from "util/languageUtils";
+} from "lib/connection/connectionManager";
+import { remoteUpdateErrorCodeToDisplay } from "lib/util/languageUtils";
 
 /**
  * A dialog that allows the user to update their server remotely

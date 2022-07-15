@@ -27,18 +27,18 @@ import RemoteUpdateDialog from "components/messaging/dialog/RemoteUpdateDialog";
 import SignOutDialog from "components/messaging/dialog/SignOutDialog";
 import SidebarBanner from "components/messaging/master/SidebarBanner";
 import ConversationSkeleton from "components/skeleton/ConversationSkeleton";
-import ServerUpdateData from "data/serverUpdateData";
+import ServerUpdateData from "lib/data/serverUpdateData";
 import {
   useIsFaceTimeSupported,
   useNonNullableCacheState,
-} from "util/hookUtils";
-import * as ConnectionManager from "../../../connection/connectionManager";
-import { RemoteUpdateListener } from "../../../connection/connectionManager";
-import { Conversation } from "../../../data/blocks";
+} from "lib/util/hookUtils";
+import * as ConnectionManager from "lib/connection/connectionManager";
+import { RemoteUpdateListener } from "lib/connection/connectionManager";
+import { Conversation } from "lib/data/blocks";
 import {
   ConnectionErrorCode,
   FaceTimeLinkErrorCode,
-} from "../../../data/stateCodes";
+} from "lib/data/stateCodes";
 import AirMessageLogo from "../../logo/AirMessageLogo";
 import ChangelogDialog from "../dialog/ChangelogDialog";
 import UpdateRequiredDialog from "../dialog/UpdateRequiredDialog";

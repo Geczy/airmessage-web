@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import MessageBubbleWrapper from "components/messaging/thread/item/bubble/MessageBubbleWrapper";
-import { StickerItem, TapbackItem } from "data/blocks";
+import { StickerItem, TapbackItem } from "lib/data/blocks";
 import {
   Box,
   ButtonBase,
@@ -9,20 +9,22 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import { getFlowBorderRadius, MessagePartFlow } from "util/messageFlow";
-import FileDownloadResult from "data/fileDownloadResult";
+import { getFlowBorderRadius, MessagePartFlow } from "lib/util/messageFlow";
+import FileDownloadResult from "lib/data/fileDownloadResult";
 import { SnackbarContext } from "components/control/SnackbarProvider";
-import { mimeTypeToPreview } from "util/conversationUtils";
+import { mimeTypeToPreview } from "lib/util/conversationUtils";
 import { GetAppRounded } from "@mui/icons-material";
-import * as ConnectionManager from "connection/connectionManager";
-import { AttachmentRequestErrorCode } from "data/stateCodes";
-import { useUnsubscribeContainer } from "util/hookUtils";
-import { installCancellablePromise } from "util/cancellablePromise";
+import * as ConnectionManager from "lib/connection/connectionManager";
+import { AttachmentRequestErrorCode } from "lib/data/stateCodes";
+import { useUnsubscribeContainer } from "lib/util/hookUtils";
+import { installCancellablePromise } from "lib/util/cancellablePromise";
 import {
   attachmentRequestErrorCodeToDisplay,
   formatFileSize,
-} from "util/languageUtils";
-import PaletteSpecifier, { accessPaletteColor } from "data/paletteSpecifier";
+} from "lib/util/languageUtils";
+import PaletteSpecifier, {
+  accessPaletteColor,
+} from "lib/data/paletteSpecifier";
 
 const DownloadableButton = styled(ButtonBase, {
   shouldForwardProp: (prop) =>

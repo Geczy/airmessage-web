@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { MessageItem } from "data/blocks";
+import { MessageItem } from "lib/data/blocks";
 import {
   Avatar,
   Button,
@@ -16,25 +16,27 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import { getDeliveryStatusTime, getTimeDivider } from "util/dateUtils";
+import { getDeliveryStatusTime, getTimeDivider } from "lib/util/dateUtils";
 import { ErrorRounded } from "@mui/icons-material";
-import { colorFromContact } from "util/avatarUtils";
-import { findPerson, PersonData } from "interface/people/peopleUtils";
-import { useCancellableEffect } from "util/hookUtils";
-import { MessageStatusCode } from "data/stateCodes";
+import { colorFromContact } from "lib/util/avatarUtils";
+import { findPerson, PersonData } from "lib/interface/people/peopleUtils";
+import { useCancellableEffect } from "lib/util/hookUtils";
+import { MessageStatusCode } from "lib/data/stateCodes";
 import MessageBubbleText from "components/messaging/thread/item/bubble/MessageBubbleText";
-import { appleServiceAppleMessage } from "data/appleConstants";
-import FileDownloadResult, { FileDisplayResult } from "data/fileDownloadResult";
-import { downloadBlob } from "util/browserUtils";
+import { appleServiceAppleMessage } from "lib/data/appleConstants";
+import FileDownloadResult, {
+  FileDisplayResult,
+} from "lib/data/fileDownloadResult";
+import { downloadBlob } from "lib/util/browserUtils";
 import {
   getBubbleSpacing,
   MessageFlow,
   MessagePartFlow,
-} from "util/messageFlow";
+} from "lib/util/messageFlow";
 import MessageBubbleImage from "components/messaging/thread/item/bubble/MessageBubbleImage";
 import MessageBubbleDownloadable from "components/messaging/thread/item/bubble/MessageBubbleDownloadable";
-import { messageErrorToDisplay } from "util/languageUtils";
-import { groupArray } from "util/arrayUtils";
+import { messageErrorToDisplay } from "lib/util/languageUtils";
+import { groupArray } from "lib/util/arrayUtils";
 
 enum MessageDialog {
   Error,

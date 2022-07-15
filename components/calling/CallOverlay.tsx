@@ -18,12 +18,12 @@ import {
 import { createTheme, useTheme } from "@mui/material/styles";
 import CallNotificationIncoming from "components/calling/CallNotificationIncoming";
 import CallNotificationOutgoing from "components/calling/CallNotificationOutgoing";
-import * as ConnectionManager from "connection/connectionManager";
-import { getMemberTitle } from "util/conversationUtils";
-import { buildListString } from "util/languageUtils";
-import CallEvent from "data/callEvent";
+import * as ConnectionManager from "lib/connection/connectionManager";
+import { getMemberTitle } from "lib/util/conversationUtils";
+import { buildListString } from "lib/util/languageUtils";
+import CallEvent from "lib/data/callEvent";
 import { SnackbarContext } from "components/control/SnackbarProvider";
-import { getNotificationUtils } from "interface/notification/notificationUtils";
+import { getNotificationUtils } from "lib/interface/notification/notificationUtils";
 
 export default function CallOverlay() {
   const displaySnackbar = useContext(SnackbarContext);

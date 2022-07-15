@@ -1,6 +1,6 @@
 # AirMessage for web
 
-![AirMessage running on Microsoft Edge](README/windows-web.png)
+![AirMessage running on Microsoft Edge](/windows-web.png)
 
 AirMessage lets people use iMessage on the devices they like.
 **AirMessage for web** brings iMessage to modern web browsers over a WebSocket proxy.

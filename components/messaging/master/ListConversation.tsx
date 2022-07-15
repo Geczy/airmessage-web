@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import * as ConversationUtils from "../../../util/conversationUtils";
-import { isConversationPreviewMessage } from "../../../util/conversationUtils";
+import * as ConversationUtils from "../../../lib/util/conversationUtils";
+import { isConversationPreviewMessage } from "../../../lib/util/conversationUtils";
 
 import {
   ListItemAvatar,
@@ -11,11 +11,11 @@ import {
   TypographyProps,
 } from "@mui/material";
 
-import { Conversation, ConversationPreview } from "../../../data/blocks";
-import { appleSendStyleBubbleInvisibleInk } from "../../../data/appleConstants";
-import { getLastUpdateStatusTime } from "../../../util/dateUtils";
+import { Conversation, ConversationPreview } from "lib/data/blocks";
+import { appleSendStyleBubbleInvisibleInk } from "lib/data/appleConstants";
+import { getLastUpdateStatusTime } from "../../../lib/util/dateUtils";
 import GroupAvatar from "./GroupAvatar";
-import { ConversationPreviewType } from "../../../data/stateCodes";
+import { ConversationPreviewType } from "lib/data/stateCodes";
 
 export default function ListConversation(props: {
   conversation: Conversation;

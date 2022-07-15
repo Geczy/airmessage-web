@@ -5,7 +5,7 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import * as ConnectionManager from "../../../connection/connectionManager";
+import * as ConnectionManager from "lib/connection/connectionManager";
 import { DetailFrame } from "../master/DetailFrame";
 import {
   Avatar,
@@ -23,19 +23,22 @@ import {
   AddressType,
   getPeople,
   PersonData,
-} from "interface/people/peopleUtils";
-import { ConversationPreviewType, CreateChatErrorCode } from "data/stateCodes";
-import { Conversation } from "data/blocks";
+} from "lib/interface/people/peopleUtils";
+import {
+  ConversationPreviewType,
+  CreateChatErrorCode,
+} from "lib/data/stateCodes";
+import { Conversation } from "lib/data/blocks";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import { SnackbarContext } from "../../control/SnackbarProvider";
-import { generateConversationLocalID } from "util/conversationUtils";
+import { generateConversationLocalID } from "lib/util/conversationUtils";
 import WidthContainer from "components/WidthContainer";
 import DetailCreateSelectionChip from "components/messaging/create/DetailCreateSelectionChip";
-import NewMessageUser from "data/newMessageUser";
+import NewMessageUser from "lib/data/newMessageUser";
 import DetailCreateAddressButton from "components/messaging/create/DetailCreateAddressButton";
 import DetailCreateListSubheader from "components/messaging/create/DetailCreateListSubheader";
 import DetailCreateDirectSendButton from "components/messaging/create/DetailCreateDirectSendButton";
-import { groupArray } from "util/arrayUtils";
+import { groupArray } from "lib/util/arrayUtils";
 
 const messagingService = "iMessage";
 

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./GroupAvatar.module.css";
 
 import { Avatar, Box } from "@mui/material";
-import { PersonData, findPerson } from "../../../interface/people/peopleUtils";
-import { colorFromContact } from "../../../util/avatarUtils";
+import { PersonData, findPerson } from "lib/interface/people/peopleUtils";
+import { colorFromContact } from "../../../lib/util/avatarUtils";
 import { SxProps } from "@mui/system";
 import { Theme } from "@mui/material/styles";
 

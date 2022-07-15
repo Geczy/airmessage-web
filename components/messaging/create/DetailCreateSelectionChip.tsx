@@ -1,4 +1,4 @@
-import NewMessageUser from "data/newMessageUser";
+import NewMessageUser from "lib/data/newMessageUser";
 import React, { useMemo } from "react";
 import { Avatar, Chip, Theme, Tooltip } from "@mui/material";
 import { SxProps } from "@mui/system";

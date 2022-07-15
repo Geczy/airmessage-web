@@ -6,12 +6,12 @@ import * as Sentry from "@sentry/react";
 import SignInGate from "components/SignInGate";
 import AppTheme from "components/control/AppTheme";
 import { initializeApp } from "firebase/app";
-import { setPeopleUtils } from "interface/people/peopleUtils";
-import GooglePeopleUtils from "interface/people/googlePeopleUtils";
-import { setNotificationUtils } from "interface/notification/notificationUtils";
-import BrowserNotificationUtils from "interface/notification/browserNotificationUtils";
-import { setPlatformUtils } from "interface/platform/platformUtils";
-import BrowserPlatformUtils from "interface/platform/browserPlatformUtils";
+import { setPeopleUtils } from "lib/interface/people/peopleUtils";
+import GooglePeopleUtils from "lib/interface/people/googlePeopleUtils";
+import { setNotificationUtils } from "lib/interface/notification/notificationUtils";
+import BrowserNotificationUtils from "lib/interface/notification/browserNotificationUtils";
+import { setPlatformUtils } from "lib/interface/platform/platformUtils";
+import BrowserPlatformUtils from "lib/interface/platform/browserPlatformUtils";
 import Image from "next/image";
 
 //Set platform-specific utilities
@@ -80,7 +80,7 @@ const Home: NextPage = () => {
           async
           defer
           src="https://sa.airmessage.org/latest.js"
-        ></script>
+        />
         <noscript>
           <Image
             src="https://sa.airmessage.org/noscript.gif?ignore-dnt=true"
