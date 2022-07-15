@@ -3,7 +3,6 @@ import styles from "./GroupAvatar.module.css";
 
 import { Avatar, Box } from "@mui/material";
 import { PersonData, findPerson } from "lib/interface/people/peopleUtils";
-import { colorFromContact } from "../../../lib/util/avatarUtils";
 import { SxProps } from "@mui/system";
 import { Theme } from "@mui/material/styles";
 
@@ -43,7 +42,7 @@ export default function GroupAvatar(props: { members: string[] }) {
         <PersonAvatar
           key={"1-" + members[0]}
           person={personArray[0]}
-          style={{ backgroundColor: colorFromContact(members[0]) }}
+          style={{ backgroundColor: "#969aa5" }}
         />,
       ];
       break;
@@ -53,13 +52,13 @@ export default function GroupAvatar(props: { members: string[] }) {
           key={"1-" + members[0]}
           className={styles.avatar2first}
           person={personArray[0]}
-          style={{ backgroundColor: colorFromContact(members[0]) }}
+          style={{ backgroundColor: "#969aa5" }}
         />,
         <PersonAvatar
           key={"2-" + members[1]}
           className={styles.avatar2second}
           person={personArray[1]}
-          style={{ backgroundColor: colorFromContact(members[1]) }}
+          style={{ backgroundColor: "#969aa5" }}
         />,
       ];
       break;
@@ -69,19 +68,19 @@ export default function GroupAvatar(props: { members: string[] }) {
           key={"1-" + members[0]}
           className={styles.avatar3first}
           person={personArray[0]}
-          style={{ backgroundColor: colorFromContact(members[0]) }}
+          style={{ backgroundColor: "#969aa5" }}
         />,
         <PersonAvatar
           key={"2-" + members[1]}
           className={styles.avatar3second}
           person={personArray[1]}
-          style={{ backgroundColor: colorFromContact(members[1]) }}
+          style={{ backgroundColor: "#969aa5" }}
         />,
         <PersonAvatar
           key={"3-" + members[2]}
           className={styles.avatar3third}
           person={personArray[2]}
-          style={{ backgroundColor: colorFromContact(members[2]) }}
+          style={{ backgroundColor: "#969aa5" }}
         />,
       ];
       break;
@@ -92,25 +91,25 @@ export default function GroupAvatar(props: { members: string[] }) {
           key={"1-" + members[0]}
           className={styles.avatar4first}
           person={personArray[0]}
-          style={{ backgroundColor: colorFromContact(members[0]) }}
+          style={{ backgroundColor: "#969aa5" }}
         />,
         <PersonAvatar
           key={"2-" + members[1]}
           className={styles.avatar4second}
           person={personArray[1]}
-          style={{ backgroundColor: colorFromContact(members[1]) }}
+          style={{ backgroundColor: "#969aa5" }}
         />,
         <PersonAvatar
           key={"3-" + members[2]}
           className={styles.avatar4third}
           person={personArray[2]}
-          style={{ backgroundColor: colorFromContact(members[2]) }}
+          style={{ backgroundColor: "#969aa5" }}
         />,
         <PersonAvatar
           key={"4-" + members[3]}
           className={styles.avatar4fourth}
           person={personArray[3]}
-          style={{ backgroundColor: colorFromContact(members[3]) }}
+          style={{ backgroundColor: "#969aa5" }}
         />,
       ];
   }

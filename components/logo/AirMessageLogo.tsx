@@ -8,7 +8,9 @@ export default function AirMessageLogo() {
   return (
     <div className={styles.logo}>
       <Logo color={textColor} />
-      <span style={{ color: textColor, opacity: 0.75 }}>AirMessage</span>
+      <span style={{ fontSize: 18, color: textColor, opacity: 0.75 }}>
+        AirMessage
+      </span>
     </div>
   );
 }
@@ -19,8 +21,8 @@ function Logo(props: { color: string }) {
       version="1.1"
       viewBox="0 0 26 26"
       xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
+      width="18"
+      height="18"
       style={{ opacity: 0.75 }}
     >
       <g fill="none" fillRule="evenodd">

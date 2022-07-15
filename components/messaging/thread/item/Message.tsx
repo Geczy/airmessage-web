@@ -18,7 +18,6 @@ import {
 } from "@mui/material";
 import { getDeliveryStatusTime, getTimeDivider } from "lib/util/dateUtils";
 import { ErrorRounded } from "@mui/icons-material";
-import { colorFromContact } from "lib/util/avatarUtils";
 import { findPerson, PersonData } from "lib/interface/people/peopleUtils";
 import { useCancellableEffect } from "lib/util/hookUtils";
 import { MessageStatusCode } from "lib/data/stateCodes";
@@ -312,7 +311,7 @@ export default function Message(props: {
                 fontSize: 14,
               }}
               style={{
-                backgroundColor: colorFromContact(props.message.sender ?? ""),
+                backgroundColor: "#969aa5",
                 visibility: displayAvatar ? undefined : "hidden",
               }}
               src={personData?.avatar}

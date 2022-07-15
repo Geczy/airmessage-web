@@ -60,7 +60,7 @@ export default function AppTheme(props: { children: React.ReactNode }) {
           divider: darkMode ? "rgba(255, 255, 255, 0.1)" : "#EEEEEE",
           background: {
             default: darkMode ? "#1E1E1E" : "#FFFFFF",
-            sidebar: darkMode ? "#272727" : "#FAFAFA",
+            sidebar: darkMode ? "#272727" : "#e8e7e7",
           },
         },
         components: {
