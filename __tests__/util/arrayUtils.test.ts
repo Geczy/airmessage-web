@@ -1,4 +1,4 @@
-import { arrayContainsAll, groupArray } from "../../src/util/arrayUtils";
+import { arrayContainsAll, groupArray } from "../../pages/util/arrayUtils";
 
 type ValueHolder<T> = { value: T };
 type KeyValueHolder<K, V> = { key: K; value: V };
