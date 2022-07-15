@@ -34,7 +34,9 @@ export function getFallbackTitle(conversation: Conversation): string {
   if (conversation.name) return conversation.name;
 
   //Building a name from the conversation members
-  return buildListString(conversation.members);
+  return buildListString(
+    conversation.members.map((member) => formatAddress(member))
+  );
 }
 
 export async function getMemberTitle(members: string[]): Promise<string> {
