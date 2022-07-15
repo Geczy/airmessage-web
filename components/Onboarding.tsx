@@ -6,7 +6,7 @@ import iconMac from "shared/resources/icons/tile-mac.svg";
 import iconGoogle from "shared/resources/icons/logo-google.svg";
 
 import AirMessageLogo from "components/logo/AirMessageLogo";
-import { googleScope } from "constants";
+import { googleScope } from "shared/constants";
 import Image from "next/image";
 
 const OnboardingColumn = styled(Stack)({
