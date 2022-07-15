@@ -24,6 +24,8 @@ interface State {
 const historyLoadScrollThreshold = 300;
 
 export default class MessageList extends React.Component<Props, State> {
+  static whyDidYouRender = true;
+
   state = {
     isInThreshold: false,
   };

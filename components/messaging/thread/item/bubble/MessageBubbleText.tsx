@@ -19,6 +19,8 @@ const MessageBubbleTypography = styled(Typography)(({ theme }) => ({
 }));
 
 function removeEmoji(str: string) {
+  if (!str) return str;
+
   let strCopy = str;
   const emojiKeycapRegex = /[\u0023-\u0039]\ufe0f?\u20e3/g;
   const emojiRegex = /\p{Extended_Pictographic}/gu;
@@ -59,7 +61,6 @@ export default function MessageBubbleText(props: {
 }) {
   const { darkMode } = React.useContext(DarkModeContext);
 
-  const regex = /(\p{Emoji_Presentation}|\p{Extended_Pictographic})/gu;
   const isEmoji = removeEmoji(props.text).length <= 0;
 
   return (

@@ -49,14 +49,14 @@ const MessageStack = styled(Stack, {
   marginTop: theme.spacing(getBubbleSpacing(amLinked)),
 }));
 
-export default function Message(props: {
+const Message = (props: {
   message: MessageItem;
   isGroupChat: boolean;
   service: string;
   flow: MessageFlow;
   showStatus?: boolean;
   className?: string;
-}) {
+}) => {
   const [dialogState, setDialogState] = useState<MessageDialog | undefined>(
     undefined
   );
@@ -425,7 +425,7 @@ export default function Message(props: {
       </Dialog>
     </>
   );
-}
+};
 
 /**
  * Gets a human-readable status string for the given message item,
@@ -466,3 +466,6 @@ function getStatusString(message: MessageItem): React.ReactElement | null {
 function isAttachmentPreviewable(mimeType: string): boolean {
   return mimeType.startsWith("image/");
 }
+
+Message.whyDidYouRender = true;
+export default Message;
