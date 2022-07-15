@@ -4,7 +4,6 @@ import {
   PeopleUtils,
   PersonData,
 } from "shared/interface/people/peopleUtils";
-import * as secrets from "shared/secrets";
 import { formatAddress } from "shared/util/conversationUtils";
 import { googleScope } from "shared/constants";
 import { promiseGAPI } from "shared/index";
@@ -22,11 +21,11 @@ export default class GooglePeopleUtils extends PeopleUtils {
           gapi.load("client", () => {
             gapi.client
               .init({
-                apiKey: secrets.googleApiKey,
+                apiKey: process.env.googleApiKey as string,
                 discoveryDocs: [
                   "https://people.googleapis.com/$discovery/rest?version=v1",
                 ],
-                clientId: secrets.googleClientID,
+                clientId: process.env.googleClientID as string,
                 scope: googleScope,
               })
               .then(() => {

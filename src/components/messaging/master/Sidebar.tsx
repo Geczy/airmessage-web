@@ -1,6 +1,12 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import styles from "./Sidebar.module.css";
-import AirMessageLogo from "../../logo/AirMessageLogo";
+import {
+  AddRounded,
+  DarkMode,
+  LightMode,
+  MoreVertRounded,
+  SyncProblem,
+  Update,
+  VideoCallOutlined,
+} from "@mui/icons-material";
 import {
   Box,
   Collapse,
@@ -11,37 +17,34 @@ import {
   Stack,
   Toolbar,
 } from "@mui/material";
-import ListConversation from "./ListConversation";
-import { Conversation } from "../../../data/blocks";
-import ConnectionBanner from "./ConnectionBanner";
-import {
-  ConnectionErrorCode,
-  FaceTimeLinkErrorCode,
-} from "../../../data/stateCodes";
-import {
-  AddRounded,
-  MoreVertRounded,
-  SyncProblem,
-  Update,
-  VideoCallOutlined,
-} from "@mui/icons-material";
-import ChangelogDialog from "../dialog/ChangelogDialog";
-import FeedbackDialog from "shared/components/messaging/dialog/FeedbackDialog";
-import SignOutDialog from "shared/components/messaging/dialog/SignOutDialog";
-import RemoteUpdateDialog from "shared/components/messaging/dialog/RemoteUpdateDialog";
-import ServerUpdateData from "shared/data/serverUpdateData";
-import * as ConnectionManager from "../../../connection/connectionManager";
-import { RemoteUpdateListener } from "../../../connection/connectionManager";
-import SidebarBanner from "shared/components/messaging/master/SidebarBanner";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { TransitionGroup } from "react-transition-group";
 import { SnackbarContext } from "shared/components/control/SnackbarProvider";
+import { DarkModeContext } from "shared/components/DarkModeContext";
 import FaceTimeLinkDialog from "shared/components/messaging/dialog/FaceTimeLinkDialog";
+import FeedbackDialog from "shared/components/messaging/dialog/FeedbackDialog";
+import RemoteUpdateDialog from "shared/components/messaging/dialog/RemoteUpdateDialog";
+import SignOutDialog from "shared/components/messaging/dialog/SignOutDialog";
+import SidebarBanner from "shared/components/messaging/master/SidebarBanner";
+import ConversationSkeleton from "shared/components/skeleton/ConversationSkeleton";
+import ServerUpdateData from "shared/data/serverUpdateData";
 import {
   useIsFaceTimeSupported,
   useNonNullableCacheState,
 } from "shared/util/hookUtils";
+import * as ConnectionManager from "../../../connection/connectionManager";
+import { RemoteUpdateListener } from "../../../connection/connectionManager";
+import { Conversation } from "../../../data/blocks";
+import {
+  ConnectionErrorCode,
+  FaceTimeLinkErrorCode,
+} from "../../../data/stateCodes";
+import AirMessageLogo from "../../logo/AirMessageLogo";
+import ChangelogDialog from "../dialog/ChangelogDialog";
 import UpdateRequiredDialog from "../dialog/UpdateRequiredDialog";
-import ConversationSkeleton from "shared/components/skeleton/ConversationSkeleton";
-import { TransitionGroup } from "react-transition-group";
+import ConnectionBanner from "./ConnectionBanner";
+import ListConversation from "./ListConversation";
+import styles from "./Sidebar.module.css";
 
 export default function Sidebar(props: {
   conversations: Conversation[] | undefined;
@@ -51,6 +54,7 @@ export default function Sidebar(props: {
   errorBanner?: ConnectionErrorCode;
   needsServerUpdate?: boolean;
 }) {
+  const { darkMode, setDarkMode } = React.useContext(DarkModeContext);
   const displaySnackbar = useContext(SnackbarContext);
 
   //The anchor element for the overflow menu
@@ -183,6 +187,20 @@ export default function Sidebar(props: {
 
           <IconButton
             size="large"
+            onClick={() => {
+              if (!darkMode) {
+                document.body.classList.add("dark");
+              } else {
+                document.body.classList.toggle("dark");
+              }
+              setDarkMode(!darkMode);
+            }}
+          >
+            {darkMode ? <DarkMode /> : <LightMode />}
+          </IconButton>
+
+          <IconButton
+            size="large"
             onClick={props.onCreateSelected}
             disabled={props.conversations === undefined}
           >
@@ -194,12 +212,12 @@ export default function Sidebar(props: {
             size="large"
             edge="end"
             onClick={openOverflowMenu}
-            disabled={props.conversations === undefined}
           >
             <MoreVertRounded />
           </IconButton>
 
           <Menu
+            transitionDuration={200}
             anchorEl={overflowMenu}
             anchorOrigin={{
               vertical: "top",
@@ -215,7 +233,12 @@ export default function Sidebar(props: {
           >
             <MenuItem onClick={showChangelogDialog}>What&apos;s new</MenuItem>
             <MenuItem onClick={showFeedbackDialog}>Help and feedback</MenuItem>
-            <MenuItem onClick={showSignOutDialog}>Sign out</MenuItem>
+            <MenuItem
+              onClick={showSignOutDialog}
+              disabled={props.conversations === undefined}
+            >
+              Sign out
+            </MenuItem>
           </Menu>
         </Box>
       </Toolbar>
@@ -243,7 +266,7 @@ export default function Sidebar(props: {
       )}
 
       {props.conversations !== undefined ? (
-        <List className={styles.sidebarList}>
+        <List className={`${styles.sidebarList} thin-scrollbar`}>
           <TransitionGroup>
             {props.conversations.map((conversation) => (
               <Collapse key={conversation.localID}>

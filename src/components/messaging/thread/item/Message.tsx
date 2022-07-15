@@ -56,6 +56,7 @@ export default function Message(props: {
   service: string;
   flow: MessageFlow;
   showStatus?: boolean;
+  className?: string;
 }) {
   const [dialogState, setDialogState] = useState<MessageDialog | undefined>(
     undefined
@@ -91,7 +92,8 @@ export default function Message(props: {
 
   //Compute the message information
   const isOutgoing = props.message.sender === undefined;
-  const displayAvatar = !isOutgoing && !props.flow.anchorTop;
+  const displayAvatar =
+    props.isGroupChat && !isOutgoing && !props.flow.anchorTop;
   const displaySender = props.isGroupChat && displayAvatar;
   const isUnconfirmed = props.message.status === MessageStatusCode.Unconfirmed;
 
@@ -194,6 +196,7 @@ export default function Message(props: {
       <MessageBubbleText
         key="messagetext"
         flow={{
+          isText: props.service !== appleServiceAppleMessage,
           isOutgoing: isOutgoing,
           isUnconfirmed: isUnconfirmed,
           color: `${colorPalette}.contrastText`,
@@ -300,22 +303,25 @@ export default function Message(props: {
         {/* Horizontal message split */}
         <Stack direction="row" alignItems="flex-start" flexShrink={0}>
           {/* User avatar */}
-          <Avatar
-            sx={{
-              width: 32,
-              height: 32,
-              fontSize: 14,
-            }}
-            style={{
-              backgroundColor: colorFromContact(props.message.sender ?? ""),
-              visibility: displayAvatar ? undefined : "hidden",
-            }}
-            src={personData?.avatar}
-          />
+
+          {props.isGroupChat && (
+            <Avatar
+              sx={{
+                width: 32,
+                height: 32,
+                fontSize: 14,
+              }}
+              style={{
+                backgroundColor: colorFromContact(props.message.sender ?? ""),
+                visibility: displayAvatar ? undefined : "hidden",
+              }}
+              src={personData?.avatar}
+            />
+          )}
 
           {/* Message parts */}
           <Stack
-            sx={{ marginLeft: 1 }}
+            sx={{ marginLeft: 1.5 }}
             gap={getBubbleSpacing(false)}
             flexGrow={1}
             direction="column"

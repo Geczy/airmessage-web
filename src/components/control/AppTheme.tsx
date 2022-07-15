@@ -1,9 +1,20 @@
-import React from "react";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, useMediaQuery } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import React, { useEffect } from "react";
+import { DarkModeContext } from "../DarkModeContext";
 
 export default function AppTheme(props: { children: React.ReactNode }) {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const [darkMode, setDarkMode] = React.useState(prefersDarkMode);
+
+  useEffect(() => {
+    setDarkMode(prefersDarkMode);
+    if (prefersDarkMode) {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.toggle("dark");
+    }
+  }, [prefersDarkMode]);
 
   const theme = React.useMemo(
     () =>
@@ -23,33 +34,33 @@ export default function AppTheme(props: { children: React.ReactNode }) {
           ].join(","),
         },
         palette: {
-          mode: prefersDarkMode ? "dark" : "light",
+          mode: darkMode ? "dark" : "light",
           primary: {
             main: "#448AFF",
             dark: "#366FCC",
             light: "#52A7FF",
           },
-          messageIncoming: prefersDarkMode
+          messageIncoming: darkMode
             ? {
-                main: "#393939",
-                contrastText: "#FFF",
+                main: "#3b3b3d",
+                contrastText: "#dedede",
               }
             : {
                 main: "#e9e9eb",
                 contrastText: "#363637",
               },
           messageOutgoing: {
-            main: "#3478f6",
+            main: "#3c83f7",
             contrastText: "#FFF",
           },
           messageOutgoingTextMessage: {
             main: "#2ECC71",
             contrastText: "#FFF",
           },
-          divider: prefersDarkMode ? "rgba(255, 255, 255, 0.1)" : "#EEEEEE",
+          divider: darkMode ? "rgba(255, 255, 255, 0.1)" : "#EEEEEE",
           background: {
-            default: prefersDarkMode ? "#1E1E1E" : "#FFFFFF",
-            sidebar: prefersDarkMode ? "#272727" : "#FAFAFA",
+            default: darkMode ? "#1E1E1E" : "#FFFFFF",
+            sidebar: darkMode ? "#272727" : "#FAFAFA",
           },
         },
         components: {
@@ -57,23 +68,23 @@ export default function AppTheme(props: { children: React.ReactNode }) {
             styleOverrides: {
               "@global": {
                 html: {
-                  scrollbarColor: prefersDarkMode
-                    ? "#303030 #424242"
-                    : undefined,
+                  scrollbarColor: darkMode ? "#303030 #424242" : undefined,
                 },
               },
             },
           },
         },
       }),
-    [prefersDarkMode]
+    [darkMode]
   );
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {props.children}
-    </ThemeProvider>
+    <DarkModeContext.Provider value={{ darkMode, setDarkMode }}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {props.children}
+      </ThemeProvider>
+    </DarkModeContext.Provider>
   );
 }
 

@@ -10,6 +10,7 @@ import {
 import EventEmitter from "../../../util/eventEmitter";
 import ConversationActionParticipant from "./item/ConversationActionParticipant";
 import ConversationActionRename from "./item/ConversationActionRename";
+import styles from "./item/bubble/messages.module.scss";
 
 interface Props {
   conversation: Conversation;
@@ -88,6 +89,7 @@ export default class MessageList extends React.Component<Props, State> {
         }}
         ref={this.scrollRef}
         onScroll={this.handleScroll}
+        className="thin-scrollbar"
       >
         <Stack
           sx={{
@@ -95,6 +97,7 @@ export default class MessageList extends React.Component<Props, State> {
             maxWidth: "1000px",
             marginX: "auto",
           }}
+          className={styles.list}
           direction="column-reverse"
         >
           {this.props.items.map((item, i, array) => {
