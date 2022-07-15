@@ -29,7 +29,12 @@ export default function Onboarding() {
         <Stack direction="row" gap={6}>
           <OnboardingColumn gap={3}>
             <Stack direction="row" gap={3}>
-              <Image alt="Onboarding steps" src="/assets/icons/tile-mac.svg" />
+              <Image
+                width={64}
+                height={64}
+                alt="Onboarding steps"
+                src="/assets/icons/tile-mac.svg"
+              />
 
               <Stack>
                 <Typography variant="h5" gutterBottom>
@@ -54,6 +59,8 @@ export default function Onboarding() {
 
             <Stack direction="row" gap={3}>
               <Image
+                width={64}
+                height={64}
                 alt="Onboarding steps"
                 src="/assets/icons/tile-airmessage.svg"
               />
@@ -85,7 +92,14 @@ export default function Onboarding() {
                 },
               }}
               variant="contained"
-              startIcon={<Image src="/assets/icons/logo-google.svg" alt="" />}
+              startIcon={
+                <Image
+                  width={64}
+                  height={32}
+                  src="/assets/icons/logo-google.svg"
+                  alt=""
+                />
+              }
               onClick={signInGoogle}
               fullWidth
             >
