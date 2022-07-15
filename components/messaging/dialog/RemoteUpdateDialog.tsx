@@ -18,7 +18,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import Markdown from "shared/components/Markdown";
+import Markdown from "components/Markdown";
 import ServerUpdateData from "shared/data/serverUpdateData";
 import * as ConnectionManager from "../../../connection/connectionManager";
 import { compareVersions } from "shared/util/versionUtils";

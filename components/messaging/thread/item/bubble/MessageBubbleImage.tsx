@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import MessageBubbleWrapper from "shared/components/messaging/thread/item/bubble/MessageBubbleWrapper";
+import MessageBubbleWrapper from "components/messaging/thread/item/bubble/MessageBubbleWrapper";
 import { StickerItem, TapbackItem } from "shared/data/blocks";
 import {
   Backdrop,

@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
-import Onboarding from "shared/components/Onboarding";
-import Messaging from "shared/components/messaging/master/Messaging";
+import Onboarding from "components/Onboarding";
+import Messaging from "components/messaging/master/Messaging";
 import * as Sentry from "@sentry/react";
-import { promiseGAPI } from "shared/index";
+import { promiseGAPI } from "pages/index";
 import { googleScope } from "shared/constants";
-import LoginContext from "shared/components/LoginContext";
+import LoginContext from "components/LoginContext";
 import {
   getAuth,
   GoogleAuthProvider,

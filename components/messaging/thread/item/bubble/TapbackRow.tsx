@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { TapbackItem } from "shared/data/blocks";
 import { TapbackType } from "shared/data/stateCodes";
 import { Stack } from "@mui/material";
-import TapbackChip from "shared/components/messaging/thread/item/bubble/TapbackChip";
+import TapbackChip from "components/messaging/thread/item/bubble/TapbackChip";
 
 /**
  * A row of tapback chips, to be attached to the bottom

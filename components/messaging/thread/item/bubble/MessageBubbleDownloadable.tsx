@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import MessageBubbleWrapper from "shared/components/messaging/thread/item/bubble/MessageBubbleWrapper";
+import MessageBubbleWrapper from "components/messaging/thread/item/bubble/MessageBubbleWrapper";
 import { StickerItem, TapbackItem } from "shared/data/blocks";
 import {
   Box,
@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { getFlowBorderRadius, MessagePartFlow } from "shared/util/messageFlow";
 import FileDownloadResult from "shared/data/fileDownloadResult";
-import { SnackbarContext } from "shared/components/control/SnackbarProvider";
+import { SnackbarContext } from "components/control/SnackbarProvider";
 import { mimeTypeToPreview } from "shared/util/conversationUtils";
 import { GetAppRounded } from "@mui/icons-material";
 import * as ConnectionManager from "shared/connection/connectionManager";

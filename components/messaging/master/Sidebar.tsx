@@ -19,14 +19,14 @@ import {
 } from "@mui/material";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { TransitionGroup } from "react-transition-group";
-import { SnackbarContext } from "shared/components/control/SnackbarProvider";
-import { DarkModeContext } from "shared/components/DarkModeContext";
-import FaceTimeLinkDialog from "shared/components/messaging/dialog/FaceTimeLinkDialog";
-import FeedbackDialog from "shared/components/messaging/dialog/FeedbackDialog";
-import RemoteUpdateDialog from "shared/components/messaging/dialog/RemoteUpdateDialog";
-import SignOutDialog from "shared/components/messaging/dialog/SignOutDialog";
-import SidebarBanner from "shared/components/messaging/master/SidebarBanner";
-import ConversationSkeleton from "shared/components/skeleton/ConversationSkeleton";
+import { SnackbarContext } from "components/control/SnackbarProvider";
+import { DarkModeContext } from "components/DarkModeContext";
+import FaceTimeLinkDialog from "components/messaging/dialog/FaceTimeLinkDialog";
+import FeedbackDialog from "components/messaging/dialog/FeedbackDialog";
+import RemoteUpdateDialog from "components/messaging/dialog/RemoteUpdateDialog";
+import SignOutDialog from "components/messaging/dialog/SignOutDialog";
+import SidebarBanner from "components/messaging/master/SidebarBanner";
+import ConversationSkeleton from "components/skeleton/ConversationSkeleton";
 import ServerUpdateData from "shared/data/serverUpdateData";
 import {
   useIsFaceTimeSupported,

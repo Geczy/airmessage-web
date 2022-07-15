@@ -22,7 +22,7 @@ import { colorFromContact } from "shared/util/avatarUtils";
 import { findPerson, PersonData } from "shared/interface/people/peopleUtils";
 import { useCancellableEffect } from "shared/util/hookUtils";
 import { MessageStatusCode } from "shared/data/stateCodes";
-import MessageBubbleText from "shared/components/messaging/thread/item/bubble/MessageBubbleText";
+import MessageBubbleText from "components/messaging/thread/item/bubble/MessageBubbleText";
 import { appleServiceAppleMessage } from "shared/data/appleConstants";
 import FileDownloadResult, {
   FileDisplayResult,
@@ -33,8 +33,8 @@ import {
   MessageFlow,
   MessagePartFlow,
 } from "shared/util/messageFlow";
-import MessageBubbleImage from "shared/components/messaging/thread/item/bubble/MessageBubbleImage";
-import MessageBubbleDownloadable from "shared/components/messaging/thread/item/bubble/MessageBubbleDownloadable";
+import MessageBubbleImage from "components/messaging/thread/item/bubble/MessageBubbleImage";
+import MessageBubbleDownloadable from "components/messaging/thread/item/bubble/MessageBubbleDownloadable";
 import { messageErrorToDisplay } from "shared/util/languageUtils";
 import { groupArray } from "shared/util/arrayUtils";
 

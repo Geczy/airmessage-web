@@ -2,7 +2,7 @@ import React from "react";
 import { WifiOffRounded } from "@mui/icons-material";
 import { ConnectionErrorCode } from "../../../data/stateCodes";
 import { errorCodeToShortDisplay } from "shared/util/languageUtils";
-import SidebarBanner from "shared/components/messaging/master/SidebarBanner";
+import SidebarBanner from "components/messaging/master/SidebarBanner";
 
 /**
  * A sidebar banner that informs the user about

@@ -4,7 +4,7 @@ import {
   releaseHash,
 } from "shared/data/releaseInfo";
 import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
-import Markdown from "shared/components/Markdown";
+import Markdown from "components/Markdown";
 import changelog from "shared/resources/text/changelog.md";
 import React from "react";
 

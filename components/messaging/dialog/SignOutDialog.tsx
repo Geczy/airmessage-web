@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from "react";
-import LoginContext from "shared/components/LoginContext";
+import LoginContext from "components/LoginContext";
 import {
   Button,
   Dialog,

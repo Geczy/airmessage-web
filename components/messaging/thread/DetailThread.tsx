@@ -7,7 +7,7 @@ import {
   MessageModifier,
   QueuedFile,
 } from "shared/data/blocks";
-import MessageList from "shared/components/messaging/thread/MessageList";
+import MessageList from "components/messaging/thread/MessageList";
 import {
   Box,
   Button,
@@ -15,8 +15,8 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { DetailFrame } from "shared/components/messaging/master/DetailFrame";
-import MessageInput from "shared/components/messaging/thread/MessageInput";
+import { DetailFrame } from "components/messaging/master/DetailFrame";
+import MessageInput from "components/messaging/thread/MessageInput";
 import {
   useConversationTitle,
   useIsFaceTimeSupported,

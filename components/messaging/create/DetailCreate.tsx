@@ -32,12 +32,12 @@ import { Conversation } from "shared/data/blocks";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import { SnackbarContext } from "../../control/SnackbarProvider";
 import { generateConversationLocalID } from "shared/util/conversationUtils";
-import WidthContainer from "shared/components/WidthContainer";
-import DetailCreateSelectionChip from "shared/components/messaging/create/DetailCreateSelectionChip";
+import WidthContainer from "components/WidthContainer";
+import DetailCreateSelectionChip from "components/messaging/create/DetailCreateSelectionChip";
 import NewMessageUser from "shared/data/newMessageUser";
-import DetailCreateAddressButton from "shared/components/messaging/create/DetailCreateAddressButton";
-import DetailCreateListSubheader from "shared/components/messaging/create/DetailCreateListSubheader";
-import DetailCreateDirectSendButton from "shared/components/messaging/create/DetailCreateDirectSendButton";
+import DetailCreateAddressButton from "components/messaging/create/DetailCreateAddressButton";
+import DetailCreateListSubheader from "components/messaging/create/DetailCreateListSubheader";
+import DetailCreateDirectSendButton from "components/messaging/create/DetailCreateDirectSendButton";
 import { groupArray } from "shared/util/arrayUtils";
 
 const messagingService = "iMessage";

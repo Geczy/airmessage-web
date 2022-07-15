@@ -4,7 +4,7 @@ import Head from "next/head";
 import React from "react";
 import * as Sentry from "@sentry/react";
 import SignInGate from "shared/components/SignInGate";
-import AppTheme from "../pages/components/control/AppTheme";
+import AppTheme from "../components/control/AppTheme";
 import { initializeApp } from "firebase/app";
 import { setPeopleUtils } from "shared/interface/people/peopleUtils";
 import GooglePeopleUtils from "shared/interface/people/googlePeopleUtils";

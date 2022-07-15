@@ -16,13 +16,13 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import { createTheme, useTheme } from "@mui/material/styles";
-import CallNotificationIncoming from "shared/components/calling/CallNotificationIncoming";
-import CallNotificationOutgoing from "shared/components/calling/CallNotificationOutgoing";
+import CallNotificationIncoming from "components/calling/CallNotificationIncoming";
+import CallNotificationOutgoing from "components/calling/CallNotificationOutgoing";
 import * as ConnectionManager from "shared/connection/connectionManager";
 import { getMemberTitle } from "shared/util/conversationUtils";
 import { buildListString } from "shared/util/languageUtils";
 import CallEvent from "shared/data/callEvent";
-import { SnackbarContext } from "shared/components/control/SnackbarProvider";
+import { SnackbarContext } from "components/control/SnackbarProvider";
 import { getNotificationUtils } from "shared/interface/notification/notificationUtils";
 
 export default function CallOverlay() {

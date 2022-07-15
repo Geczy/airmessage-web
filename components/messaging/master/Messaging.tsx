@@ -12,16 +12,16 @@ import SnackbarProvider from "../../control/SnackbarProvider";
 import { getNotificationUtils } from "shared/interface/notification/notificationUtils";
 import { getPlatformUtils } from "shared/interface/platform/platformUtils";
 import { Box, Divider, Stack } from "@mui/material";
-import CallOverlay from "shared/components/calling/CallOverlay";
+import CallOverlay from "components/calling/CallOverlay";
 import useConversationState from "shared/state/conversationState";
-import DetailCreate from "shared/components/messaging/create/DetailCreate";
-import DetailLoading from "shared/components/messaging/detail/DetailLoading";
-import DetailError from "shared/components/messaging/detail/DetailError";
-import DetailWelcome from "shared/components/messaging/detail/DetailWelcome";
+import DetailCreate from "components/messaging/create/DetailCreate";
+import DetailLoading from "components/messaging/detail/DetailLoading";
+import DetailError from "components/messaging/detail/DetailError";
+import DetailWelcome from "components/messaging/detail/DetailWelcome";
 import { arrayContainsAll } from "shared/util/arrayUtils";
 import { normalizeAddress } from "shared/util/addressHelper";
 import { compareVersions } from "shared/util/versionUtils";
-import DetailThread from "shared/components/messaging/thread/DetailThread";
+import DetailThread from "components/messaging/thread/DetailThread";
 
 export default function Messaging(props: { onReset?: VoidFunction }) {
   const [detailPane, setDetailPane] = useState<DetailPane>({

@@ -1,11 +1,11 @@
 import React from "react";
 import { TapbackType } from "shared/data/stateCodes";
-import TapbackLoveIcon from "shared/components/icon/TapbackLoveIcon";
-import TapbackLikeIcon from "shared/components/icon/TapbackLikeIcon";
-import TapbackDislikeIcon from "shared/components/icon/TapbackDislikeIcon";
-import TapbackLaughIcon from "shared/components/icon/TapbackLaughIcon";
-import TapbackEmphasisIcon from "shared/components/icon/TapbackEmphasisIcon";
-import TapbackQuestionIcon from "shared/components/icon/TapbackQuestionIcon";
+import TapbackLoveIcon from "components/icon/TapbackLoveIcon";
+import TapbackLikeIcon from "components/icon/TapbackLikeIcon";
+import TapbackDislikeIcon from "components/icon/TapbackDislikeIcon";
+import TapbackLaughIcon from "components/icon/TapbackLaughIcon";
+import TapbackEmphasisIcon from "components/icon/TapbackEmphasisIcon";
+import TapbackQuestionIcon from "components/icon/TapbackQuestionIcon";
 import { Stack, Typography } from "@mui/material";
 import { Theme } from "@mui/material/styles";
 
