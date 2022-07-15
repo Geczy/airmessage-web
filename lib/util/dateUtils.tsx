@@ -5,25 +5,48 @@ const timeMinute = 60 * 1000;
 const timeHour = timeMinute * 60;
 
 //Used in the sidebar
-export function getLastUpdateStatusTime(date: Date): string {
+export function getLastUpdateStatusTime(date: Date): React.ReactElement {
   const dateNow = new Date();
   const timeDiff = dateNow.getTime() - date.getTime();
 
   //Just now (1 minute)
   if (timeDiff < timeMinute) {
-    return "Just now";
+    return (
+      <span
+        style={{
+          fontSize: 10,
+        }}
+      >
+        Just now
+      </span>
+    );
   }
 
   //Within the hour
   if (timeDiff < timeHour) {
     const minutes = Math.floor(timeDiff / timeMinute);
-    return `${minutes} min`;
+    return (
+      <span
+        style={{
+          fontSize: 10,
+        }}
+      >
+        {`${minutes} min`}
+      </span>
+    );
   }
 
   //Within the day (14:11)
   if (checkSameDay(date, dateNow)) {
-    return DateTime.fromJSDate(date).toLocaleString(DateTime.TIME_SIMPLE)!;
-    //return dayjs(date).format('LT');
+    return (
+      <span
+        style={{
+          fontSize: 10,
+        }}
+      >
+        {DateTime.fromJSDate(date).toLocaleString(DateTime.TIME_SIMPLE)!}
+      </span>
+    );
   }
 
   //Within the week (Sun)
@@ -34,8 +57,15 @@ export function getLastUpdateStatusTime(date: Date): string {
       dateNow.getDate() - 7
     ); //Today (now) -> One week ago
     if (compareDates(date, compareDate) > 0) {
-      return DateTime.fromJSDate(date).toFormat("ccc");
-      //return dayjs(date).format("ddd");
+      return (
+        <span
+          style={{
+            fontSize: 10,
+          }}
+        >
+          {DateTime.fromJSDate(date).toFormat("ccc")}
+        </span>
+      );
     }
   }
 
@@ -47,14 +77,29 @@ export function getLastUpdateStatusTime(date: Date): string {
       dateNow.getDate()
     ); //Today (now) -> One year ago
     if (compareDates(date, compareDate) > 0) {
-      return DateTime.fromJSDate(date).toFormat("LLL d");
-      //return dayjs(date).format("MMM D");
+      return (
+        <span
+          style={{
+            fontSize: 10,
+          }}
+        >
+          {DateTime.fromJSDate(date).toFormat("LLL d")}
+        </span>
+      );
     }
   }
 
   //Anytime (Dec 2018)
-  //return dayjs(date).format("MMM YYYY")
-  return DateTime.fromJSDate(date).toFormat("LLL yyyy");
+
+  return (
+    <span
+      style={{
+        fontSize: 10,
+      }}
+    >
+      {DateTime.fromJSDate(date).toFormat("LLL yyyy")}
+    </span>
+  );
 }
 
 //Used in time separators between messages
