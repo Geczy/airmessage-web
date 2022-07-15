@@ -1,4 +1,11 @@
-import DataProxy from "./dataProxy";
+import ConversationTarget from "shared/data/conversationTarget";
+import ServerUpdateData from "shared/data/serverUpdateData";
+import {
+  Conversation,
+  ConversationItem,
+  LinkedConversation,
+  MessageModifier,
+} from "../data/blocks";
 import {
   AttachmentRequestErrorCode,
   ConnectionErrorCode,
@@ -7,15 +14,8 @@ import {
   MessageError,
   RemoteUpdateErrorCode,
 } from "../data/stateCodes";
-import {
-  Conversation,
-  ConversationItem,
-  LinkedConversation,
-  MessageModifier,
-} from "../data/blocks";
+import DataProxy from "./dataProxy";
 import { TransferAccumulator } from "./transferAccumulator";
-import ServerUpdateData from "shared/data/serverUpdateData";
-import ConversationTarget from "shared/data/conversationTarget";
 
 export interface CommunicationsManagerListener {
   onOpen(

@@ -1,12 +1,3 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
-import * as ConnectionManager from "../../../connection/connectionManager";
-import { DetailFrame } from "../master/DetailFrame";
 import {
   Avatar,
   Box,
@@ -18,27 +9,36 @@ import {
   styled,
   Typography,
 } from "@mui/material";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import DetailCreateAddressButton from "shared/components/messaging/create/DetailCreateAddressButton";
+import DetailCreateDirectSendButton from "shared/components/messaging/create/DetailCreateDirectSendButton";
+import DetailCreateListSubheader from "shared/components/messaging/create/DetailCreateListSubheader";
+import DetailCreateSelectionChip from "shared/components/messaging/create/DetailCreateSelectionChip";
+import WidthContainer from "shared/components/WidthContainer";
+import { Conversation } from "shared/data/blocks";
+import NewMessageUser from "shared/data/newMessageUser";
+import {
+  ConversationPreviewType,
+  CreateChatErrorCode,
+} from "shared/data/stateCodes";
 import {
   AddressData,
   AddressType,
   getPeople,
   PersonData,
 } from "shared/interface/people/peopleUtils";
-import {
-  ConversationPreviewType,
-  CreateChatErrorCode,
-} from "shared/data/stateCodes";
-import { Conversation } from "shared/data/blocks";
-import { parsePhoneNumberFromString } from "libphonenumber-js";
-import { SnackbarContext } from "../../control/SnackbarProvider";
-import { generateConversationLocalID } from "shared/util/conversationUtils";
-import WidthContainer from "shared/components/WidthContainer";
-import DetailCreateSelectionChip from "shared/components/messaging/create/DetailCreateSelectionChip";
-import NewMessageUser from "shared/data/newMessageUser";
-import DetailCreateAddressButton from "shared/components/messaging/create/DetailCreateAddressButton";
-import DetailCreateListSubheader from "shared/components/messaging/create/DetailCreateListSubheader";
-import DetailCreateDirectSendButton from "shared/components/messaging/create/DetailCreateDirectSendButton";
 import { groupArray } from "shared/util/arrayUtils";
+import { generateConversationLocalID } from "shared/util/conversationUtils";
+import * as ConnectionManager from "../../../connection/connectionManager";
+import { SnackbarContext } from "../../control/SnackbarProvider";
+import { DetailFrame } from "../master/DetailFrame";
 
 const messagingService = "iMessage";
 

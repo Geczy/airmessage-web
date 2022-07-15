@@ -1,9 +1,13 @@
-import ProtocolManager from "./protocolManager";
-import AirUnpacker from "./airUnpacker";
-import { UAParser } from "ua-parser-js";
 import pako from "pako";
-import { getInstallationID } from "../../util/installationUtils";
-import AirPacker from "./airPacker";
+import ConversationTarget from "shared/data/conversationTarget";
+import { generateConversationLocalID } from "shared/util/conversationUtils";
+import { arrayBufferToHex } from "shared/util/encodingUtils";
+import {
+  encryptData,
+  isCryptoPasswordAvailable,
+} from "shared/util/encryptionUtils";
+import SparkMD5 from "spark-md5";
+import { UAParser } from "ua-parser-js";
 import {
   AttachmentItem,
   ChatRenameAction,
@@ -29,15 +33,11 @@ import {
   ParticipantActionType,
   TapbackType,
 } from "../../data/stateCodes";
-import SparkMD5 from "spark-md5";
+import { getInstallationID } from "../../util/installationUtils";
 import { InflatorAccumulator } from "../transferAccumulator";
-import {
-  encryptData,
-  isCryptoPasswordAvailable,
-} from "shared/util/encryptionUtils";
-import { generateConversationLocalID } from "shared/util/conversationUtils";
-import ConversationTarget from "shared/data/conversationTarget";
-import { arrayBufferToHex } from "shared/util/encodingUtils";
+import AirPacker from "./airPacker";
+import AirUnpacker from "./airUnpacker";
+import ProtocolManager from "./protocolManager";
 
 const attachmentChunkSize = 2 * 1024 * 1024; //2 MiB
 

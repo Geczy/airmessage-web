@@ -1,3 +1,4 @@
+import { LinkedConversation, MessageItem } from "shared/data/blocks";
 import {
   CallerNotificationAction,
   getConversationTitle,
@@ -5,7 +6,6 @@ import {
   NotificationUtils,
 } from "shared/interface/notification/notificationUtils";
 import EventEmitter from "shared/util/eventEmitter";
-import { LinkedConversation, MessageItem } from "shared/data/blocks";
 import { playSoundNotification } from "shared/util/soundUtils";
 
 export default class BrowserNotificationUtils extends NotificationUtils {

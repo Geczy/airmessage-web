@@ -1,7 +1,7 @@
-import NewMessageUser from "shared/data/newMessageUser";
-import React, { useMemo } from "react";
 import { Avatar, Chip, Theme, Tooltip } from "@mui/material";
 import { SxProps } from "@mui/system";
+import React, { useMemo } from "react";
+import NewMessageUser from "shared/data/newMessageUser";
 
 /**
  * A user selection chip that can be removed

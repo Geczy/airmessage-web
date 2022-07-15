@@ -1,12 +1,12 @@
-import React from "react";
+import { styled, Typography } from "@mui/material";
+import cn from "classnames";
 import Linkify from "linkify-react";
+import React from "react";
+import { DarkModeContext } from "shared/components/DarkModeContext";
 import MessageBubbleWrapper from "shared/components/messaging/thread/item/bubble/MessageBubbleWrapper";
 import { StickerItem, TapbackItem } from "shared/data/blocks";
-import { styled, Typography } from "@mui/material";
-import { getFlowBorderRadius, MessagePartFlow } from "shared/util/messageFlow";
-import cn from "classnames";
+import { MessagePartFlow } from "shared/util/messageFlow";
 import styles from "../bubble/messages.module.scss";
-import { DarkModeContext } from "shared/components/DarkModeContext";
 
 const MessageBubbleTypography = styled(Typography)(({ theme }) => ({
   overflowWrap: "break-word",

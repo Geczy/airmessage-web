@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import Picker, { IEmojiData } from "emoji-picker-react";
+import React from "react";
 
 const EmojiPicker = (props: {
   onEmojiClick: (event: React.MouseEvent, data: IEmojiData) => void;

@@ -1,6 +1,6 @@
-import soundNotification from "shared/resources/audio/notification.wav";
 import soundMessageIn from "shared/resources/audio/message_in.wav";
 import soundMessageOut from "shared/resources/audio/message_out.wav";
+import soundNotification from "shared/resources/audio/notification.wav";
 import soundTapback from "shared/resources/audio/tapback.wav";
 
 /**

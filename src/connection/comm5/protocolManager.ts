@@ -1,7 +1,7 @@
+import ConversationTarget from "shared/data/conversationTarget";
+import DataProxy from "../dataProxy";
 import AirUnpacker from "./airUnpacker";
 import ClientComm5 from "./clientComm5";
-import DataProxy from "../dataProxy";
-import ConversationTarget from "shared/data/conversationTarget";
 
 export default abstract class ProtocolManager {
   constructor(

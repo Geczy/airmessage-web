@@ -1,6 +1,6 @@
-import React from "react";
+import { Link, styled, Typography } from "@mui/material";
 import ReactMarkdown, { MarkdownToJSX } from "markdown-to-jsx";
-import { Link, makeStyles, styled, Typography } from "@mui/material";
+import React from "react";
 
 const SpacedListItem = styled("li")(({ theme }) => ({
   marginTop: theme.spacing(1),

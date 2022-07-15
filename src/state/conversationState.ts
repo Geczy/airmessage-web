@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import * as ConnectionManager from "shared/connection/connectionManager";
+import { modifierUpdateEmitter } from "shared/connection/connectionManager";
 import {
   Conversation,
   ConversationItem,
@@ -16,22 +18,20 @@ import {
   ConversationItemType,
   ParticipantActionType,
 } from "shared/data/stateCodes";
+import { getNotificationUtils } from "shared/interface/notification/notificationUtils";
 import { getPlatformUtils } from "shared/interface/platform/platformUtils";
+import localMessageCache from "shared/state/localMessageCache";
+import { normalizeAddress } from "shared/util/addressHelper";
+import { arrayContainsAll } from "shared/util/arrayUtils";
 import {
   isModifierTapback,
   messageItemToConversationPreview,
 } from "shared/util/conversationUtils";
-import * as ConnectionManager from "shared/connection/connectionManager";
-import { modifierUpdateEmitter } from "shared/connection/connectionManager";
-import { getNotificationUtils } from "shared/interface/notification/notificationUtils";
 import {
   playSoundMessageIn,
   playSoundNotification,
   playSoundTapback,
 } from "shared/util/soundUtils";
-import { normalizeAddress } from "shared/util/addressHelper";
-import { arrayContainsAll } from "shared/util/arrayUtils";
-import localMessageCache from "shared/state/localMessageCache";
 
 interface ConversationsState {
   conversations: Conversation[] | undefined;

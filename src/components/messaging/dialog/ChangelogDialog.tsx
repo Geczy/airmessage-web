@@ -1,12 +1,12 @@
+import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
+import React from "react";
+import Markdown from "shared/components/Markdown";
 import {
   appVersion,
   getFormattedBuildDate,
   releaseHash,
 } from "shared/data/releaseInfo";
-import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
-import Markdown from "shared/components/Markdown";
 import changelog from "shared/resources/text/changelog.md";
-import React from "react";
 
 /**
  * A dialog that shows the app version and latest changelog

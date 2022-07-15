@@ -1,6 +1,6 @@
+import { Box, IconButton, Tooltip } from "@mui/material";
 import React from "react";
 import BorderedCloseIcon from "../../../icon/BorderedCloseIcon";
-import { Box, IconButton, Tooltip } from "@mui/material";
 
 export interface QueuedAttachmentProps {
   file: File;

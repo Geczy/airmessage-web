@@ -1,10 +1,3 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
 import {
   Button,
   Dialog,
@@ -16,14 +9,21 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import { createTheme, useTheme } from "@mui/material/styles";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import CallNotificationIncoming from "shared/components/calling/CallNotificationIncoming";
 import CallNotificationOutgoing from "shared/components/calling/CallNotificationOutgoing";
+import { SnackbarContext } from "shared/components/control/SnackbarProvider";
 import * as ConnectionManager from "shared/connection/connectionManager";
+import CallEvent from "shared/data/callEvent";
+import { getNotificationUtils } from "shared/interface/notification/notificationUtils";
 import { getMemberTitle } from "shared/util/conversationUtils";
 import { buildListString } from "shared/util/languageUtils";
-import CallEvent from "shared/data/callEvent";
-import { SnackbarContext } from "shared/components/control/SnackbarProvider";
-import { getNotificationUtils } from "shared/interface/notification/notificationUtils";
 
 export default function CallOverlay() {
   const displaySnackbar = useContext(SnackbarContext);

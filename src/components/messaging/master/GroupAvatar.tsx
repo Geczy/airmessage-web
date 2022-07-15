@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from "./GroupAvatar.module.css";
 
 import { Avatar, Box } from "@mui/material";
-import { PersonData, findPerson } from "../../../interface/people/peopleUtils";
-import { colorFromContact } from "../../../util/avatarUtils";
-import { SxProps } from "@mui/system";
 import { Theme } from "@mui/material/styles";
+import { SxProps } from "@mui/system";
+import { findPerson, PersonData } from "../../../interface/people/peopleUtils";
+import { colorFromContact } from "../../../util/avatarUtils";
 
 export default function GroupAvatar(props: { members: string[] }) {
   const members = props.members;

@@ -1,5 +1,5 @@
-import React from "react";
 import { Skeleton, Stack } from "@mui/material";
+import React from "react";
 
 /**
  * A placeholder conversation entry

@@ -1,9 +1,15 @@
 import DataProxyConnect from "shared/connection/connect/dataProxyConnect";
-import CommunicationsManager, {
-  CommunicationsManagerListener,
-} from "./communicationsManager";
-import ClientComm5 from "./comm5/clientComm5";
-import DataProxy from "./dataProxy";
+import CallEvent from "shared/data/callEvent";
+import ConversationTarget from "shared/data/conversationTarget";
+import FileDownloadResult from "shared/data/fileDownloadResult";
+import ServerUpdateData from "shared/data/serverUpdateData";
+import EmitterPromiseTuple from "shared/util/emitterPromiseTuple";
+import {
+  isCryptoPasswordSet,
+  setCryptoPassword,
+} from "shared/util/encryptionUtils";
+import ResolveablePromiseTimeout from "shared/util/resolveablePromiseTimeout";
+import { getSecureLS, SecureStorageKey } from "shared/util/secureStorageUtils";
 import {
   Conversation,
   ConversationItem,
@@ -22,18 +28,12 @@ import {
 } from "../data/stateCodes";
 import EventEmitter, { CachedEventEmitter } from "../util/eventEmitter";
 import promiseTimeout from "../util/promiseTimeout";
+import ClientComm5 from "./comm5/clientComm5";
+import CommunicationsManager, {
+  CommunicationsManagerListener,
+} from "./communicationsManager";
+import DataProxy from "./dataProxy";
 import { TransferAccumulator } from "./transferAccumulator";
-import {
-  isCryptoPasswordSet,
-  setCryptoPassword,
-} from "shared/util/encryptionUtils";
-import { getSecureLS, SecureStorageKey } from "shared/util/secureStorageUtils";
-import FileDownloadResult from "shared/data/fileDownloadResult";
-import ServerUpdateData from "shared/data/serverUpdateData";
-import ResolveablePromiseTimeout from "shared/util/resolveablePromiseTimeout";
-import CallEvent from "shared/data/callEvent";
-import ConversationTarget from "shared/data/conversationTarget";
-import EmitterPromiseTuple from "shared/util/emitterPromiseTuple";
 
 export const warnCommVer: number[] = [5, 4]; //Warn users on a communications version older than this to update
 export const targetCommVer: number[] = [5, 5];

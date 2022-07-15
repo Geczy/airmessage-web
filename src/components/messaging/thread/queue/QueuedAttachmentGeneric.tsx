@@ -1,7 +1,7 @@
-import React from "react";
 import { InsertDriveFileRounded } from "@mui/icons-material";
-import QueuedAttachment, { QueuedAttachmentProps } from "./QueuedAttachment";
 import { Box } from "@mui/material";
+import React from "react";
+import QueuedAttachment, { QueuedAttachmentProps } from "./QueuedAttachment";
 
 export default function QueuedAttachmentGeneric(props: {
   queueData: QueuedAttachmentProps;

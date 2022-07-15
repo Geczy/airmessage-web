@@ -1,10 +1,10 @@
-import React from "react";
 import {
   Box,
   LinearProgress,
   linearProgressClasses,
   Typography,
 } from "@mui/material";
+import React from "react";
 
 export default function DetailLoading() {
   return (

@@ -1,15 +1,15 @@
+import { getAuth, signOut } from "firebase/auth";
+import { connect as connectToServer } from "shared/connection/connectionManager";
+import {
+  appleServiceAppleMessage,
+  appleServiceTextMessageForwarding,
+} from "shared/data/appleConstants";
 import {
   AttachmentRequestErrorCode,
   ConnectionErrorCode,
   MessageErrorCode,
   RemoteUpdateErrorCode,
 } from "shared/data/stateCodes";
-import { connect as connectToServer } from "shared/connection/connectionManager";
-import { getAuth, signOut } from "firebase/auth";
-import {
-  appleServiceAppleMessage,
-  appleServiceTextMessageForwarding,
-} from "shared/data/appleConstants";
 
 export interface ErrorDisplay {
   message: string;

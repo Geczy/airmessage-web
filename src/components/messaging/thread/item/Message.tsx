@@ -1,5 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
-import { MessageItem } from "shared/data/blocks";
+import { ErrorRounded } from "@mui/icons-material";
 import {
   Avatar,
   Button,
@@ -16,27 +15,28 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import { getDeliveryStatusTime, getTimeDivider } from "shared/util/dateUtils";
-import { ErrorRounded } from "@mui/icons-material";
-import { colorFromContact } from "shared/util/avatarUtils";
-import { findPerson, PersonData } from "shared/interface/people/peopleUtils";
-import { useCancellableEffect } from "shared/util/hookUtils";
-import { MessageStatusCode } from "shared/data/stateCodes";
+import React, { useCallback, useMemo, useState } from "react";
+import MessageBubbleDownloadable from "shared/components/messaging/thread/item/bubble/MessageBubbleDownloadable";
+import MessageBubbleImage from "shared/components/messaging/thread/item/bubble/MessageBubbleImage";
 import MessageBubbleText from "shared/components/messaging/thread/item/bubble/MessageBubbleText";
 import { appleServiceAppleMessage } from "shared/data/appleConstants";
+import { MessageItem } from "shared/data/blocks";
 import FileDownloadResult, {
   FileDisplayResult,
 } from "shared/data/fileDownloadResult";
+import { MessageStatusCode } from "shared/data/stateCodes";
+import { findPerson, PersonData } from "shared/interface/people/peopleUtils";
+import { groupArray } from "shared/util/arrayUtils";
+import { colorFromContact } from "shared/util/avatarUtils";
 import { downloadBlob } from "shared/util/browserUtils";
+import { getDeliveryStatusTime, getTimeDivider } from "shared/util/dateUtils";
+import { useCancellableEffect } from "shared/util/hookUtils";
+import { messageErrorToDisplay } from "shared/util/languageUtils";
 import {
   getBubbleSpacing,
   MessageFlow,
   MessagePartFlow,
 } from "shared/util/messageFlow";
-import MessageBubbleImage from "shared/components/messaging/thread/item/bubble/MessageBubbleImage";
-import MessageBubbleDownloadable from "shared/components/messaging/thread/item/bubble/MessageBubbleDownloadable";
-import { messageErrorToDisplay } from "shared/util/languageUtils";
-import { groupArray } from "shared/util/arrayUtils";
 
 enum MessageDialog {
   Error,

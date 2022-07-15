@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Typography, Button, Box, Stack, styled } from "@mui/material";
+import { Box, Button, Stack, styled, Typography } from "@mui/material";
+import iconGoogle from "shared/resources/icons/logo-google.svg";
 import iconAirMessage from "shared/resources/icons/tile-airmessage.svg";
 import iconMac from "shared/resources/icons/tile-mac.svg";
-import iconGoogle from "shared/resources/icons/logo-google.svg";
 
 import AirMessageLogo from "shared/components/logo/AirMessageLogo";
 import { googleScope } from "shared/constants";

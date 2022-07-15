@@ -1,5 +1,5 @@
-import React from "react";
 import { Box, Button, Paper, Stack, Typography } from "@mui/material";
+import React from "react";
 
 /**
  * A banner element that has an icon, a message,

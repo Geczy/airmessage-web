@@ -1,3 +1,5 @@
+import { googleScope } from "shared/constants";
+import { promiseGAPI } from "shared/index";
 import {
   AddressData,
   AddressType,
@@ -5,8 +7,6 @@ import {
   PersonData,
 } from "shared/interface/people/peopleUtils";
 import { formatAddress } from "shared/util/conversationUtils";
-import { googleScope } from "shared/constants";
-import { promiseGAPI } from "shared/index";
 
 //All contacts loaded from Google
 let initializationPromise: Promise<any> | undefined;

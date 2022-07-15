@@ -1,3 +1,4 @@
+import { appleSendStyleBubbleInvisibleInk } from "shared/data/appleConstants";
 import {
   Conversation,
   LinkedConversation,
@@ -7,7 +8,6 @@ import {
   getMemberTitle,
   mimeTypeToPreview,
 } from "shared/util/conversationUtils";
-import { appleSendStyleBubbleInvisibleInk } from "shared/data/appleConstants";
 import EventEmitter from "shared/util/eventEmitter";
 
 export abstract class NotificationUtils {

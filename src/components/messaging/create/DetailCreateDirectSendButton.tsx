@@ -1,5 +1,5 @@
-import React from "react";
 import { alpha, Avatar, ButtonBase, Typography } from "@mui/material";
+import React from "react";
 
 /**
  * A row entry to send a message directly to a specified address

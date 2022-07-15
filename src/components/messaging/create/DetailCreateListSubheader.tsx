@@ -1,5 +1,5 @@
-import React from "react";
 import { Typography } from "@mui/material";
+import React from "react";
 
 /**
  * A single-character list subheader for people lists
