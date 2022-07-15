@@ -1,9 +1,8 @@
+import React from "react";
 import { DateTime } from "luxon";
 
 const timeMinute = 60 * 1000;
 const timeHour = timeMinute * 60;
-
-const bulletSeparator = " • ";
 
 //Used in the sidebar
 export function getLastUpdateStatusTime(date: Date): string {
@@ -59,7 +58,7 @@ export function getLastUpdateStatusTime(date: Date): string {
 }
 
 //Used in time separators between messages
-export function getTimeDivider(date: Date): string {
+export function getTimeDivider(date: Date): React.ReactElement {
   const dateNow = new Date();
   const luxon = DateTime.fromJSDate(date);
   const formattedTime = luxon.toLocaleString(DateTime.TIME_SIMPLE)!;
@@ -67,10 +66,18 @@ export function getTimeDivider(date: Date): string {
 
   //Same day (12:30)
   if (checkSameDay(date, dateNow)) {
-    return formattedTime;
+    return (
+      <span
+        style={{
+          fontSize: 10,
+        }}
+      >
+        {formattedTime}
+      </span>
+    );
   }
 
-  //Yesterday (Yesterday • 12:30)
+  //Yesterday (Yesterday 12:30)
   {
     const compareDate = new Date(
       dateNow.getFullYear(),
@@ -78,7 +85,15 @@ export function getTimeDivider(date: Date): string {
       dateNow.getDate() - 1
     ); //Today (now) -> Yesterday
     if (checkSameDay(date, compareDate)) {
-      return "Yesterday" + bulletSeparator + formattedTime;
+      return (
+        <span
+          style={{
+            fontSize: 10,
+          }}
+        >
+          <span style={{ fontWeight: 500 }}>Yesterday</span> {formattedTime}
+        </span>
+      );
     }
   }
 
@@ -90,7 +105,16 @@ export function getTimeDivider(date: Date): string {
       dateNow.getDate() - 7
     ); //Today (now) -> One week ago
     if (compareDates(date, compareDate) > 0) {
-      return luxon.toFormat("cccc") + bulletSeparator + formattedTime;
+      return (
+        <span
+          style={{
+            fontSize: 10,
+          }}
+        >
+          <span style={{ fontWeight: 500 }}>{luxon.toFormat("cccc")}</span>{" "}
+          {formattedTime}
+        </span>
+      );
       //return dayjs(date).format("dddd") + bulletSeparator + formattedTime;
     }
   }
@@ -103,25 +127,45 @@ export function getTimeDivider(date: Date): string {
       dateNow.getDate()
     ); //Today (now) -> One year ago
     if (compareDates(date, compareDate) > 0) {
-      return luxon.toFormat("cccc, LLLL d") + bulletSeparator + formattedTime;
+      return (
+        <span
+          style={{
+            fontSize: 10,
+          }}
+        >
+          <span style={{ fontWeight: 500 }}>
+            {luxon.toFormat("cccc, LLLL d")}
+          </span>{" "}
+          {formattedTime}
+        </span>
+      );
       //return dayjs(date).format("dddd, MMMM D") + bulletSeparator + formattedTime;
     }
   }
 
   //Different years (December 9, 2018 • 12:30)
-  return luxon.toFormat("LLLL d, yyyy") + bulletSeparator + formattedTime;
+  return (
+    <span
+      style={{
+        fontSize: 10,
+      }}
+    >
+      <span style={{ fontWeight: 500 }}>{luxon.toFormat("LLLL d, yyyy")}</span>{" "}
+      {formattedTime}
+    </span>
+  );
   //return dayjs(date).format("ll") + bulletSeparator + formattedTime;
 }
 
 //Used in read receipts
-export function getDeliveryStatusTime(date: Date): string {
+export function getDeliveryStatusTime(date: Date): React.ReactElement {
   const dateNow = new Date();
   const luxon = DateTime.fromJSDate(date);
   const formattedTime = luxon.toLocaleString(DateTime.TIME_SIMPLE)!;
 
   //Same day (12:30)
   if (checkSameDay(date, dateNow)) {
-    return formattedTime;
+    return <span>{formattedTime}</span>;
   }
 
   //Yesterday (Yesterday)
@@ -132,7 +176,7 @@ export function getDeliveryStatusTime(date: Date): string {
       dateNow.getDate() - 1
     ); //Today (now) -> Yesterday
     if (checkSameDay(date, compareDate)) {
-      return "Yesterday";
+      return <span>Yesterday</span>;
     }
   }
 
@@ -144,7 +188,7 @@ export function getDeliveryStatusTime(date: Date): string {
       dateNow.getDate() - 7
     ); //Today (now) -> One week ago
     if (compareDates(date, compareDate) > 0) {
-      return luxon.toFormat("cccc");
+      return <span>{luxon.toFormat("cccc")}</span>;
     }
   }
 
@@ -156,12 +200,17 @@ export function getDeliveryStatusTime(date: Date): string {
       dateNow.getDate()
     ); //Today (now) -> One year ago
     if (compareDates(date, compareDate) > 0) {
-      return luxon.toFormat("LLL d");
+      return <span>{luxon.toFormat("LLL d")}</span>;
     }
   }
 
   //Different years (Dec 9, 2018)
-  return luxon.toFormat("LLL d, yyyy") + bulletSeparator + formattedTime;
+  return (
+    <span>
+      <span>{luxon.toFormat("LLL d, yyyy")}</span>
+      {formattedTime}
+    </span>
+  );
 }
 
 function checkSameDay(date1: Date, date2: Date): boolean {

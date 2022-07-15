@@ -431,15 +431,31 @@ export default function Message(props: {
  * Gets a human-readable status string for the given message item,
  * or undefined if no status string should be displayed
  */
-function getStatusString(message: MessageItem): string | undefined {
+function getStatusString(message: MessageItem): React.ReactElement | null {
   if (message.status === MessageStatusCode.Delivered) {
-    return "Delivered";
+    return (
+      <span
+        style={{
+          fontSize: 10,
+          fontWeight: 500,
+        }}
+      >
+        Delivered
+      </span>
+    );
   } else if (message.status === MessageStatusCode.Read) {
-    return message.statusDate
-      ? "Read • " + getDeliveryStatusTime(message.statusDate)
-      : "Read";
+    return (
+      <span
+        style={{
+          fontSize: 10,
+        }}
+      >
+        <span style={{ fontWeight: 500, marginRight: 3 }}>Read</span>
+        {message.statusDate && getDeliveryStatusTime(message.statusDate)}
+      </span>
+    );
   } else {
-    return undefined;
+    return null;
   }
 }
 
