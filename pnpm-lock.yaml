@@ -5,12 +5,9 @@ specifiers:
   '@emotion/react': ^11.9.3
   '@emotion/styled': ^11.9.3
   '@jest/types': ^28.1.3
-  '@mui/base': 5.0.0-alpha.89
   '@mui/icons-material': ^5.8.4
   '@mui/material': ^5.9.0
   '@mui/system': ^5.9.0
-  '@mui/types': ^7.1.4
-  '@mui/utils': ^5.9.0
   '@sentry/react': ^7.6.0
   '@testing-library/react': ^13.3.0
   '@types/bytebuffer': ^5.0.43
@@ -66,12 +63,9 @@ specifiers:
 dependencies:
   '@emotion/react': 11.9.3_dlcr7kzjh265l7kenqxjsvuiz4
   '@emotion/styled': 11.9.3_xorl7rqfpn4gtnla4dfecagcw4
-  '@mui/base': 5.0.0-alpha.89_bb2bxwco6ptpubzwpazr52qf6i
   '@mui/icons-material': 5.8.4_dcfjwnpd6qfmrhwwcdokxzivnu
   '@mui/material': 5.9.0_bl6qrq6463ovzmqn4cmwv7vydq
   '@mui/system': 5.9.0_kgoqblbzxlux4bm4vftowiq75m
-  '@mui/types': 7.1.4_@types+react@18.0.15
-  '@mui/utils': 5.9.0_react@18.2.0
   '@sentry/react': 7.6.0_react@18.2.0
   bytebuffer: 5.0.1
   firebase: 9.9.0

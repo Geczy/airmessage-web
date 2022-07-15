@@ -69,12 +69,9 @@
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
-    "@mui/base": "5.0.0-alpha.89",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.0",
     "@mui/system": "^5.9.0",
-    "@mui/types": "^7.1.4",
-    "@mui/utils": "^5.9.0",
     "@sentry/react": "^7.6.0",
     "bytebuffer": "^5.0.1",
     "firebase": "^9.9.0",

@@ -1,0 +1,12 @@
+{
+  "rootDir": "./",
+  "aliases": {
+    "components/*": ["./components", "./components/*"],
+    "lib/*": ["./lib", "./lib/*"],
+    "pages/*": ["./pages", "./pages/*"],
+    "public/*": ["./public", "./public/*"]
+  },
+  "ignoreUnresolved": [],
+  "ignoreUnused": ["next", "react", "react-dom"],
+  "ignoreUnimported": ["jest.config.js", "next.config.js"]
+}
