@@ -12,6 +12,7 @@ import { setNotificationUtils } from "shared/interface/notification/notification
 import BrowserNotificationUtils from "shared/interface/notification/browserNotificationUtils";
 import { setPlatformUtils } from "shared/interface/platform/platformUtils";
 import BrowserPlatformUtils from "shared/interface/platform/browserPlatformUtils";
+import Image from "next/image";
 
 //Set platform-specific utilities
 setPeopleUtils(new GooglePeopleUtils());
@@ -54,9 +55,54 @@ export const promiseGAPI = new Promise<unknown>((resolve) => {
 
 const Home: NextPage = () => {
   return (
-    <AppTheme>
-      <SignInGate />
-    </AppTheme>
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="AirMessage for web" />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: light)"
+          content="#ffffff"
+        />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: dark)"
+          content="#1E1E1E"
+        />
+
+        <title>AirMessage</title>
+
+        <link rel="manifest" href="/manifest.json" />
+
+        <link rel="icon" href="/favicon-32.png" sizes="32x32" />
+        <link rel="icon" href="/favicon-57.png" sizes="57x57" />
+        <link rel="icon" href="/favicon-76.png" sizes="76x76" />
+        <link rel="icon" href="/favicon-96.png" sizes="96x96" />
+        <link rel="icon" href="/favicon-128.png" sizes="128x128" />
+        <link rel="icon" href="/favicon-192.png" sizes="192x192" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+        <script
+          data-skip-dnt="true"
+          async
+          defer
+          src="https://sa.airmessage.org/latest.js"
+        ></script>
+        <noscript>
+          <Image
+            src="https://sa.airmessage.org/noscript.gif?ignore-dnt=true"
+            alt=""
+            width={1}
+            height={1}
+          />
+        </noscript>
+      </Head>
+
+      <AppTheme>
+        <SignInGate />
+      </AppTheme>
+    </>
   );
 };
 
