@@ -1,4 +1,4 @@
-import { AddressData } from "shared/interface/people/peopleUtils";
+import { AddressData } from "interface/people/peopleUtils";
 import React, { useCallback } from "react";
 import { Button, ButtonProps, styled } from "@mui/material";
 import MessageCheckIcon from "components/icon/MessageCheckIcon";

@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
-import { MessageItem } from "shared/data/blocks";
+import { MessageItem } from "data/blocks";
 import {
   Avatar,
   Button,
@@ -16,27 +16,25 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import { getDeliveryStatusTime, getTimeDivider } from "shared/util/dateUtils";
+import { getDeliveryStatusTime, getTimeDivider } from "util/dateUtils";
 import { ErrorRounded } from "@mui/icons-material";
-import { colorFromContact } from "shared/util/avatarUtils";
-import { findPerson, PersonData } from "shared/interface/people/peopleUtils";
-import { useCancellableEffect } from "shared/util/hookUtils";
-import { MessageStatusCode } from "shared/data/stateCodes";
+import { colorFromContact } from "util/avatarUtils";
+import { findPerson, PersonData } from "interface/people/peopleUtils";
+import { useCancellableEffect } from "util/hookUtils";
+import { MessageStatusCode } from "data/stateCodes";
 import MessageBubbleText from "components/messaging/thread/item/bubble/MessageBubbleText";
-import { appleServiceAppleMessage } from "shared/data/appleConstants";
-import FileDownloadResult, {
-  FileDisplayResult,
-} from "shared/data/fileDownloadResult";
-import { downloadBlob } from "shared/util/browserUtils";
+import { appleServiceAppleMessage } from "data/appleConstants";
+import FileDownloadResult, { FileDisplayResult } from "data/fileDownloadResult";
+import { downloadBlob } from "util/browserUtils";
 import {
   getBubbleSpacing,
   MessageFlow,
   MessagePartFlow,
-} from "shared/util/messageFlow";
+} from "util/messageFlow";
 import MessageBubbleImage from "components/messaging/thread/item/bubble/MessageBubbleImage";
 import MessageBubbleDownloadable from "components/messaging/thread/item/bubble/MessageBubbleDownloadable";
-import { messageErrorToDisplay } from "shared/util/languageUtils";
-import { groupArray } from "shared/util/arrayUtils";
+import { messageErrorToDisplay } from "util/languageUtils";
+import { groupArray } from "util/arrayUtils";
 
 enum MessageDialog {
   Error,

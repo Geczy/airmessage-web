@@ -27,11 +27,11 @@ import RemoteUpdateDialog from "components/messaging/dialog/RemoteUpdateDialog";
 import SignOutDialog from "components/messaging/dialog/SignOutDialog";
 import SidebarBanner from "components/messaging/master/SidebarBanner";
 import ConversationSkeleton from "components/skeleton/ConversationSkeleton";
-import ServerUpdateData from "shared/data/serverUpdateData";
+import ServerUpdateData from "data/serverUpdateData";
 import {
   useIsFaceTimeSupported,
   useNonNullableCacheState,
-} from "shared/util/hookUtils";
+} from "util/hookUtils";
 import * as ConnectionManager from "../../../connection/connectionManager";
 import { RemoteUpdateListener } from "../../../connection/connectionManager";
 import { Conversation } from "../../../data/blocks";

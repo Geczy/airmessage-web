@@ -3,15 +3,15 @@ import Head from "next/head";
 
 import React from "react";
 import * as Sentry from "@sentry/react";
-import SignInGate from "shared/components/SignInGate";
-import AppTheme from "../components/control/AppTheme";
+import SignInGate from "components/SignInGate";
+import AppTheme from "components/control/AppTheme";
 import { initializeApp } from "firebase/app";
-import { setPeopleUtils } from "shared/interface/people/peopleUtils";
-import GooglePeopleUtils from "shared/interface/people/googlePeopleUtils";
-import { setNotificationUtils } from "shared/interface/notification/notificationUtils";
-import BrowserNotificationUtils from "shared/interface/notification/browserNotificationUtils";
-import { setPlatformUtils } from "shared/interface/platform/platformUtils";
-import BrowserPlatformUtils from "shared/interface/platform/browserPlatformUtils";
+import { setPeopleUtils } from "interface/people/peopleUtils";
+import GooglePeopleUtils from "interface/people/googlePeopleUtils";
+import { setNotificationUtils } from "interface/notification/notificationUtils";
+import BrowserNotificationUtils from "interface/notification/browserNotificationUtils";
+import { setPlatformUtils } from "interface/platform/platformUtils";
+import BrowserPlatformUtils from "interface/platform/browserPlatformUtils";
 import Image from "next/image";
 
 //Set platform-specific utilities

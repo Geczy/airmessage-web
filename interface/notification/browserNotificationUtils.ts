@@ -3,10 +3,10 @@ import {
   getConversationTitle,
   getMessageDescription,
   NotificationUtils,
-} from "shared/interface/notification/notificationUtils";
-import EventEmitter from "shared/util/eventEmitter";
-import { LinkedConversation, MessageItem } from "shared/data/blocks";
-import { playSoundNotification } from "shared/util/soundUtils";
+} from "interface/notification/notificationUtils";
+import EventEmitter from "util/eventEmitter";
+import { LinkedConversation, MessageItem } from "data/blocks";
+import { playSoundNotification } from "util/soundUtils";
 
 export default class BrowserNotificationUtils extends NotificationUtils {
   private readonly messageNotificationBacklog = new Map<

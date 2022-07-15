@@ -4,7 +4,7 @@ import Onboarding from "components/Onboarding";
 import Messaging from "components/messaging/master/Messaging";
 import * as Sentry from "@sentry/react";
 import { promiseGAPI } from "pages/index";
-import { googleScope } from "shared/constants";
+import { googleScope } from "constants";
 import LoginContext from "components/LoginContext";
 import {
   getAuth,
@@ -14,7 +14,7 @@ import {
   signOut,
   User,
 } from "firebase/auth";
-import { useCancellableEffect } from "shared/util/hookUtils";
+import { useCancellableEffect } from "util/hookUtils";
 
 enum SignInState {
   Waiting,

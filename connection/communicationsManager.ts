@@ -14,8 +14,8 @@ import {
   MessageModifier,
 } from "../data/blocks";
 import { TransferAccumulator } from "./transferAccumulator";
-import ServerUpdateData from "shared/data/serverUpdateData";
-import ConversationTarget from "shared/data/conversationTarget";
+import ServerUpdateData from "data/serverUpdateData";
+import ConversationTarget from "data/conversationTarget";
 
 export interface CommunicationsManagerListener {
   onOpen(

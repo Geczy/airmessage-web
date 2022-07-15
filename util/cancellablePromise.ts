@@ -1,4 +1,4 @@
-import UnsubscribeCallback from "shared/data/unsubscribeCallback";
+import UnsubscribeCallback from "data/unsubscribeCallback";
 
 /**
  * Wraps a promise, returning the wrapped promise and a callback

@@ -1,7 +1,7 @@
 /**
  * A promise wrapper that can be resolved or rejected from outside the object
  */
-import ResolveablePromise from "shared/util/resolveablePromise";
+import ResolveablePromise from "util/resolveablePromise";
 
 /**
  * A ResolveablePromise that can also be set to time out with a specified error

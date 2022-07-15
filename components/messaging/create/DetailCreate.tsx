@@ -23,22 +23,19 @@ import {
   AddressType,
   getPeople,
   PersonData,
-} from "shared/interface/people/peopleUtils";
-import {
-  ConversationPreviewType,
-  CreateChatErrorCode,
-} from "shared/data/stateCodes";
-import { Conversation } from "shared/data/blocks";
+} from "interface/people/peopleUtils";
+import { ConversationPreviewType, CreateChatErrorCode } from "data/stateCodes";
+import { Conversation } from "data/blocks";
 import { parsePhoneNumberFromString } from "libphonenumber-js";
 import { SnackbarContext } from "../../control/SnackbarProvider";
-import { generateConversationLocalID } from "shared/util/conversationUtils";
+import { generateConversationLocalID } from "util/conversationUtils";
 import WidthContainer from "components/WidthContainer";
 import DetailCreateSelectionChip from "components/messaging/create/DetailCreateSelectionChip";
-import NewMessageUser from "shared/data/newMessageUser";
+import NewMessageUser from "data/newMessageUser";
 import DetailCreateAddressButton from "components/messaging/create/DetailCreateAddressButton";
 import DetailCreateListSubheader from "components/messaging/create/DetailCreateListSubheader";
 import DetailCreateDirectSendButton from "components/messaging/create/DetailCreateDirectSendButton";
-import { groupArray } from "shared/util/arrayUtils";
+import { groupArray } from "util/arrayUtils";
 
 const messagingService = "iMessage";
 

@@ -11,27 +11,24 @@ import {
   MessageModifier,
   MixedConversationID,
   RemoteConversationID,
-} from "shared/data/blocks";
-import {
-  ConversationItemType,
-  ParticipantActionType,
-} from "shared/data/stateCodes";
-import { getPlatformUtils } from "shared/interface/platform/platformUtils";
+} from "data/blocks";
+import { ConversationItemType, ParticipantActionType } from "data/stateCodes";
+import { getPlatformUtils } from "interface/platform/platformUtils";
 import {
   isModifierTapback,
   messageItemToConversationPreview,
-} from "shared/util/conversationUtils";
-import * as ConnectionManager from "shared/connection/connectionManager";
-import { modifierUpdateEmitter } from "shared/connection/connectionManager";
-import { getNotificationUtils } from "shared/interface/notification/notificationUtils";
+} from "util/conversationUtils";
+import * as ConnectionManager from "connection/connectionManager";
+import { modifierUpdateEmitter } from "connection/connectionManager";
+import { getNotificationUtils } from "interface/notification/notificationUtils";
 import {
   playSoundMessageIn,
   playSoundNotification,
   playSoundTapback,
-} from "shared/util/soundUtils";
-import { normalizeAddress } from "shared/util/addressHelper";
-import { arrayContainsAll } from "shared/util/arrayUtils";
-import localMessageCache from "shared/state/localMessageCache";
+} from "util/soundUtils";
+import { normalizeAddress } from "util/addressHelper";
+import { arrayContainsAll } from "util/arrayUtils";
+import localMessageCache from "state/localMessageCache";
 
 interface ConversationsState {
   conversations: Conversation[] | undefined;

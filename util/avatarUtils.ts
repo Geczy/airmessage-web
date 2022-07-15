@@ -1,4 +1,4 @@
-import { hashString } from "shared/util/hashUtils";
+import { hashString } from "util/hashUtils";
 
 const colors = [
   "#FF1744", //Red

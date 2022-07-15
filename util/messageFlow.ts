@@ -1,4 +1,4 @@
-import PaletteSpecifier from "shared/data/paletteSpecifier";
+import PaletteSpecifier from "data/paletteSpecifier";
 
 /**
  * A message's position in the thread in accordance with other nearby messages

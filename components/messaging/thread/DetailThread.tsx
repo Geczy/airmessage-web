@@ -6,7 +6,7 @@ import {
   MessageItem,
   MessageModifier,
   QueuedFile,
-} from "shared/data/blocks";
+} from "data/blocks";
 import MessageList from "components/messaging/thread/MessageList";
 import {
   Box,
@@ -21,9 +21,9 @@ import {
   useConversationTitle,
   useIsFaceTimeSupported,
   useUnsubscribeContainer,
-} from "shared/util/hookUtils";
-import { mapServiceName } from "shared/util/languageUtils";
-import * as ConnectionManager from "shared/connection/connectionManager";
+} from "util/hookUtils";
+import { mapServiceName } from "util/languageUtils";
+import * as ConnectionManager from "connection/connectionManager";
 import {
   checkMessageConversationOwnership,
   findMatchingUnconfirmedMessageIndex,
@@ -32,18 +32,18 @@ import {
   isModifierStatusUpdate,
   isModifierSticker,
   isModifierTapback,
-} from "shared/util/conversationUtils";
-import ConversationTarget from "shared/data/conversationTarget";
+} from "util/conversationUtils";
+import ConversationTarget from "data/conversationTarget";
 import {
   ConversationItemType,
   MessageError,
   MessageStatusCode,
-} from "shared/data/stateCodes";
-import EmitterPromiseTuple from "shared/util/emitterPromiseTuple";
-import { playSoundMessageOut } from "shared/util/soundUtils";
-import EventEmitter from "shared/util/eventEmitter";
-import localMessageCache from "shared/state/localMessageCache";
-import { installCancellablePromise } from "shared/util/cancellablePromise";
+} from "data/stateCodes";
+import EmitterPromiseTuple from "util/emitterPromiseTuple";
+import { playSoundMessageOut } from "util/soundUtils";
+import EventEmitter from "util/eventEmitter";
+import localMessageCache from "state/localMessageCache";
+import { installCancellablePromise } from "util/cancellablePromise";
 
 export default function DetailThread({
   conversation,

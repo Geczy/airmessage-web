@@ -1,4 +1,4 @@
-import DataProxyConnect from "shared/connection/connect/dataProxyConnect";
+import DataProxyConnect from "connection/connect/dataProxyConnect";
 import CommunicationsManager, {
   CommunicationsManagerListener,
 } from "./communicationsManager";
@@ -23,17 +23,14 @@ import {
 import EventEmitter, { CachedEventEmitter } from "../util/eventEmitter";
 import promiseTimeout from "../util/promiseTimeout";
 import { TransferAccumulator } from "./transferAccumulator";
-import {
-  isCryptoPasswordSet,
-  setCryptoPassword,
-} from "shared/util/encryptionUtils";
-import { getSecureLS, SecureStorageKey } from "shared/util/secureStorageUtils";
-import FileDownloadResult from "shared/data/fileDownloadResult";
-import ServerUpdateData from "shared/data/serverUpdateData";
-import ResolveablePromiseTimeout from "shared/util/resolveablePromiseTimeout";
-import CallEvent from "shared/data/callEvent";
-import ConversationTarget from "shared/data/conversationTarget";
-import EmitterPromiseTuple from "shared/util/emitterPromiseTuple";
+import { isCryptoPasswordSet, setCryptoPassword } from "util/encryptionUtils";
+import { getSecureLS, SecureStorageKey } from "util/secureStorageUtils";
+import FileDownloadResult from "data/fileDownloadResult";
+import ServerUpdateData from "data/serverUpdateData";
+import ResolveablePromiseTimeout from "util/resolveablePromiseTimeout";
+import CallEvent from "data/callEvent";
+import ConversationTarget from "data/conversationTarget";
+import EmitterPromiseTuple from "util/emitterPromiseTuple";
 
 export const warnCommVer: number[] = [5, 4]; //Warn users on a communications version older than this to update
 export const targetCommVer: number[] = [5, 5];

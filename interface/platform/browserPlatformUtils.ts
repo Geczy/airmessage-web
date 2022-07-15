@@ -1,4 +1,4 @@
-import { PlatformUtils } from "shared/interface/platform/platformUtils";
+import { PlatformUtils } from "interface/platform/platformUtils";
 
 export default class BrowserPlatformUtils extends PlatformUtils {
   initializeActivations() {}

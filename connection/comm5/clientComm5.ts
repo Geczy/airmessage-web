@@ -6,9 +6,9 @@ import {
   MessageError,
   MessageErrorCode,
 } from "../../data/stateCodes";
-import ClientProtocol4 from "shared/connection/comm5/clientProtocol4";
-import ClientProtocol5 from "shared/connection/comm5/clientProtocol5";
-import ConversationTarget from "shared/data/conversationTarget";
+import ClientProtocol4 from "connection/comm5/clientProtocol4";
+import ClientProtocol5 from "connection/comm5/clientProtocol5";
+import ConversationTarget from "data/conversationTarget";
 
 const targetCommVer = 5;
 

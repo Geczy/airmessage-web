@@ -1,4 +1,4 @@
-import UnsubscribeCallback from "shared/data/unsubscribeCallback";
+import UnsubscribeCallback from "data/unsubscribeCallback";
 
 /**
  * A listener that receives updates from an EventEmitter

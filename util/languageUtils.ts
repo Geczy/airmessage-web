@@ -3,13 +3,13 @@ import {
   ConnectionErrorCode,
   MessageErrorCode,
   RemoteUpdateErrorCode,
-} from "shared/data/stateCodes";
-import { connect as connectToServer } from "shared/connection/connectionManager";
+} from "data/stateCodes";
+import { connect as connectToServer } from "connection/connectionManager";
 import { getAuth, signOut } from "firebase/auth";
 import {
   appleServiceAppleMessage,
   appleServiceTextMessageForwarding,
-} from "shared/data/appleConstants";
+} from "data/appleConstants";
 
 export interface ErrorDisplay {
   message: string;

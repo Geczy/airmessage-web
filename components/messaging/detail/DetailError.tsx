@@ -4,8 +4,8 @@ import { Button, TextField, Typography } from "@mui/material";
 import { LockRounded, WifiOffRounded } from "@mui/icons-material";
 import { ConnectionErrorCode } from "../../../data/stateCodes";
 import { connect } from "../../../connection/connectionManager";
-import { setCryptoPassword } from "shared/util/encryptionUtils";
-import { SecureStorageKey, setSecureLS } from "shared/util/secureStorageUtils";
+import { setCryptoPassword } from "util/encryptionUtils";
+import { SecureStorageKey, setSecureLS } from "util/secureStorageUtils";
 import { getAuth, signOut } from "firebase/auth";
 
 interface ErrorDisplay {
@@ -28,7 +28,7 @@ const buttonActionRetry: ButtonAction = {
 /* const buttonActionMoreInfo: ButtonAction = {
 	label: "More info",
 	onClick: () => {
-	
+
 	}
 }; */
 

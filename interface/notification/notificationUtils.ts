@@ -1,14 +1,7 @@
-import {
-  Conversation,
-  LinkedConversation,
-  MessageItem,
-} from "shared/data/blocks";
-import {
-  getMemberTitle,
-  mimeTypeToPreview,
-} from "shared/util/conversationUtils";
-import { appleSendStyleBubbleInvisibleInk } from "shared/data/appleConstants";
-import EventEmitter from "shared/util/eventEmitter";
+import { Conversation, LinkedConversation, MessageItem } from "data/blocks";
+import { getMemberTitle, mimeTypeToPreview } from "util/conversationUtils";
+import { appleSendStyleBubbleInvisibleInk } from "data/appleConstants";
+import EventEmitter from "util/eventEmitter";
 
 export abstract class NotificationUtils {
   /**

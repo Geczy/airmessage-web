@@ -1,12 +1,12 @@
 import React from "react";
 
 import { Typography, Button, Box, Stack, styled } from "@mui/material";
-import iconAirMessage from "shared/resources/icons/tile-airmessage.svg";
-import iconMac from "shared/resources/icons/tile-mac.svg";
-import iconGoogle from "shared/resources/icons/logo-google.svg";
+import iconAirMessage from "resources/icons/tile-airmessage.svg";
+import iconMac from "resources/icons/tile-mac.svg";
+import iconGoogle from "resources/icons/logo-google.svg";
 
 import AirMessageLogo from "components/logo/AirMessageLogo";
-import { googleScope } from "shared/constants";
+import { googleScope } from "constants";
 import Image from "next/image";
 
 const OnboardingColumn = styled(Stack)({

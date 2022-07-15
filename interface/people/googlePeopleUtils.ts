@@ -3,9 +3,9 @@ import {
   AddressType,
   PeopleUtils,
   PersonData,
-} from "shared/interface/people/peopleUtils";
-import { formatAddress } from "shared/util/conversationUtils";
-import { googleScope } from "shared/constants";
+} from "interface/people/peopleUtils";
+import { formatAddress } from "util/conversationUtils";
+import { googleScope } from "constants";
 import { promiseGAPI } from "pages/index";
 
 //All contacts loaded from Google

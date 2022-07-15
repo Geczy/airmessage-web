@@ -2,10 +2,10 @@ import {
   appVersion,
   getFormattedBuildDate,
   releaseHash,
-} from "shared/data/releaseInfo";
+} from "data/releaseInfo";
 import { Dialog, DialogContent, DialogTitle, Typography } from "@mui/material";
 import Markdown from "components/Markdown";
-import changelog from "shared/resources/text/changelog.md";
+import changelog from "resources/text/changelog.md";
 import React from "react";
 
 /**

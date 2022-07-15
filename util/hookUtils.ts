@@ -7,10 +7,10 @@ import {
   useRef,
   useState,
 } from "react";
-import * as ConnectionManager from "shared/connection/connectionManager";
-import { Conversation } from "shared/data/blocks";
+import * as ConnectionManager from "connection/connectionManager";
+import { Conversation } from "data/blocks";
 import { getFallbackTitle, getMemberTitle } from "./conversationUtils";
-import UnsubscribeCallback from "shared/data/unsubscribeCallback";
+import UnsubscribeCallback from "data/unsubscribeCallback";
 
 /**
  * Generates a blob URL for a {@link BlobPart}

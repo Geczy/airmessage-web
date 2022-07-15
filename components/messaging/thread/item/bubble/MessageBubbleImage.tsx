@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import MessageBubbleWrapper from "components/messaging/thread/item/bubble/MessageBubbleWrapper";
-import { StickerItem, TapbackItem } from "shared/data/blocks";
+import { StickerItem, TapbackItem } from "data/blocks";
 import {
   Backdrop,
   Box,
@@ -11,10 +11,10 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { getFlowBorderRadius, MessagePartFlow } from "shared/util/messageFlow";
-import { useBlobURL } from "shared/util/hookUtils";
+import { getFlowBorderRadius, MessagePartFlow } from "util/messageFlow";
+import { useBlobURL } from "util/hookUtils";
 import { createTheme, Theme, ThemeProvider } from "@mui/material/styles";
-import { downloadURL } from "shared/util/browserUtils";
+import { downloadURL } from "util/browserUtils";
 import { ArrowBack, SaveAlt } from "@mui/icons-material";
 
 const ImagePreview = styled("img")(({ theme }) => ({

@@ -1,4 +1,4 @@
-import EventEmitter from "shared/util/eventEmitter";
+import EventEmitter from "util/eventEmitter";
 
 /**
  * An object that contains an even emitter and a promise

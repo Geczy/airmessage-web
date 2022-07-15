@@ -1,4 +1,4 @@
-import { decodeBase64, encodeBase64 } from "shared/util/encodingUtils";
+import { decodeBase64, encodeBase64 } from "util/encodingUtils";
 
 const ivLen = 12;
 

@@ -1,17 +1,17 @@
-import DataProxy from "shared/connection/dataProxy";
+import DataProxy from "connection/dataProxy";
 
 import * as CloseFrame from "./webSocketCloseEventCodes";
 import * as NHT from "./nht";
 import ByteBuffer from "bytebuffer";
 import { getAuth, getIdToken } from "firebase/auth";
-import { getInstallationID } from "shared/util/installationUtils";
-import { ConnectionErrorCode } from "shared/data/stateCodes";
+import { getInstallationID } from "util/installationUtils";
+import { ConnectionErrorCode } from "data/stateCodes";
 import {
   decryptData,
   encryptData,
   isCryptoPasswordAvailable,
-} from "shared/util/encryptionUtils";
-import TaskQueue from "shared/util/taskQueue";
+} from "util/encryptionUtils";
+import TaskQueue from "util/taskQueue";
 
 const handshakeTimeoutTime = 8 * 1000;
 

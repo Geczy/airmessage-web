@@ -34,14 +34,11 @@ import {
 } from "../../data/stateCodes";
 import SparkMD5 from "spark-md5";
 import { InflatorAccumulator } from "../transferAccumulator";
-import {
-  encryptData,
-  isCryptoPasswordAvailable,
-} from "shared/util/encryptionUtils";
-import ServerUpdateData from "shared/data/serverUpdateData";
-import { generateConversationLocalID } from "shared/util/conversationUtils";
-import ConversationTarget from "shared/data/conversationTarget";
-import { arrayBufferToHex } from "shared/util/encodingUtils";
+import { encryptData, isCryptoPasswordAvailable } from "util/encryptionUtils";
+import ServerUpdateData from "data/serverUpdateData";
+import { generateConversationLocalID } from "util/conversationUtils";
+import ConversationTarget from "data/conversationTarget";
+import { arrayBufferToHex } from "util/encodingUtils";
 
 const attachmentChunkSize = 2 * 1024 * 1024; //2 MiB
 
