@@ -32,6 +32,20 @@
         "endOfLine": "auto"
       }
     ],
+    "react/jsx-curly-brace-presence": [
+      "error",
+      {
+        "props": "never",
+        "children": "never"
+      }
+    ],
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ],
     "quotes": [
       "error",
       "double",
