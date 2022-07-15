@@ -1,27 +1,27 @@
-import { Box, Divider, Stack } from "@mui/material";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import CallOverlay from "shared/components/calling/CallOverlay";
-import DetailCreate from "shared/components/messaging/create/DetailCreate";
-import DetailError from "shared/components/messaging/detail/DetailError";
-import DetailLoading from "shared/components/messaging/detail/DetailLoading";
-import DetailWelcome from "shared/components/messaging/detail/DetailWelcome";
-import DetailThread from "shared/components/messaging/thread/DetailThread";
-import { getNotificationUtils } from "shared/interface/notification/notificationUtils";
-import { getPlatformUtils } from "shared/interface/platform/platformUtils";
-import useConversationState from "shared/state/conversationState";
-import { normalizeAddress } from "shared/util/addressHelper";
-import { arrayContainsAll } from "shared/util/arrayUtils";
-import { compareVersions } from "shared/util/versionUtils";
+import Sidebar from "../master/Sidebar";
 import * as ConnectionManager from "../../../connection/connectionManager";
 import {
   ConnectionListener,
   warnCommVer,
 } from "../../../connection/connectionManager";
-import { Conversation } from "../../../data/blocks";
-import { ConnectionErrorCode, MessageError } from "../../../data/stateCodes";
 import { initializePeople } from "../../../interface/people/peopleUtils";
+import { ConnectionErrorCode, MessageError } from "../../../data/stateCodes";
+import { Conversation } from "../../../data/blocks";
 import SnackbarProvider from "../../control/SnackbarProvider";
-import Sidebar from "../master/Sidebar";
+import { getNotificationUtils } from "shared/interface/notification/notificationUtils";
+import { getPlatformUtils } from "shared/interface/platform/platformUtils";
+import { Box, Divider, Stack } from "@mui/material";
+import CallOverlay from "shared/components/calling/CallOverlay";
+import useConversationState from "shared/state/conversationState";
+import DetailCreate from "shared/components/messaging/create/DetailCreate";
+import DetailLoading from "shared/components/messaging/detail/DetailLoading";
+import DetailError from "shared/components/messaging/detail/DetailError";
+import DetailWelcome from "shared/components/messaging/detail/DetailWelcome";
+import { arrayContainsAll } from "shared/util/arrayUtils";
+import { normalizeAddress } from "shared/util/addressHelper";
+import { compareVersions } from "shared/util/versionUtils";
+import DetailThread from "shared/components/messaging/thread/DetailThread";
 
 export default function Messaging(props: { onReset?: VoidFunction }) {
   const [detailPane, setDetailPane] = useState<DetailPane>({

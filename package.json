@@ -27,7 +27,6 @@
     "@babel/core": "^7.18.6",
     "@jest/types": "^28.1.3",
     "@testing-library/react": "^13.3.0",
-    "@trivago/prettier-plugin-sort-imports": "^3.2.0",
     "@types/bytebuffer": "^5.0.43",
     "@types/emoji-mart": "^3.0.9",
     "@types/gapi": "^0.0.42",

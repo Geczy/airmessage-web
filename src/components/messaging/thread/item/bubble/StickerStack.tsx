@@ -1,6 +1,6 @@
-import { Box, BoxProps, styled } from "@mui/material";
 import React from "react";
 import { StickerItem } from "shared/data/blocks";
+import { Box, BoxProps, styled } from "@mui/material";
 import { useBlobURL } from "shared/util/hookUtils";
 
 const BoxStackContainer = styled(Box, {

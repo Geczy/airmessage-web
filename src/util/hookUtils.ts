@@ -9,8 +9,8 @@ import {
 } from "react";
 import * as ConnectionManager from "shared/connection/connectionManager";
 import { Conversation } from "shared/data/blocks";
-import UnsubscribeCallback from "shared/data/unsubscribeCallback";
 import { getFallbackTitle, getMemberTitle } from "./conversationUtils";
+import UnsubscribeCallback from "shared/data/unsubscribeCallback";
 
 /**
  * Generates a blob URL for a {@link BlobPart}

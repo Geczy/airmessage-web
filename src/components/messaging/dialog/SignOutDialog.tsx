@@ -1,3 +1,5 @@
+import React, { useCallback, useContext } from "react";
+import LoginContext from "shared/components/LoginContext";
 import {
   Button,
   Dialog,
@@ -6,8 +8,6 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
-import React, { useCallback, useContext } from "react";
-import LoginContext from "shared/components/LoginContext";
 
 /**
  * A dialog that prompts the user to sign out

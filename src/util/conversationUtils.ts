@@ -1,6 +1,3 @@
-import { parsePhoneNumberFromString } from "libphonenumber-js";
-import { buildListString } from "shared/util/languageUtils";
-import { MessageFlow } from "shared/util/messageFlow";
 import {
   ChatRenameAction,
   Conversation,
@@ -21,6 +18,9 @@ import {
   MessageStatusCode,
 } from "../data/stateCodes";
 import { findPerson } from "../interface/people/peopleUtils";
+import { parsePhoneNumberFromString } from "libphonenumber-js";
+import { buildListString } from "shared/util/languageUtils";
+import { MessageFlow } from "shared/util/messageFlow";
 
 //Message burst - Sending single messages one after the other
 //Used to decide if adjacent messages should be "attached" together

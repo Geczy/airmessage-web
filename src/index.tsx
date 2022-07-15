@@ -1,15 +1,15 @@
-import * as Sentry from "@sentry/react";
-import { initializeApp } from "firebase/app";
 import React from "react";
 import { createRoot } from "react-dom/client";
+import * as Sentry from "@sentry/react";
 import SignInGate from "shared/components/SignInGate";
-import BrowserNotificationUtils from "shared/interface/notification/browserNotificationUtils";
-import { setNotificationUtils } from "shared/interface/notification/notificationUtils";
-import GooglePeopleUtils from "shared/interface/people/googlePeopleUtils";
-import { setPeopleUtils } from "shared/interface/people/peopleUtils";
-import BrowserPlatformUtils from "shared/interface/platform/browserPlatformUtils";
-import { setPlatformUtils } from "shared/interface/platform/platformUtils";
 import AppTheme from "./components/control/AppTheme";
+import { initializeApp } from "firebase/app";
+import { setPeopleUtils } from "shared/interface/people/peopleUtils";
+import GooglePeopleUtils from "shared/interface/people/googlePeopleUtils";
+import { setNotificationUtils } from "shared/interface/notification/notificationUtils";
+import BrowserNotificationUtils from "shared/interface/notification/browserNotificationUtils";
+import { setPlatformUtils } from "shared/interface/platform/platformUtils";
+import BrowserPlatformUtils from "shared/interface/platform/browserPlatformUtils";
 
 //Set platform-specific utilities
 setPeopleUtils(new GooglePeopleUtils());

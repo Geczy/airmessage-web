@@ -11,11 +11,11 @@ import {
   TypographyProps,
 } from "@mui/material";
 
-import { appleSendStyleBubbleInvisibleInk } from "../../../data/appleConstants";
 import { Conversation, ConversationPreview } from "../../../data/blocks";
-import { ConversationPreviewType } from "../../../data/stateCodes";
+import { appleSendStyleBubbleInvisibleInk } from "../../../data/appleConstants";
 import { getLastUpdateStatusTime } from "../../../util/dateUtils";
 import GroupAvatar from "./GroupAvatar";
+import { ConversationPreviewType } from "../../../data/stateCodes";
 
 export default function ListConversation(props: {
   conversation: Conversation;

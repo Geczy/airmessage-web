@@ -1,6 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
+import Onboarding from "shared/components/Onboarding";
+import Messaging from "shared/components/messaging/master/Messaging";
 import * as Sentry from "@sentry/react";
+import { promiseGAPI } from "shared/index";
+import { googleScope } from "shared/constants";
+import LoginContext from "shared/components/LoginContext";
 import {
   getAuth,
   GoogleAuthProvider,
@@ -9,11 +14,6 @@ import {
   signOut,
   User,
 } from "firebase/auth";
-import LoginContext from "shared/components/LoginContext";
-import Messaging from "shared/components/messaging/master/Messaging";
-import Onboarding from "shared/components/Onboarding";
-import { googleScope } from "shared/constants";
-import { promiseGAPI } from "shared/index";
 import { useCancellableEffect } from "shared/util/hookUtils";
 
 enum SignInState {

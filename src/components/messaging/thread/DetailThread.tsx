@@ -1,15 +1,4 @@
-import {
-  Box,
-  Button,
-  CircularProgress,
-  Stack,
-  Typography,
-} from "@mui/material";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { DetailFrame } from "shared/components/messaging/master/DetailFrame";
-import MessageInput from "shared/components/messaging/thread/MessageInput";
-import MessageList from "shared/components/messaging/thread/MessageList";
-import * as ConnectionManager from "shared/connection/connectionManager";
 import {
   Conversation,
   ConversationItem,
@@ -18,14 +7,23 @@ import {
   MessageModifier,
   QueuedFile,
 } from "shared/data/blocks";
-import ConversationTarget from "shared/data/conversationTarget";
+import MessageList from "shared/components/messaging/thread/MessageList";
 import {
-  ConversationItemType,
-  MessageError,
-  MessageStatusCode,
-} from "shared/data/stateCodes";
-import localMessageCache from "shared/state/localMessageCache";
-import { installCancellablePromise } from "shared/util/cancellablePromise";
+  Box,
+  Button,
+  CircularProgress,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { DetailFrame } from "shared/components/messaging/master/DetailFrame";
+import MessageInput from "shared/components/messaging/thread/MessageInput";
+import {
+  useConversationTitle,
+  useIsFaceTimeSupported,
+  useUnsubscribeContainer,
+} from "shared/util/hookUtils";
+import { mapServiceName } from "shared/util/languageUtils";
+import * as ConnectionManager from "shared/connection/connectionManager";
 import {
   checkMessageConversationOwnership,
   findMatchingUnconfirmedMessageIndex,
@@ -35,15 +33,17 @@ import {
   isModifierSticker,
   isModifierTapback,
 } from "shared/util/conversationUtils";
-import EmitterPromiseTuple from "shared/util/emitterPromiseTuple";
-import EventEmitter from "shared/util/eventEmitter";
+import ConversationTarget from "shared/data/conversationTarget";
 import {
-  useConversationTitle,
-  useIsFaceTimeSupported,
-  useUnsubscribeContainer,
-} from "shared/util/hookUtils";
-import { mapServiceName } from "shared/util/languageUtils";
+  ConversationItemType,
+  MessageError,
+  MessageStatusCode,
+} from "shared/data/stateCodes";
+import EmitterPromiseTuple from "shared/util/emitterPromiseTuple";
 import { playSoundMessageOut } from "shared/util/soundUtils";
+import EventEmitter from "shared/util/eventEmitter";
+import localMessageCache from "shared/state/localMessageCache";
+import { installCancellablePromise } from "shared/util/cancellablePromise";
 
 export default function DetailThread({
   conversation,

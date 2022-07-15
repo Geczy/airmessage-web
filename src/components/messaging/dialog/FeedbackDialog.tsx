@@ -1,3 +1,15 @@
+import React, { useCallback } from "react";
+import { getPlatformUtils } from "shared/interface/platform/platformUtils";
+import { appVersion } from "shared/data/releaseInfo";
+import {
+  getActiveCommVer,
+  getActiveProxyType,
+  getServerSoftwareVersion,
+  getServerSystemVersion,
+  targetCommVer,
+  targetCommVerString,
+} from "shared/connection/connectionManager";
+import { communityPage, supportEmail } from "shared/data/linkConstants";
 import {
   Button,
   Dialog,
@@ -6,17 +18,6 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
-import React, { useCallback } from "react";
-import {
-  getActiveCommVer,
-  getActiveProxyType,
-  getServerSoftwareVersion,
-  getServerSystemVersion,
-  targetCommVerString,
-} from "shared/connection/connectionManager";
-import { communityPage, supportEmail } from "shared/data/linkConstants";
-import { appVersion } from "shared/data/releaseInfo";
-import { getPlatformUtils } from "shared/interface/platform/platformUtils";
 
 /**
  * A dialog that presents help and feedback options

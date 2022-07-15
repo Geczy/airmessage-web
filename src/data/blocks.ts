@@ -1,10 +1,10 @@
 import {
+  ParticipantActionType,
+  MessageError,
+  MessageStatusCode,
   ConversationItemType,
   ConversationPreviewType,
-  MessageError,
   MessageModifierType,
-  MessageStatusCode,
-  ParticipantActionType,
   TapbackType,
 } from "./stateCodes";
 

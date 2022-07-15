@@ -1,12 +1,13 @@
-import { Stack, Typography } from "@mui/material";
 import React from "react";
-import TapbackDislikeIcon from "shared/components/icon/TapbackDislikeIcon";
-import TapbackEmphasisIcon from "shared/components/icon/TapbackEmphasisIcon";
-import TapbackLaughIcon from "shared/components/icon/TapbackLaughIcon";
-import TapbackLikeIcon from "shared/components/icon/TapbackLikeIcon";
-import TapbackLoveIcon from "shared/components/icon/TapbackLoveIcon";
-import TapbackQuestionIcon from "shared/components/icon/TapbackQuestionIcon";
 import { TapbackType } from "shared/data/stateCodes";
+import TapbackLoveIcon from "shared/components/icon/TapbackLoveIcon";
+import TapbackLikeIcon from "shared/components/icon/TapbackLikeIcon";
+import TapbackDislikeIcon from "shared/components/icon/TapbackDislikeIcon";
+import TapbackLaughIcon from "shared/components/icon/TapbackLaughIcon";
+import TapbackEmphasisIcon from "shared/components/icon/TapbackEmphasisIcon";
+import TapbackQuestionIcon from "shared/components/icon/TapbackQuestionIcon";
+import { Stack, Typography } from "@mui/material";
+import { Theme } from "@mui/material/styles";
 
 /**
  * A single tapback chip

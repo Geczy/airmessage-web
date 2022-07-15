@@ -1,9 +1,9 @@
-import { Box, BoxProps, styled } from "@mui/material";
-import React, { useState } from "react";
-import TapbackRow from "shared/components/messaging/thread/item/bubble/TapbackRow";
+import React, { CSSProperties, useEffect, useState } from "react";
 import { StickerItem, TapbackItem } from "shared/data/blocks";
-import { getFlowOpacity, MessagePartFlow } from "shared/util/messageFlow";
+import { Box, BoxProps, Fade, styled } from "@mui/material";
+import TapbackRow from "shared/components/messaging/thread/item/bubble/TapbackRow";
 import StickerStack from "./StickerStack";
+import { getFlowOpacity, MessagePartFlow } from "shared/util/messageFlow";
 
 const BoxWrapper = styled(Box, {
   shouldForwardProp: (prop) => prop !== "amTapbackPadding",

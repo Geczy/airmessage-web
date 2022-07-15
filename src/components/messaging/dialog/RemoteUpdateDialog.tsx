@@ -1,3 +1,10 @@
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   Alert,
   AlertTitle,
@@ -11,26 +18,19 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
 import Markdown from "shared/components/Markdown";
 import ServerUpdateData from "shared/data/serverUpdateData";
+import * as ConnectionManager from "../../../connection/connectionManager";
+import { compareVersions } from "shared/util/versionUtils";
 import {
   ConnectionErrorCode,
   RemoteUpdateErrorCode,
 } from "shared/data/stateCodes";
-import { remoteUpdateErrorCodeToDisplay } from "shared/util/languageUtils";
-import { compareVersions } from "shared/util/versionUtils";
-import * as ConnectionManager from "../../../connection/connectionManager";
 import {
   ConnectionListener,
   RemoteUpdateListener,
 } from "../../../connection/connectionManager";
+import { remoteUpdateErrorCodeToDisplay } from "shared/util/languageUtils";
 
 /**
  * A dialog that allows the user to update their server remotely

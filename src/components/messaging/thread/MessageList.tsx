@@ -1,16 +1,16 @@
-import { Box, CircularProgress, Stack } from "@mui/material";
 import React from "react";
+import { Box, CircularProgress, Stack } from "@mui/material";
+import Message from "./item/Message";
+import { getMessageFlow } from "../../../util/conversationUtils";
 import { Conversation, ConversationItem } from "../../../data/blocks";
 import {
   ConversationItemType,
   MessageStatusCode,
 } from "../../../data/stateCodes";
-import { getMessageFlow } from "../../../util/conversationUtils";
 import EventEmitter from "../../../util/eventEmitter";
-import styles from "./item/bubble/messages.module.scss";
 import ConversationActionParticipant from "./item/ConversationActionParticipant";
 import ConversationActionRename from "./item/ConversationActionRename";
-import Message from "./item/Message";
+import styles from "./item/bubble/messages.module.scss";
 
 interface Props {
   conversation: Conversation;

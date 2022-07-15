@@ -1,6 +1,6 @@
+import React from "react";
 import { SvgIcon, SvgIconProps } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import React from "react";
 
 export default function BorderedCloseIcon(props: SvgIconProps) {
   const theme = useTheme();

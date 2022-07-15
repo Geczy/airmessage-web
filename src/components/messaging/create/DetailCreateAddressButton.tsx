@@ -1,8 +1,8 @@
-import { ChatBubbleOutline } from "@mui/icons-material";
-import { Button, ButtonProps, styled } from "@mui/material";
-import React, { useCallback } from "react";
-import MessageCheckIcon from "shared/components/icon/MessageCheckIcon";
 import { AddressData } from "shared/interface/people/peopleUtils";
+import React, { useCallback } from "react";
+import { Button, ButtonProps, styled } from "@mui/material";
+import MessageCheckIcon from "shared/components/icon/MessageCheckIcon";
+import { ChatBubbleOutline } from "@mui/icons-material";
 
 const ToggleButton = styled(Button, {
   shouldForwardProp: (prop) => prop !== "amEnabled",

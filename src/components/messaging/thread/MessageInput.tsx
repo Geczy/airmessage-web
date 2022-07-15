@@ -1,11 +1,12 @@
-import { Box, IconButton, InputBase, Stack } from "@mui/material";
-import { IEmojiData } from "emoji-picker-react";
 import React, { ChangeEvent, useCallback, useState } from "react";
-import { QueuedFile } from "../../../data/blocks";
+import { Box, IconButton, InputBase, Stack } from "@mui/material";
 import PushIcon from "../../icon/PushIcon";
-import { QueuedAttachmentProps } from "./queue/QueuedAttachment";
-import QueuedAttachmentGeneric from "./queue/QueuedAttachmentGeneric";
+import { QueuedFile } from "../../../data/blocks";
 import { QueuedAttachmentImage } from "./queue/QueuedAttachmentImage";
+import QueuedAttachmentGeneric from "./queue/QueuedAttachmentGeneric";
+import { QueuedAttachmentProps } from "./queue/QueuedAttachment";
+import EmojiPicker from "./EmojiPicker";
+import { IEmojiData } from "emoji-picker-react";
 
 interface Props {
   placeholder: string;

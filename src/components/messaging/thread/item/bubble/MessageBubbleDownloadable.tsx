@@ -1,4 +1,6 @@
-import { GetAppRounded } from "@mui/icons-material";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import MessageBubbleWrapper from "shared/components/messaging/thread/item/bubble/MessageBubbleWrapper";
+import { StickerItem, TapbackItem } from "shared/data/blocks";
 import {
   Box,
   ButtonBase,
@@ -7,24 +9,22 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import { SnackbarContext } from "shared/components/control/SnackbarProvider";
-import MessageBubbleWrapper from "shared/components/messaging/thread/item/bubble/MessageBubbleWrapper";
-import * as ConnectionManager from "shared/connection/connectionManager";
-import { StickerItem, TapbackItem } from "shared/data/blocks";
+import { getFlowBorderRadius, MessagePartFlow } from "shared/util/messageFlow";
 import FileDownloadResult from "shared/data/fileDownloadResult";
-import PaletteSpecifier, {
-  accessPaletteColor,
-} from "shared/data/paletteSpecifier";
-import { AttachmentRequestErrorCode } from "shared/data/stateCodes";
-import { installCancellablePromise } from "shared/util/cancellablePromise";
+import { SnackbarContext } from "shared/components/control/SnackbarProvider";
 import { mimeTypeToPreview } from "shared/util/conversationUtils";
+import { GetAppRounded } from "@mui/icons-material";
+import * as ConnectionManager from "shared/connection/connectionManager";
+import { AttachmentRequestErrorCode } from "shared/data/stateCodes";
 import { useUnsubscribeContainer } from "shared/util/hookUtils";
+import { installCancellablePromise } from "shared/util/cancellablePromise";
 import {
   attachmentRequestErrorCodeToDisplay,
   formatFileSize,
 } from "shared/util/languageUtils";
-import { getFlowBorderRadius, MessagePartFlow } from "shared/util/messageFlow";
+import PaletteSpecifier, {
+  accessPaletteColor,
+} from "shared/data/paletteSpecifier";
 
 const DownloadableButton = styled(ButtonBase, {
   shouldForwardProp: (prop) =>

@@ -1,4 +1,6 @@
-import { ArrowBack, SaveAlt } from "@mui/icons-material";
+import React, { useCallback, useState } from "react";
+import MessageBubbleWrapper from "shared/components/messaging/thread/item/bubble/MessageBubbleWrapper";
+import { StickerItem, TapbackItem } from "shared/data/blocks";
 import {
   Backdrop,
   Box,
@@ -9,13 +11,11 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { createTheme, Theme, ThemeProvider } from "@mui/material/styles";
-import React, { useCallback, useState } from "react";
-import MessageBubbleWrapper from "shared/components/messaging/thread/item/bubble/MessageBubbleWrapper";
-import { StickerItem, TapbackItem } from "shared/data/blocks";
-import { downloadURL } from "shared/util/browserUtils";
-import { useBlobURL } from "shared/util/hookUtils";
 import { getFlowBorderRadius, MessagePartFlow } from "shared/util/messageFlow";
+import { useBlobURL } from "shared/util/hookUtils";
+import { createTheme, Theme, ThemeProvider } from "@mui/material/styles";
+import { downloadURL } from "shared/util/browserUtils";
+import { ArrowBack, SaveAlt } from "@mui/icons-material";
 
 const ImagePreview = styled("img")(({ theme }) => ({
   backgroundColor: theme.palette.background.sidebar,

@@ -1,6 +1,6 @@
+import React from "react";
 import { Snackbar } from "@mui/material";
 import { SnackbarCloseReason } from "@mui/material/Snackbar/Snackbar";
-import React from "react";
 
 interface SnackbarData {
   message: string;

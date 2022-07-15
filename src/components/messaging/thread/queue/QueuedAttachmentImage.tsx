@@ -1,7 +1,7 @@
-import { styled } from "@mui/material";
 import React from "react";
-import { useBlobURL } from "shared/util/hookUtils";
 import QueuedAttachment, { QueuedAttachmentProps } from "./QueuedAttachment";
+import { useBlobURL } from "shared/util/hookUtils";
+import { styled } from "@mui/material";
 
 const AttachmentImage = styled("img")(({ theme }) => ({
   width: "100%",

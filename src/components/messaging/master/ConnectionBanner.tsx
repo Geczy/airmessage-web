@@ -1,8 +1,8 @@
-import { WifiOffRounded } from "@mui/icons-material";
 import React from "react";
-import SidebarBanner from "shared/components/messaging/master/SidebarBanner";
-import { errorCodeToShortDisplay } from "shared/util/languageUtils";
+import { WifiOffRounded } from "@mui/icons-material";
 import { ConnectionErrorCode } from "../../../data/stateCodes";
+import { errorCodeToShortDisplay } from "shared/util/languageUtils";
+import SidebarBanner from "shared/components/messaging/master/SidebarBanner";
 
 /**
  * A sidebar banner that informs the user about

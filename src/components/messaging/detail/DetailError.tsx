@@ -1,12 +1,12 @@
-import { LockRounded, WifiOffRounded } from "@mui/icons-material";
-import { Button, TextField, Typography } from "@mui/material";
-import { getAuth, signOut } from "firebase/auth";
 import React, { useCallback, useState } from "react";
+import styles from "./DetailError.module.css";
+import { Button, TextField, Typography } from "@mui/material";
+import { LockRounded, WifiOffRounded } from "@mui/icons-material";
+import { ConnectionErrorCode } from "../../../data/stateCodes";
+import { connect } from "../../../connection/connectionManager";
 import { setCryptoPassword } from "shared/util/encryptionUtils";
 import { SecureStorageKey, setSecureLS } from "shared/util/secureStorageUtils";
-import { connect } from "../../../connection/connectionManager";
-import { ConnectionErrorCode } from "../../../data/stateCodes";
-import styles from "./DetailError.module.css";
+import { getAuth, signOut } from "firebase/auth";
 
 interface ErrorDisplay {
   title: string;
@@ -28,7 +28,7 @@ const buttonActionRetry: ButtonAction = {
 /* const buttonActionMoreInfo: ButtonAction = {
 	label: "More info",
 	onClick: () => {
-
+	
 	}
 }; */
 
