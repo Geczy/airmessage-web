@@ -53,9 +53,16 @@ const Message = (props: {
   message: MessageItem;
   isGroupChat: boolean;
   service: string;
-  flow: MessageFlow;
   showStatus?: boolean;
   className?: string;
+  //Whether this message should be anchored to the message above
+  anchorTop: boolean;
+
+  //Whether this message should be anchored to the message below
+  anchorBottom: boolean;
+
+  //Whether this message should have a divider between it and the message below
+  showDivider: boolean;
 }) => {
   const [dialogState, setDialogState] = useState<MessageDialog | undefined>(
     undefined
@@ -91,8 +98,7 @@ const Message = (props: {
 
   //Compute the message information
   const isOutgoing = props.message.sender === undefined;
-  const displayAvatar =
-    props.isGroupChat && !isOutgoing && !props.flow.anchorTop;
+  const displayAvatar = props.isGroupChat && !isOutgoing && !props.anchorTop;
   const displaySender = props.isGroupChat && displayAvatar;
   const isUnconfirmed = props.message.status === MessageStatusCode.Unconfirmed;
 
@@ -200,9 +206,9 @@ const Message = (props: {
           isUnconfirmed: isUnconfirmed,
           color: `${colorPalette}.contrastText`,
           backgroundColor: `${colorPalette}.main`,
-          anchorTop: props.flow.anchorTop,
+          anchorTop: props.anchorTop,
           anchorBottom:
-            props.flow.anchorBottom || props.message.attachments.length > 0,
+            props.anchorBottom || props.message.attachments.length > 0,
         }}
         text={props.message.text}
         stickers={stickerGroups.get(0) ?? []}
@@ -225,8 +231,8 @@ const Message = (props: {
         isUnconfirmed: isUnconfirmed,
         color: `${colorPalette}.contrastText`,
         backgroundColor: `${colorPalette}.main`,
-        anchorTop: !!props.message.text || props.flow.anchorTop || i > 0,
-        anchorBottom: props.flow.anchorBottom || i + 1 < attachmentArray.length,
+        anchorTop: !!props.message.text || props.anchorTop || i > 0,
+        anchorBottom: props.anchorBottom || i + 1 < attachmentArray.length,
       };
 
       if (
@@ -272,9 +278,9 @@ const Message = (props: {
 
   return (
     <>
-      <MessageStack direction="column" amLinked={props.flow.anchorTop}>
+      <MessageStack direction="column" amLinked={props.anchorTop}>
         {/* Time divider */}
-        {props.flow.showDivider && (
+        {props.showDivider && (
           <Typography
             paddingTop={6}
             paddingBottom={1}
@@ -468,4 +474,4 @@ function isAttachmentPreviewable(mimeType: string): boolean {
 }
 
 Message.whyDidYouRender = true;
-export default Message;
+export default React.memo(Message);

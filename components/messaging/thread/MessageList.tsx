@@ -107,7 +107,7 @@ export default class MessageList extends React.Component<Props, State> {
                   message={item}
                   isGroupChat={this.props.conversation.members.length > 1}
                   service={this.props.conversation.service}
-                  flow={getMessageFlow(item, array[i + 1], array[i - 1])}
+                  {...getMessageFlow(item, array[i + 1], array[i - 1])}
                   showStatus={
                     i === readTargetIndex || i === deliveredTargetIndex
                   }
