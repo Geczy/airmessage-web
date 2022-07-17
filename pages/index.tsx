@@ -94,6 +94,7 @@ const Home: NextPage = () => {
         data-skip-dnt="true"
         async
         defer
+        strategy="afterInteractive"
         src="https://sa.airmessage.org/latest.js"
       />
     </>
