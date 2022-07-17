@@ -13,6 +13,7 @@ import BrowserNotificationUtils from "lib/interface/notification/browserNotifica
 import { setPlatformUtils } from "lib/interface/platform/platformUtils";
 import BrowserPlatformUtils from "lib/interface/platform/browserPlatformUtils";
 import Image from "next/image";
+import Script from "next/script";
 
 //Set platform-specific utilities
 setPeopleUtils(new GooglePeopleUtils());
@@ -75,12 +76,6 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon-192.png" sizes="192x192" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
-        <script
-          data-skip-dnt="true"
-          async
-          defer
-          src="https://sa.airmessage.org/latest.js"
-        />
         <noscript>
           <Image
             src="https://sa.airmessage.org/noscript.gif?ignore-dnt=true"
@@ -94,6 +89,13 @@ const Home: NextPage = () => {
       <AppTheme>
         <SignInGate />
       </AppTheme>
+
+      <Script
+        data-skip-dnt="true"
+        async
+        defer
+        src="https://sa.airmessage.org/latest.js"
+      />
     </>
   );
 };
