@@ -25,13 +25,16 @@ export default function MessageBubbleWrapper(props: {
 }) {
   const [isPeeking, setPeeking] = useState(false);
 
+  const imPeeking = () => props.stickers.length && setPeeking(true);
+  const imNotPeeking = () => props.stickers.length && setPeeking(false);
+
   return (
     <BoxWrapper
       maxWidth={props.maxWidth}
       style={{ opacity: getFlowOpacity(props.flow) }}
       amTapbackPadding={props.tapbacks.length > 0}
-      onMouseEnter={() => setPeeking(true)}
-      onMouseLeave={() => setPeeking(false)}
+      onMouseEnter={imPeeking}
+      onMouseLeave={imNotPeeking}
     >
       {props.children}
 
