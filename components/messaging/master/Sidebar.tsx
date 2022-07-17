@@ -280,9 +280,7 @@ export default function Sidebar(props: {
                   conversation={conversation}
                   selected={conversation.localID === props.selectedConversation}
                   highlighted={conversation.unreadMessages}
-                  onSelected={() =>
-                    props.onConversationSelected(conversation.localID)
-                  }
+                  onSelected={props.onConversationSelected}
                 />
               </Collapse>
             ))}

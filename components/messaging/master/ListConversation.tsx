@@ -17,11 +17,11 @@ import { getLastUpdateStatusTime } from "../../../lib/util/dateUtils";
 import GroupAvatar from "./GroupAvatar";
 import { ConversationPreviewType } from "lib/data/stateCodes";
 
-export default function ListConversation(props: {
+function ListConversation(props: {
   conversation: Conversation;
   selected?: boolean;
   highlighted?: boolean;
-  onSelected: () => void;
+  onSelected: (localID: number) => void;
 }) {
   //Getting the conversation title
   const [title, setConversationTitle] = useState("");
@@ -70,10 +70,12 @@ export default function ListConversation(props: {
       }
     : {};
 
+  const onClick = () => props.onSelected(props.conversation.localID);
+
   return (
     <ListItemButton
       key={props.conversation.localID}
-      onClick={props.onSelected}
+      onClick={onClick}
       disableRipple
       selected={props.selected}
       sx={{
@@ -142,3 +144,6 @@ function previewString(preview: ConversationPreview): string {
 
   return "Unknown";
 }
+
+ListConversation.whyDidYouRender = true;
+export default React.memo(ListConversation);

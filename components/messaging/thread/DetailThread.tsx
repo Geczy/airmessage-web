@@ -145,9 +145,7 @@ export default function DetailThread({
   }, [
     conversation,
     displayState,
-    setDisplayState,
     historyLoadState,
-    setHistoryLoadState,
     requestHistoryUnsubscribeContainer,
   ]);
 
@@ -530,14 +528,7 @@ export default function DetailThread({
         playSoundMessageOut();
       }
     },
-    [
-      displayState,
-      conversation,
-      registerUploadProgress,
-      setMessageInput,
-      setAttachmentInput,
-      applyMessageError,
-    ]
+    [displayState, conversation, registerUploadProgress, applyMessageError]
   );
 
   const startCall = useCallback(async () => {
