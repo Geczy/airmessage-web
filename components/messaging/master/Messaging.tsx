@@ -26,8 +26,12 @@ import { TransitionGroup } from "react-transition-group";
 import ListConversation from "./ListConversation";
 import ConversationSkeleton from "components/skeleton/ConversationSkeleton";
 import styles from "./Sidebar.module.css";
+import { useRouter } from "next/router";
 
 export default function Messaging(props: { onReset?: VoidFunction }) {
+  const router = useRouter();
+  const { conversationID } = router.query;
+
   const [detailPane, setDetailPane] = useState<DetailPane>({
     type: DetailType.Loading,
   });
@@ -76,6 +80,8 @@ export default function Messaging(props: { onReset?: VoidFunction }) {
         type: DetailType.Thread,
         conversationID: conversation.localID,
       });
+
+      router.push(`/id/${conversation.localID}`);
     },
     [conversations, markConversationRead, setDetailPane]
   );
@@ -176,7 +182,8 @@ export default function Messaging(props: { onReset?: VoidFunction }) {
                 //If there are any conversations available, select the first one
                 setDetailPane({
                   type: DetailType.Thread,
-                  conversationID: conversations[0].localID,
+                  conversationID:
+                    Number(conversationID) || conversations[0].localID,
                 });
               } else {
                 //Otherwise show a welcome screen
