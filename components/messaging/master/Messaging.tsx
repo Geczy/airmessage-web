@@ -11,7 +11,7 @@ import { Conversation } from "lib/data/blocks";
 import SnackbarProvider from "../../control/SnackbarProvider";
 import { getNotificationUtils } from "lib/interface/notification/notificationUtils";
 import { getPlatformUtils } from "lib/interface/platform/platformUtils";
-import { Box, Divider, Stack } from "@mui/material";
+import { Box, Collapse, Divider, List, Stack } from "@mui/material";
 import CallOverlay from "components/calling/CallOverlay";
 import useConversationState from "lib/state/conversationState";
 import DetailCreate from "components/messaging/create/DetailCreate";
@@ -22,6 +22,10 @@ import { arrayContainsAll } from "lib/util/arrayUtils";
 import { normalizeAddress } from "lib/util/addressHelper";
 import { compareVersions } from "lib/util/versionUtils";
 import DetailThread from "components/messaging/thread/DetailThread";
+import { TransitionGroup } from "react-transition-group";
+import ListConversation from "./ListConversation";
+import ConversationSkeleton from "components/skeleton/ConversationSkeleton";
+import styles from "./Sidebar.module.css";
 
 export default function Messaging(props: { onReset?: VoidFunction }) {
   const [detailPane, setDetailPane] = useState<DetailPane>({
@@ -275,6 +279,13 @@ export default function Messaging(props: { onReset?: VoidFunction }) {
       break;
   }
 
+  const selectedConversation =
+    detailPane.type === DetailType.Thread
+      ? detailPane.conversationID
+      : undefined;
+
+  const errorBanner =
+    typeof sidebarBanner === "number" ? sidebarBanner : undefined;
   return (
     <SnackbarProvider>
       <Stack direction="row" width="100%" height="100%">
@@ -284,20 +295,38 @@ export default function Messaging(props: { onReset?: VoidFunction }) {
           maxWidth="400px"
           bgcolor="background.sidebar"
         >
-          <Sidebar
-            conversations={conversations}
-            selectedConversation={
-              detailPane.type === DetailType.Thread
-                ? detailPane.conversationID
-                : undefined
-            }
-            onConversationSelected={navigateConversation}
-            onCreateSelected={navigateConversationCreate}
-            errorBanner={
-              typeof sidebarBanner === "number" ? sidebarBanner : undefined
-            }
-            needsServerUpdate={needsServerUpdate}
-          />
+          <Stack height="100%">
+            <Sidebar
+              hasConversations={!!conversations}
+              onCreateSelected={navigateConversationCreate}
+              errorBanner={errorBanner}
+              needsServerUpdate={needsServerUpdate}
+            />
+
+            {conversations !== undefined ? (
+              <List className={`${styles.sidebarList} thin-scrollbar`}>
+                <TransitionGroup>
+                  {conversations.map((conversation) => (
+                    <Collapse key={conversation.localID}>
+                      <ListConversation
+                        key={conversation.localID}
+                        conversation={conversation}
+                        selected={conversation.localID === selectedConversation}
+                        highlighted={conversation.unreadMessages}
+                        onSelected={navigateConversation}
+                      />
+                    </Collapse>
+                  ))}
+                </TransitionGroup>
+              </List>
+            ) : (
+              <Box className={styles.sidebarListLoading}>
+                {[...Array(16)].map((element, index) => (
+                  <ConversationSkeleton key={`skeleton-${index}`} />
+                ))}
+              </Box>
+            )}
+          </Stack>
         </Box>
 
         <Divider orientation="vertical" />

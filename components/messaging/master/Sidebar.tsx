@@ -46,16 +46,13 @@ import ConnectionBanner from "./ConnectionBanner";
 import ListConversation from "./ListConversation";
 import styles from "./Sidebar.module.css";
 
-export default function Sidebar(props: {
-  conversations: Conversation[] | undefined;
-  selectedConversation?: number;
-  onConversationSelected: (id: number) => void;
+function Sidebar(props: {
+  hasConversations: boolean;
   onCreateSelected: () => void;
   errorBanner?: ConnectionErrorCode;
   needsServerUpdate?: boolean;
 }) {
   const { darkMode, setDarkMode } = React.useContext(DarkModeContext);
-  const displaySnackbar = useContext(SnackbarContext);
 
   //The anchor element for the overflow menu
   const [overflowMenu, setOverflowMenu] = useState<HTMLElement | null>(null);
@@ -114,37 +111,12 @@ export default function Sidebar(props: {
 
   //Keep track of whether FaceTime is supported
   const isFaceTimeSupported = useIsFaceTimeSupported();
-
-  const [isFaceTimeLinkLoading, setFaceTimeLinkLoading] = useState(false);
-  const createFaceTimeLink = useCallback(async () => {
-    setFaceTimeLinkLoading(true);
-
-    try {
-      const link = await ConnectionManager.requestFaceTimeLink();
-
-      //Prefer web share, fall back to displaying a dialog
-      if (navigator.share) {
-        await navigator.share({ text: link });
-      } else {
-        setFaceTimeLinkDialog(link);
-      }
-    } catch (error) {
-      if (error === FaceTimeLinkErrorCode.Network) {
-        displaySnackbar({
-          message: "Failed to get FaceTime link: no connection to server",
-        });
-      } else if (error === FaceTimeLinkErrorCode.External) {
-        displaySnackbar({
-          message: "Failed to get FaceTime link: an external error occurred",
-        });
-      }
-    } finally {
-      setFaceTimeLinkLoading(false);
-    }
-  }, [setFaceTimeLinkLoading, displaySnackbar]);
+  const { createFaceTimeLink, isFaceTimeLinkLoading } = useFaceTimeDial(
+    setFaceTimeLinkDialog
+  );
 
   return (
-    <Stack height="100%">
+    <>
       <ChangelogDialog
         isOpen={isChangelogDialog}
         onDismiss={hideChangelogDialog}
@@ -208,7 +180,7 @@ export default function Sidebar(props: {
           <IconButton
             size="large"
             onClick={props.onCreateSelected}
-            disabled={props.conversations === undefined}
+            disabled={props.hasConversations}
           >
             <AddRounded />
           </IconButton>
@@ -241,7 +213,7 @@ export default function Sidebar(props: {
             <MenuItem onClick={showFeedbackDialog}>Help and feedback</MenuItem>
             <MenuItem
               onClick={showSignOutDialog}
-              disabled={props.conversations === undefined}
+              disabled={props.hasConversations}
             >
               Sign out
             </MenuItem>
@@ -270,31 +242,46 @@ export default function Sidebar(props: {
           onClickButton={showUpdateRequiredDialog}
         />
       )}
-
-      {props.conversations !== undefined ? (
-        <List className={`${styles.sidebarList} thin-scrollbar`}>
-          <TransitionGroup>
-            {props.conversations.map((conversation) => (
-              <Collapse key={conversation.localID}>
-                <ListConversation
-                  conversation={conversation}
-                  selected={conversation.localID === props.selectedConversation}
-                  highlighted={conversation.unreadMessages}
-                  onSelected={props.onConversationSelected}
-                />
-              </Collapse>
-            ))}
-          </TransitionGroup>
-        </List>
-      ) : (
-        <Box className={styles.sidebarListLoading}>
-          {[...Array(16)].map((element, index) => (
-            <ConversationSkeleton key={`skeleton-${index}`} />
-          ))}
-        </Box>
-      )}
-    </Stack>
+    </>
   );
+}
+
+function useFaceTimeDial(
+  setFaceTimeLinkDialog: (link: string | undefined) => void
+) {
+  const displaySnackbar = useContext(SnackbarContext);
+  const [isFaceTimeLinkLoading, setFaceTimeLinkLoading] = useState(false);
+  const isFaceTimeSupported = useIsFaceTimeSupported();
+
+  const createFaceTimeLink = useCallback(async () => {
+    if (!isFaceTimeSupported) return false;
+    setFaceTimeLinkLoading(true);
+
+    try {
+      const link = await ConnectionManager.requestFaceTimeLink();
+
+      //Prefer web share, fall back to displaying a dialog
+      if (navigator.share) {
+        await navigator.share({ text: link });
+      } else {
+        setFaceTimeLinkDialog(link);
+      }
+    } catch (error) {
+      if (error === FaceTimeLinkErrorCode.Network) {
+        displaySnackbar({
+          message: "Failed to get FaceTime link: no connection to server",
+        });
+      } else if (error === FaceTimeLinkErrorCode.External) {
+        displaySnackbar({
+          message: "Failed to get FaceTime link: an external error occurred",
+        });
+      }
+    } finally {
+      setFaceTimeLinkLoading(false);
+    }
+  }, [displaySnackbar, setFaceTimeLinkDialog, isFaceTimeSupported]);
+
+  return { createFaceTimeLink, isFaceTimeLinkLoading };
 }
 
 /**
@@ -323,3 +310,6 @@ function useSidebarDialog(
 
   return [showDialog, openDialog, closeDialog];
 }
+
+Sidebar.whyDidYouRender = true;
+export default React.memo(Sidebar);
