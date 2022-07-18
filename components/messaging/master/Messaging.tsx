@@ -83,7 +83,7 @@ export default function Messaging(props: { onReset?: VoidFunction }) {
 
       router.push(`/id/${conversation.localID}`);
     },
-    [conversations, markConversationRead, setDetailPane]
+    [conversations, router, markConversationRead, setDetailPane]
   );
 
   const navigateConversationCreate = useCallback(() => {
