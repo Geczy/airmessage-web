@@ -44,10 +44,12 @@ export default function AppTheme(props: { children: React.ReactNode }) {
             ? {
                 main: "#3b3b3d",
                 contrastText: "#dedede",
+                border: "#565556",
               }
             : {
                 main: "#e9e9eb",
                 contrastText: "#363637",
+                border: "#bebdbe",
               },
           messageOutgoing: {
             main: "#3c83f7",

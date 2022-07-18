@@ -57,7 +57,9 @@ export default function MessageInput(props: Props) {
     <Box
       sx={{
         borderRadius: 5,
-        backgroundColor: "messageIncoming.main",
+        backgroundColor: "transparent",
+        border: "1px solid",
+        borderColor: "messageIncoming.border",
         overflow: "hidden",
         maxWidth: 1000,
         marginX: "auto",
