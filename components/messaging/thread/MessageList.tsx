@@ -93,8 +93,7 @@ export default class MessageList extends React.Component<Props, State> {
         <Stack
           sx={{
             width: "100%",
-            maxWidth: "1000px",
-            marginX: "auto",
+            minWidth: "400px",
           }}
           className={styles.list}
           direction="column-reverse"

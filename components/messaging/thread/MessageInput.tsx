@@ -61,8 +61,7 @@ export default function MessageInput(props: Props) {
         border: "1px solid",
         borderColor: "messageIncoming.border",
         overflow: "hidden",
-        maxWidth: 1000,
-        marginX: "auto",
+        width: "100%",
       }}
     >
       {props.attachments.length > 0 && (

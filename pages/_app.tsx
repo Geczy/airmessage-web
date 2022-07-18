@@ -3,7 +3,7 @@ import "lib/wdyr";
 import React from "react";
 import { AppProps } from "next/app";
 
-import "../styles/globals.css";
+import "../styles/globals.scss";
 
 function App({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;

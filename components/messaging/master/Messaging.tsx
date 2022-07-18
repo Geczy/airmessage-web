@@ -250,6 +250,7 @@ export default function Messaging(props: { onReset?: VoidFunction }) {
 
     return () => ConnectionManager.removeConnectionListener(listener);
   }, [
+    conversationID,
     conversations,
     setDetailPane,
     setSidebarBanner,
@@ -338,7 +339,9 @@ export default function Messaging(props: { onReset?: VoidFunction }) {
 
         <Divider orientation="vertical" />
 
-        <Box flex={1}>{masterNode}</Box>
+        <Box flex={1} minWidth={400}>
+          {masterNode}
+        </Box>
       </Stack>
 
       <CallOverlay />
