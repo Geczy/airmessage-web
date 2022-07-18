@@ -8,9 +8,7 @@ import { QueuedAttachmentProps } from "./queue/QueuedAttachment";
 
 interface Props {
   placeholder: string;
-  message: string;
   attachments: QueuedFile[];
-  onMessageChange: (value: string) => void;
   onMessageSubmit: (message: string, attachments: QueuedFile[]) => void;
   onAttachmentAdd: (files: File[]) => void;
   onAttachmentRemove: (value: QueuedFile) => void;
@@ -18,12 +16,11 @@ interface Props {
 
 export default function MessageInput(props: Props) {
   const {
-    onMessageChange: propsOnMessageChange,
     onMessageSubmit: propsOnMessageSubmit,
-    message: propsMessage,
     attachments: propsAttachments,
     onAttachmentAdd: propsOnAttachmentAdd,
   } = props;
+  const [propsMessage, propsOnMessageChange] = useState<string>("");
 
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -34,6 +31,7 @@ export default function MessageInput(props: Props) {
 
   const submitInput = useCallback(() => {
     propsOnMessageSubmit(propsMessage, propsAttachments);
+    propsOnMessageChange("");
   }, [propsOnMessageSubmit, propsMessage, propsAttachments]);
 
   const handleKeyDown = useCallback(
@@ -114,7 +112,7 @@ export default function MessageInput(props: Props) {
           fullWidth
           autoFocus
           placeholder={props.placeholder}
-          value={props.message}
+          value={propsMessage}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           onPaste={handlePaste}
@@ -129,7 +127,7 @@ export default function MessageInput(props: Props) {
           size="small"
           color="primary"
           disabled={
-            props.message.trim() === "" && props.attachments.length === 0
+            propsMessage.trim() === "" && props.attachments.length === 0
           }
           onClick={submitInput}
         >

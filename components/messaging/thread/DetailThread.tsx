@@ -61,7 +61,6 @@ export default function DetailThread({
   const faceTimeSupported = useIsFaceTimeSupported();
   const messageSubmitEmitter = useRef(new EventEmitter<void>());
 
-  const [messageInput, setMessageInput] = useState<string>("");
   const [attachmentInput, setAttachmentInput] = useState<QueuedFile[]>([]);
 
   /**
@@ -466,9 +465,6 @@ export default function DetailThread({
         addedItems.push(message);
       }
 
-      //Clear the message input
-      setMessageInput("");
-
       //Handle attachments
       for (const queuedFile of queuedFileArray) {
         //Convert the file to a message
@@ -616,8 +612,6 @@ export default function DetailThread({
         <Box width="100%" padding={2}>
           <MessageInput
             placeholder={mapServiceName(conversation.service)}
-            message={messageInput}
-            onMessageChange={setMessageInput}
             attachments={attachmentInput}
             onAttachmentAdd={addAttachment}
             onAttachmentRemove={removeAttachment}

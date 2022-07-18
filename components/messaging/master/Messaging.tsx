@@ -311,7 +311,7 @@ export default function Messaging(props: { onReset?: VoidFunction }) {
               needsServerUpdate={needsServerUpdate}
             />
 
-            {conversations !== undefined ? (
+            {conversations ? (
               <List className={`${styles.sidebarList} thin-scrollbar`}>
                 <TransitionGroup>
                   {conversations.map((conversation) => (
