@@ -146,13 +146,4 @@ function previewString(preview: ConversationPreview): string {
 }
 
 ListConversation.whyDidYouRender = true;
-export default React.memo(ListConversation, (prev, next) => {
-  if (
-    prev.conversation.localID === next.conversation.localID &&
-    prev.highlighted === next.highlighted &&
-    prev.selected === next.selected
-  ) {
-    return true;
-  }
-  return false;
-});
+export default React.memo(ListConversation);
