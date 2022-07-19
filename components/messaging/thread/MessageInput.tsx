@@ -1,4 +1,10 @@
-import React, { ChangeEvent, useCallback, useState } from "react";
+import React, {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { Box, IconButton, InputBase, Stack } from "@mui/material";
 import PushIcon from "../../icon/PushIcon";
 import { QueuedFile } from "lib/data/blocks";
@@ -14,6 +20,13 @@ interface Props {
   onAttachmentRemove: (value: QueuedFile) => void;
 }
 
+const useFocus = (): [any, () => void] => {
+  const htmlElRef = useRef<HTMLInputElement>(null);
+  const setFocus = () => htmlElRef?.current?.focus();
+
+  return [htmlElRef, setFocus];
+};
+
 export default function MessageInput(props: Props) {
   const {
     onMessageSubmit: propsOnMessageSubmit,
@@ -21,6 +34,7 @@ export default function MessageInput(props: Props) {
     onAttachmentAdd: propsOnAttachmentAdd,
   } = props;
   const [propsMessage, propsOnMessageChange] = useState<string>("");
+  const [inputRef, setInputFocus] = useFocus();
 
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -33,6 +47,10 @@ export default function MessageInput(props: Props) {
     propsOnMessageSubmit(propsMessage, propsAttachments);
     propsOnMessageChange("");
   }, [propsOnMessageSubmit, propsMessage, propsAttachments]);
+
+  document.body.addEventListener("keydown", function (e) {
+    setInputFocus();
+  });
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
@@ -102,6 +120,7 @@ export default function MessageInput(props: Props) {
 
       <Stack direction="row">
         <InputBase
+          key="inputBase"
           sx={{
             typography: "body2",
             paddingX: "16px",
@@ -109,6 +128,7 @@ export default function MessageInput(props: Props) {
           }}
           maxRows="5"
           multiline
+          inputRef={inputRef}
           fullWidth
           autoFocus
           placeholder={props.placeholder}
