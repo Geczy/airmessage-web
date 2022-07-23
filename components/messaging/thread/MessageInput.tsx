@@ -1,16 +1,10 @@
-import React, {
-  ChangeEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
 import { Box, IconButton, InputBase, Stack } from "@mui/material";
-import PushIcon from "../../icon/PushIcon";
 import { QueuedFile } from "lib/data/blocks";
-import { QueuedAttachmentImage } from "./queue/QueuedAttachmentImage";
-import QueuedAttachmentGeneric from "./queue/QueuedAttachmentGeneric";
+import React, { ChangeEvent, useCallback, useRef, useState } from "react";
+import PushIcon from "../../icon/PushIcon";
 import { QueuedAttachmentProps } from "./queue/QueuedAttachment";
+import QueuedAttachmentGeneric from "./queue/QueuedAttachmentGeneric";
+import { QueuedAttachmentImage } from "./queue/QueuedAttachmentImage";
 
 interface Props {
   placeholder: string;
@@ -49,7 +43,9 @@ export default function MessageInput(props: Props) {
   }, [propsOnMessageSubmit, propsMessage, propsAttachments]);
 
   document.body.addEventListener("keydown", function (e) {
-    setInputFocus();
+    if (!e.ctrlKey) {
+      setInputFocus();
+    }
   });
 
   const handleKeyDown = useCallback(
