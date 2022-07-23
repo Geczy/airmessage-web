@@ -1,13 +1,13 @@
-import React from "react";
 import { Box, CircularProgress, Stack } from "@mui/material";
-import Message from "./item/Message";
-import { getMessageFlow } from "../../../lib/util/conversationUtils";
 import { Conversation, ConversationItem } from "lib/data/blocks";
 import { ConversationItemType, MessageStatusCode } from "lib/data/stateCodes";
+import React from "react";
+import { getMessageFlow } from "../../../lib/util/conversationUtils";
 import EventEmitter from "../../../lib/util/eventEmitter";
+import styles from "./item/bubble/messages.module.scss";
 import ConversationActionParticipant from "./item/ConversationActionParticipant";
 import ConversationActionRename from "./item/ConversationActionRename";
-import styles from "./item/bubble/messages.module.scss";
+import Message from "./item/Message";
 
 interface Props {
   conversation: Conversation;
@@ -36,9 +36,6 @@ export default class MessageList extends React.Component<Props, State> {
   //List scroll position snapshot values
   private snapshotScrollHeight = 0;
   private snapshotScrollTop = 0;
-
-  //Used to track whether the message list should be scrolled to the bottom when the component is next updated
-  private shouldScrollNextUpdate = false;
 
   private readonly handleScroll = (
     event: React.UIEvent<HTMLDivElement, UIEvent>
@@ -152,8 +149,6 @@ export default class MessageList extends React.Component<Props, State> {
   }
 
   getSnapshotBeforeUpdate() {
-    this.shouldScrollNextUpdate = this.checkScrolledToBottom();
-
     const element = this.scrollRef.current!;
     this.snapshotScrollHeight = element.scrollHeight;
     this.snapshotScrollTop = element.scrollTop;
@@ -162,13 +157,8 @@ export default class MessageList extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Readonly<Props>) {
-    //Scrolling the list to the bottom if needed
-    if (this.shouldScrollNextUpdate) {
-      this.scrollToBottom();
-      this.shouldScrollNextUpdate = false;
-    }
     //Restoring the scroll position when new items are added at the top
-    else if (
+    if (
       this.props.showHistoryLoader !== prevProps.showHistoryLoader &&
       this.checkScrolledToTop()
     ) {
@@ -178,6 +168,9 @@ export default class MessageList extends React.Component<Props, State> {
           (element.scrollHeight - this.snapshotScrollHeight),
         true
       );
+    } //Scrolling the list to the bottom if needed
+    else if (prevProps.items.length !== this.props.items.length) {
+      this.scrollToBottom(true);
     }
 
     //Updating the submit emitter
@@ -197,6 +190,8 @@ export default class MessageList extends React.Component<Props, State> {
   };
 
   private scrollToBottom(disableAnimation: boolean = false): void {
+    console.log("scrollToBottom");
+
     this.setScroll(this.scrollRef.current!.scrollHeight, disableAnimation);
   }
 
@@ -205,11 +200,6 @@ export default class MessageList extends React.Component<Props, State> {
     if (disableAnimation) element.style.scrollBehavior = "auto";
     element.scrollTop = scrollTop;
     if (disableAnimation) element.style.scrollBehavior = "";
-  }
-
-  private checkScrolledToBottom(): boolean {
-    const element = this.scrollRef.current!;
-    return element.scrollHeight - element.scrollTop - element.clientHeight <= 0;
   }
 
   private checkScrolledToTop(): boolean {
