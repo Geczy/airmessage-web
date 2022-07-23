@@ -168,13 +168,26 @@ export default class MessageList extends React.Component<Props, State> {
           (element.scrollHeight - this.snapshotScrollHeight),
         true
       );
-    } //Scrolling the list to the bottom if needed
-    else if (prevProps.items.length !== this.props.items.length) {
+    } // checks if its just 1 new message coming in, easy scroll down
+    else if (prevProps.items.length === this.props.items.length - 1) {
+      this.scrollToBottom(true);
+    } else if (
+      // checks last message that was sent
+      // if we're scrolling up and activating history,
+      // the last message should still be the newest
+      prevProps.items[0].chatGuid !== this.props.items[0].chatGuid
+    ) {
+      this.scrollToBottom(true);
+    } else if (
+      // checks if new details like status were added, scroll down again since
+      // they flex the dom height
+      prevProps.items[0].status !== this.props.items[0].status
+    ) {
       this.scrollToBottom(true);
     }
 
-    //Updating the submit emitter
     if (this.props.messageSubmitEmitter !== prevProps.messageSubmitEmitter) {
+      //Updating the submit emitter
       prevProps.messageSubmitEmitter.unsubscribe(this.onMessageSubmit);
       this.props.messageSubmitEmitter.subscribe(this.onMessageSubmit);
     }
@@ -190,8 +203,6 @@ export default class MessageList extends React.Component<Props, State> {
   };
 
   private scrollToBottom(disableAnimation: boolean = false): void {
-    console.log("scrollToBottom");
-
     this.setScroll(this.scrollRef.current!.scrollHeight, disableAnimation);
   }
 
