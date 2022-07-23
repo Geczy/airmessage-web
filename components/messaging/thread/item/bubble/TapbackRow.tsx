@@ -1,8 +1,8 @@
-import React, { useMemo } from "react";
-import { TapbackItem } from "lib/data/blocks";
-import { TapbackType } from "lib/data/stateCodes";
 import { Stack } from "@mui/material";
 import TapbackChip from "components/messaging/thread/item/bubble/TapbackChip";
+import { TapbackItem } from "lib/data/blocks";
+import { TapbackType } from "lib/data/stateCodes";
+import { useMemo } from "react";
 
 /**
  * A row of tapback chips, to be attached to the bottom
@@ -20,20 +20,21 @@ export default function TapbackRow(props: { tapbacks: TapbackItem[] }) {
     [props.tapbacks]
   );
 
-  return (
+  return props.tapbacks.map(({ tapbackType, sender }, i) => (
+    // eslint-disable-next-line react/react-in-jsx-scope
     <Stack
+      key={i}
       sx={{
         zIndex: 1,
         position: "absolute",
-        bottom: -12,
-        right: 0,
+        top: -15,
+        right: !sender ? -12 : "inherit",
+        left: !sender ? "inherit" : -12,
       }}
       direction="row"
       gap={0.5}
     >
-      {props.tapbacks.map(({ tapbackType, sender }, i) => (
-        <TapbackChip key={i} type={tapbackType} isMine={!sender} count={1} />
-      ))}
+      <TapbackChip type={tapbackType} isMine={!sender} count={1} />
     </Stack>
-  );
+  ));
 }

@@ -1,13 +1,10 @@
-import React from "react";
-import { TapbackType } from "lib/data/stateCodes";
-import TapbackLoveIcon from "components/icon/TapbackLoveIcon";
-import TapbackLikeIcon from "components/icon/TapbackLikeIcon";
-import TapbackDislikeIcon from "components/icon/TapbackDislikeIcon";
-import TapbackLaughIcon from "components/icon/TapbackLaughIcon";
-import TapbackEmphasisIcon from "components/icon/TapbackEmphasisIcon";
-import TapbackQuestionIcon from "components/icon/TapbackQuestionIcon";
 import { Stack, Typography } from "@mui/material";
-import { Theme } from "@mui/material/styles";
+import TapbackDislikeIcon from "components/icon/TapbackDislikeIcon";
+import TapbackLikeIcon from "components/icon/TapbackLikeIcon";
+import TapbackLoveIcon from "components/icon/TapbackLoveIcon";
+import TapbackQuestionIcon from "components/icon/TapbackQuestionIcon";
+import { TapbackType } from "lib/data/stateCodes";
+import React from "react";
 
 /**
  * A single tapback chip
@@ -35,11 +32,42 @@ export default function TapbackChip(props: {
       color = props.isMine ? "#ffffff" : "#808080";
       break;
     case TapbackType.Laugh:
-      Icon = TapbackLaughIcon;
       color = props.isMine ? "#ffffff" : "#808080";
+      Icon = () => (
+        <div style={{ textAlign: "center" }}>
+          <div
+            style={{
+              fontSize: 10,
+              fontWeight: 800,
+              color,
+              lineHeight: "6px",
+            }}
+          >
+            HA
+          </div>
+          <div
+            style={{ fontSize: 8, fontWeight: 800, color, lineHeight: "10px" }}
+          >
+            HA
+          </div>
+        </div>
+      );
       break;
     case TapbackType.Emphasis:
-      Icon = TapbackEmphasisIcon;
+      Icon = () => (
+        <div style={{ textAlign: "center", lineHeight: 0 }}>
+          <span
+            style={{
+              fontSize: 10,
+              fontWeight: 800,
+              color,
+            }}
+          >
+            !
+          </span>
+          <span style={{ fontSize: 14, fontWeight: 800, color }}>!</span>
+        </div>
+      );
       color = props.isMine ? "#ffffff" : "#808080";
       break;
     case TapbackType.Question:
@@ -53,14 +81,12 @@ export default function TapbackChip(props: {
       sx={{
         padding: "6px",
         minWidth: 8,
-        height: 18,
-        borderStyle: "solid",
+        width: 28,
+        height: 28,
         borderRadius: 4,
-        borderWidth: 2,
         backgroundColor: `${
           props.isMine ? "messageOutgoing" : "messageIncoming"
         }.main`,
-        borderColor: "background.default",
       }}
       direction="row"
       alignItems="center"
