@@ -1,13 +1,3 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import {
-  Conversation,
-  ConversationItem,
-  LocalConversationID,
-  MessageItem,
-  MessageModifier,
-  QueuedFile,
-} from "lib/data/blocks";
-import MessageList from "components/messaging/thread/MessageList";
 import {
   Box,
   Button,
@@ -17,13 +7,24 @@ import {
 } from "@mui/material";
 import { DetailFrame } from "components/messaging/master/DetailFrame";
 import MessageInput from "components/messaging/thread/MessageInput";
-import {
-  useConversationTitle,
-  useIsFaceTimeSupported,
-  useUnsubscribeContainer,
-} from "lib/util/hookUtils";
-import { mapServiceName } from "lib/util/languageUtils";
+import MessageList from "components/messaging/thread/MessageList";
 import * as ConnectionManager from "lib/connection/connectionManager";
+import {
+  Conversation,
+  ConversationItem,
+  LocalConversationID,
+  MessageItem,
+  MessageModifier,
+  QueuedFile,
+} from "lib/data/blocks";
+import ConversationTarget from "lib/data/conversationTarget";
+import {
+  ConversationItemType,
+  MessageError,
+  MessageStatusCode,
+} from "lib/data/stateCodes";
+import localMessageCache from "lib/state/localMessageCache";
+import { installCancellablePromise } from "lib/util/cancellablePromise";
 import {
   checkMessageConversationOwnership,
   findMatchingUnconfirmedMessageIndex,
@@ -33,17 +34,16 @@ import {
   isModifierSticker,
   isModifierTapback,
 } from "lib/util/conversationUtils";
-import ConversationTarget from "lib/data/conversationTarget";
-import {
-  ConversationItemType,
-  MessageError,
-  MessageStatusCode,
-} from "lib/data/stateCodes";
 import EmitterPromiseTuple from "lib/util/emitterPromiseTuple";
-import { playSoundMessageOut } from "lib/util/soundUtils";
 import EventEmitter from "lib/util/eventEmitter";
-import localMessageCache from "lib/state/localMessageCache";
-import { installCancellablePromise } from "lib/util/cancellablePromise";
+import {
+  useConversationTitle,
+  useIsFaceTimeSupported,
+  useUnsubscribeContainer,
+} from "lib/util/hookUtils";
+import { mapServiceName } from "lib/util/languageUtils";
+import { playSoundMessageOut } from "lib/util/soundUtils";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 export default function DetailThread({
   conversation,
@@ -609,7 +609,10 @@ export default function DetailThread({
           {body}
         </Stack>
 
-        <Box width="100%" padding={2}>
+        <Box
+          width="100%"
+          style={{ paddingBottom: 16, paddingLeft: 16, paddingRight: 16 }}
+        >
           <MessageInput
             placeholder={mapServiceName(conversation.service)}
             attachments={attachmentInput}

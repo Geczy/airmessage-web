@@ -83,6 +83,7 @@
     "pako": "^2.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-emoji-render": "github:Geczy/react-emoji-render",
     "react-transition-group": "^4.4.2",
     "spark-md5": "^3.0.2",
     "ua-parser-js": "^1.0.2",

@@ -1,5 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
-import { MessageItem } from "lib/data/blocks";
+import { ErrorRounded } from "@mui/icons-material";
 import {
   Avatar,
   Button,
@@ -16,26 +15,23 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import { getDeliveryStatusTime, getTimeDivider } from "lib/util/dateUtils";
-import { ErrorRounded } from "@mui/icons-material";
-import { findPerson, PersonData } from "lib/interface/people/peopleUtils";
-import { useCancellableEffect } from "lib/util/hookUtils";
-import { MessageStatusCode } from "lib/data/stateCodes";
+import MessageBubbleDownloadable from "components/messaging/thread/item/bubble/MessageBubbleDownloadable";
+import MessageBubbleImage from "components/messaging/thread/item/bubble/MessageBubbleImage";
 import MessageBubbleText from "components/messaging/thread/item/bubble/MessageBubbleText";
 import { appleServiceAppleMessage } from "lib/data/appleConstants";
+import { MessageItem } from "lib/data/blocks";
 import FileDownloadResult, {
   FileDisplayResult,
 } from "lib/data/fileDownloadResult";
-import { downloadBlob } from "lib/util/browserUtils";
-import {
-  getBubbleSpacing,
-  MessageFlow,
-  MessagePartFlow,
-} from "lib/util/messageFlow";
-import MessageBubbleImage from "components/messaging/thread/item/bubble/MessageBubbleImage";
-import MessageBubbleDownloadable from "components/messaging/thread/item/bubble/MessageBubbleDownloadable";
-import { messageErrorToDisplay } from "lib/util/languageUtils";
+import { MessageStatusCode } from "lib/data/stateCodes";
+import { findPerson, PersonData } from "lib/interface/people/peopleUtils";
 import { groupArray } from "lib/util/arrayUtils";
+import { downloadBlob } from "lib/util/browserUtils";
+import { getDeliveryStatusTime, getTimeDivider } from "lib/util/dateUtils";
+import { useCancellableEffect } from "lib/util/hookUtils";
+import { messageErrorToDisplay } from "lib/util/languageUtils";
+import { getBubbleSpacing, MessagePartFlow } from "lib/util/messageFlow";
+import React, { useCallback, useMemo, useState } from "react";
 
 enum MessageDialog {
   Error,
@@ -461,7 +457,7 @@ function getStatusString(message: MessageItem): React.ReactElement | null {
       </span>
     );
   } else {
-    return null;
+    return <span>last one</span>;
   }
 }
 

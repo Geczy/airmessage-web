@@ -21,7 +21,6 @@ export default function TapbackRow(props: { tapbacks: TapbackItem[] }) {
   );
 
   return props.tapbacks.map(({ tapbackType, sender }, i) => (
-    // eslint-disable-next-line react/react-in-jsx-scope
     <Stack
       key={i}
       sx={{

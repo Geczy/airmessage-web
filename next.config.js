@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["sa.airmessage.org"],
+    domains: ["sa.airmessage.org", "web.telegram.org"],
   },
   reactStrictMode: true,
   swcMinify: true,

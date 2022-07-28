@@ -11,11 +11,12 @@ import {
   TypographyProps,
 } from "@mui/material";
 
-import { Conversation, ConversationPreview } from "lib/data/blocks";
 import { appleSendStyleBubbleInvisibleInk } from "lib/data/appleConstants";
-import { getLastUpdateStatusTime } from "../../../lib/util/dateUtils";
-import GroupAvatar from "./GroupAvatar";
+import { Conversation, ConversationPreview } from "lib/data/blocks";
 import { ConversationPreviewType } from "lib/data/stateCodes";
+import { getLastUpdateStatusTime } from "../../../lib/util/dateUtils";
+import { AppleEmoji } from "../thread/item/bubble/MessageBubbleText";
+import GroupAvatar from "./GroupAvatar";
 
 function ListConversation(props: {
   conversation: Conversation;
@@ -107,7 +108,9 @@ function ListConversation(props: {
         }}
         primary={title}
         primaryTypographyProps={primaryStyle}
-        secondary={previewString(props.conversation.preview)}
+        secondary={
+          <AppleEmoji text={previewString(props.conversation.preview)} />
+        }
         secondaryTypographyProps={secondaryStyle}
       />
       <Typography
