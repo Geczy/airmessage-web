@@ -24,12 +24,7 @@ export function AppleEmoji({
   };
 
   return (
-    <Emoji
-      onlyEmojiClassName={styles.emoji}
-      className={className || "normal-font-size"}
-      options={options}
-      text={text}
-    />
+    <Emoji onlyEmojiClassName={styles.emoji} options={options} text={text} />
   );
 }
 
@@ -65,18 +60,16 @@ export default function MessageBubbleText(props: {
         color={props.flow.color}
         variant="body2"
         style={{ whiteSpace: "pre-wrap" }}
+        className={cn(
+          styles.shared,
+          props.flow.isOutgoing ? styles.sent : styles.received,
+          props.flow.isText ? styles.sentText : null,
+          props.flow.anchorBottom && styles.noTail,
+          darkMode ? styles.dark : null
+        )}
       >
         <Linkify options={{ target: "_blank" }}>
-          <AppleEmoji
-            className={cn(
-              styles.shared,
-              props.flow.isOutgoing ? styles.sent : styles.received,
-              props.flow.isText ? styles.sentText : null,
-              props.flow.anchorBottom && styles.noTail,
-              darkMode ? styles.dark : null
-            )}
-            text={props.text}
-          />
+          <AppleEmoji text={props.text} />
         </Linkify>
       </MessageBubbleTypography>
     </MessageBubbleWrapper>
