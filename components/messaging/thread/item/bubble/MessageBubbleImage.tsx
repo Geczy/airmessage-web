@@ -1,6 +1,4 @@
-import React, { useCallback, useState } from "react";
-import MessageBubbleWrapper from "components/messaging/thread/item/bubble/MessageBubbleWrapper";
-import { StickerItem, TapbackItem } from "lib/data/blocks";
+import { ArrowBack, SaveAlt } from "@mui/icons-material";
 import {
   Backdrop,
   Box,
@@ -11,12 +9,13 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import { getFlowBorderRadius, MessagePartFlow } from "lib/util/messageFlow";
-import { useBlobURL } from "lib/util/hookUtils";
 import { createTheme, Theme, ThemeProvider } from "@mui/material/styles";
+import MessageBubbleWrapper from "components/messaging/thread/item/bubble/MessageBubbleWrapper";
+import { StickerItem, TapbackItem } from "lib/data/blocks";
 import { downloadURL } from "lib/util/browserUtils";
-import { ArrowBack, SaveAlt } from "@mui/icons-material";
-
+import { useBlobURL } from "lib/util/hookUtils";
+import { getFlowBorderRadius, MessagePartFlow } from "lib/util/messageFlow";
+import React, { useCallback, useState } from "react";
 const ImagePreview = styled("img")(({ theme }) => ({
   backgroundColor: theme.palette.background.sidebar,
   maxWidth: "100%",
@@ -39,8 +38,8 @@ const lightboxTheme = createTheme({
 export default function MessageBubbleImage(props: {
   flow: MessagePartFlow;
   data: ArrayBuffer | Blob;
-  name: string;
-  type: string;
+  name: string; // file name
+  type: string; // mime type
   stickers: StickerItem[];
   tapbacks: TapbackItem[];
 }) {
@@ -93,16 +92,18 @@ export default function MessageBubbleImage(props: {
           </Toolbar>
 
           <Box flexGrow={1} paddingLeft={8} paddingRight={8} paddingBottom={8}>
-            <Box
-              sx={{
-                width: "100%",
-                height: "100%",
-                backgroundImage: `url("${imageURL}")`,
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "contain",
-              }}
-            />
+            {props.type.startsWith("image/") && (
+              <Box
+                sx={{
+                  width: "100%",
+                  height: "100%",
+                  backgroundImage: `url("${imageURL}")`,
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "contain",
+                }}
+              />
+            )}
           </Box>
         </Backdrop>
       </ThemeProvider>
@@ -115,9 +116,23 @@ export default function MessageBubbleImage(props: {
       >
         <ButtonBase
           style={{ borderRadius }}
-          onClick={() => setPreviewOpen(true)}
+          onClick={() =>
+            props.type.startsWith("image/") && setPreviewOpen(true)
+          }
         >
-          <ImagePreview style={{ borderRadius }} src={imageURL} alt="" />
+          {props.type.startsWith("image/") && (
+            <ImagePreview style={{ borderRadius }} src={imageURL} alt="" />
+          )}
+          {props.type.startsWith("video/") && (
+            <video style={{ maxWidth: "100%" }} src={imageURL} controls>
+              Your browser does not support the video tag.
+            </video>
+          )}
+          {props.type.startsWith("audio/") && (
+            <audio style={{ maxWidth: "100%" }} controls src={imageURL}>
+              Your browser does not support the video tag.
+            </audio>
+          )}
         </ButtonBase>
       </MessageBubbleWrapper>
     </>

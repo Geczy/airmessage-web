@@ -1,6 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import MessageBubbleWrapper from "components/messaging/thread/item/bubble/MessageBubbleWrapper";
-import { StickerItem, TapbackItem } from "lib/data/blocks";
+import { GetAppRounded } from "@mui/icons-material";
 import {
   Box,
   ButtonBase,
@@ -9,22 +7,24 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import { getFlowBorderRadius, MessagePartFlow } from "lib/util/messageFlow";
-import FileDownloadResult from "lib/data/fileDownloadResult";
 import { SnackbarContext } from "components/control/SnackbarProvider";
-import { mimeTypeToPreview } from "lib/util/conversationUtils";
-import { GetAppRounded } from "@mui/icons-material";
+import MessageBubbleWrapper from "components/messaging/thread/item/bubble/MessageBubbleWrapper";
 import * as ConnectionManager from "lib/connection/connectionManager";
+import { StickerItem, TapbackItem } from "lib/data/blocks";
+import FileDownloadResult from "lib/data/fileDownloadResult";
+import PaletteSpecifier, {
+  accessPaletteColor,
+} from "lib/data/paletteSpecifier";
 import { AttachmentRequestErrorCode } from "lib/data/stateCodes";
-import { useUnsubscribeContainer } from "lib/util/hookUtils";
 import { installCancellablePromise } from "lib/util/cancellablePromise";
+import { mimeTypeToPreview } from "lib/util/conversationUtils";
+import { useUnsubscribeContainer } from "lib/util/hookUtils";
 import {
   attachmentRequestErrorCodeToDisplay,
   formatFileSize,
 } from "lib/util/languageUtils";
-import PaletteSpecifier, {
-  accessPaletteColor,
-} from "lib/data/paletteSpecifier";
+import { getFlowBorderRadius, MessagePartFlow } from "lib/util/messageFlow";
+import { useCallback, useContext, useEffect, useState } from "react";
 
 const DownloadableButton = styled(ButtonBase, {
   shouldForwardProp: (prop) =>
@@ -87,19 +87,6 @@ export default function MessageBubbleDownloadable(props: {
 
   const displaySnackbar = useContext(SnackbarContext);
 
-  //Reset state values when the attachment changes
-  useEffect(() => {
-    setIsDownloading(false);
-    setSizeAvailable(props.size);
-    setSizeDownloaded(undefined);
-  }, [
-    props.guid,
-    props.size,
-    setIsDownloading,
-    setSizeAvailable,
-    setSizeDownloaded,
-  ]);
-
   //Display the file name if it is available, otherwise just display the file type
   const nameDisplay = props.name ?? mimeTypeToPreview(props.type);
 
@@ -144,6 +131,14 @@ export default function MessageBubbleDownloadable(props: {
         });
       })
       .finally(() => {
+        //Scroll to bottom of page
+        setTimeout(() => {
+          const objDiv = document.querySelector(".handle-scroll");
+          if (objDiv) {
+            objDiv.scrollTop = objDiv.scrollHeight;
+          }
+        }, 200);
+
         //Reset the state
         setIsDownloading(false);
         setSizeDownloaded(undefined);
@@ -158,6 +153,21 @@ export default function MessageBubbleDownloadable(props: {
     setSizeDownloaded,
     displaySnackbar,
     attachmentSubscriptionContainer,
+  ]);
+
+  //Reset state values when the attachment changes
+  useEffect(() => {
+    setIsDownloading(false);
+    setSizeAvailable(props.size);
+    setSizeDownloaded(undefined);
+    onClick();
+  }, [
+    onClick,
+    props.guid,
+    props.size,
+    setIsDownloading,
+    setSizeAvailable,
+    setSizeDownloaded,
   ]);
 
   return (

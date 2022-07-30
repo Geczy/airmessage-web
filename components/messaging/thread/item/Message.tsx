@@ -466,8 +466,11 @@ function getStatusString(message: MessageItem): React.ReactElement | null {
  * can be previewed in this app
  */
 function isAttachmentPreviewable(mimeType: string): boolean {
-  return mimeType.startsWith("image/");
+  return (
+    mimeType.startsWith("image/") ||
+    mimeType.startsWith("video/") ||
+    mimeType.startsWith("audio/")
+  );
 }
 
-Message.whyDidYouRender = true;
 export default React.memo(Message);
