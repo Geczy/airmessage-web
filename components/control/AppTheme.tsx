@@ -44,6 +44,8 @@ export default function AppTheme(props: { children: React.ReactNode }) {
             ? {
                 main: "#3b3b3d",
                 contrastText: "#dedede",
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 border: "#565556",
               }
             : {
