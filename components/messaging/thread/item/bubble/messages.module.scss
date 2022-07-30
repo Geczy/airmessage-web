@@ -19,7 +19,6 @@
 
 .shared {
   display: block;
-  margin: 0.5rem 0;
   width: fit-content;
 
   border-radius: 1.15rem;
@@ -49,7 +48,6 @@
 .sent {
   align-self: flex-end;
   background-color: var(--sentColor);
-  color: var(--backgroundColor);
   &::before {
     border-bottom-left-radius: 0.8rem 0.7rem;
     border-right: 1rem solid var(--sentColor);
@@ -63,23 +61,11 @@
     transform: translate(-30px, -2px);
     width: 10px;
   }
-  ~ {
-    .sent {
-      margin: 0.25rem 0 0;
-      &:not(:last-child) {
-        margin: 0.25rem 0 0;
-      }
-      &:last-child {
-        margin-bottom: 0.5rem;
-      }
-    }
-  }
 }
 
 .received {
   align-items: flex-start;
   background-color: var(--receivedColor);
-  color: #000;
   &:before {
     border-bottom-right-radius: 0.8rem 0.7rem;
     border-left: 1rem solid var(--receivedColor);

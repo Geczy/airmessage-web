@@ -1,5 +1,5 @@
 import { styled, Typography } from "@mui/material";
-import cn from "classnames";
+import { default as cn } from "classnames";
 import { DarkModeContext } from "components/DarkModeContext";
 import MessageBubbleWrapper from "components/messaging/thread/item/bubble/MessageBubbleWrapper";
 import { StickerItem, TapbackItem } from "lib/data/blocks";
@@ -19,12 +19,17 @@ export function AppleEmoji({
   const options = {
     baseUrl: "//web.telegram.org/z/img-apple-",
     ext: "png" as const,
-    size: "64",
+    size: "160",
     protocol: "https" as const,
   };
 
   return (
-    <Emoji onlyEmojiClassName={styles.emoji} options={options} text={text} />
+    <Emoji
+      onlyEmojiClassName={cn(styles.emoji, "big-emoji")}
+      options={options}
+      className={cn("message-text", className)}
+      text={text}
+    />
   );
 }
 
@@ -60,16 +65,18 @@ export default function MessageBubbleText(props: {
         color={props.flow.color}
         variant="body2"
         style={{ whiteSpace: "pre-wrap" }}
-        className={cn(
-          styles.shared,
-          props.flow.isOutgoing ? styles.sent : styles.received,
-          props.flow.isText ? styles.sentText : null,
-          props.flow.anchorBottom && styles.noTail,
-          darkMode ? styles.dark : null
-        )}
       >
         <Linkify options={{ target: "_blank" }}>
-          <AppleEmoji text={props.text} />
+          <AppleEmoji
+            text={props.text}
+            className={cn(
+              styles.shared,
+              props.flow.isOutgoing ? styles.sent : styles.received,
+              props.flow.isText ? styles.sentText : null,
+              props.flow.anchorBottom && styles.noTail,
+              darkMode ? styles.dark : null
+            )}
+          />
         </Linkify>
       </MessageBubbleTypography>
     </MessageBubbleWrapper>
