@@ -1,36 +1,43 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import Sidebar from "./Sidebar";
+import { Box, Collapse, Divider, List, Stack } from "@mui/material";
+import CallOverlay from "components/calling/CallOverlay";
+import { useHotkeys } from "components/hooks/useHotkeys";
+import DetailCreate from "components/messaging/create/DetailCreate";
+import DetailError from "components/messaging/detail/DetailError";
+import DetailLoading from "components/messaging/detail/DetailLoading";
+import DetailWelcome from "components/messaging/detail/DetailWelcome";
+import DetailThread from "components/messaging/thread/DetailThread";
+import ConversationSkeleton from "components/skeleton/ConversationSkeleton";
 import * as ConnectionManager from "lib/connection/connectionManager";
 import {
   ConnectionListener,
   warnCommVer,
 } from "lib/connection/connectionManager";
-import { initializePeople } from "lib/interface/people/peopleUtils";
-import { ConnectionErrorCode, MessageError } from "lib/data/stateCodes";
 import { Conversation } from "lib/data/blocks";
-import SnackbarProvider from "../../control/SnackbarProvider";
+import { ConnectionErrorCode, MessageError } from "lib/data/stateCodes";
 import { getNotificationUtils } from "lib/interface/notification/notificationUtils";
+import { initializePeople } from "lib/interface/people/peopleUtils";
 import { getPlatformUtils } from "lib/interface/platform/platformUtils";
-import { Box, Collapse, Divider, List, Stack } from "@mui/material";
-import CallOverlay from "components/calling/CallOverlay";
 import useConversationState from "lib/state/conversationState";
-import DetailCreate from "components/messaging/create/DetailCreate";
-import DetailLoading from "components/messaging/detail/DetailLoading";
-import DetailError from "components/messaging/detail/DetailError";
-import DetailWelcome from "components/messaging/detail/DetailWelcome";
-import { arrayContainsAll } from "lib/util/arrayUtils";
 import { normalizeAddress } from "lib/util/addressHelper";
+import { arrayContainsAll } from "lib/util/arrayUtils";
 import { compareVersions } from "lib/util/versionUtils";
-import DetailThread from "components/messaging/thread/DetailThread";
-import { TransitionGroup } from "react-transition-group";
-import ListConversation from "./ListConversation";
-import ConversationSkeleton from "components/skeleton/ConversationSkeleton";
-import styles from "./Sidebar.module.css";
 import { useRouter } from "next/router";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { TransitionGroup } from "react-transition-group";
+import SnackbarProvider from "../../control/SnackbarProvider";
+import ListConversation from "./ListConversation";
+import Sidebar from "./Sidebar";
+import styles from "./Sidebar.module.css";
 
 export default function Messaging(props: { onReset?: VoidFunction }) {
   const router = useRouter();
   const { conversationID } = router.query;
+
+  function openNextChat({ targetIndexDelta, orderedIds }) {
+    console.log("openNextChat", targetIndexDelta, orderedIds);
+
+    navigateConversation(1);
+  }
 
   const [detailPane, setDetailPane] = useState<DetailPane>({
     type: DetailType.Loading,
@@ -50,6 +57,22 @@ export default function Messaging(props: { onReset?: VoidFunction }) {
     true
   );
   const [needsServerUpdate, setNeedsServerUpdate] = useState(false);
+
+  // Support <Alt>+<Up/Down> to navigate between chats
+  useHotkeys(
+    conversations?.length
+      ? {
+          "Alt+ArrowUp": (e: KeyboardEvent) => {
+            e.preventDefault();
+            openNextChat({ targetIndexDelta: -1, orderedIds: [0, 1] });
+          },
+          "Alt+ArrowDown": (e: KeyboardEvent) => {
+            e.preventDefault();
+            openNextChat({ targetIndexDelta: 1, orderedIds: [0, 1] });
+          },
+        }
+      : undefined
+  );
 
   const navigateConversation = useCallback(
     (conversationID: number | string) => {
@@ -178,6 +201,8 @@ export default function Messaging(props: { onReset?: VoidFunction }) {
           //Request conversation details
           loadConversations()
             .then((conversations) => {
+              console.log(conversations, "geczy");
+
               if (conversations.length > 0) {
                 //If there are any conversations available, select the first one
                 setDetailPane({

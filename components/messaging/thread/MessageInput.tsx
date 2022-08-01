@@ -42,12 +42,6 @@ export default function MessageInput(props: Props) {
     propsOnMessageChange("");
   }, [propsOnMessageSubmit, propsMessage, propsAttachments]);
 
-  document.body.addEventListener("keydown", function (e) {
-    if (!e.ctrlKey) {
-      setInputFocus();
-    }
-  });
-
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
       if (!event.shiftKey && event.key === "Enter") {

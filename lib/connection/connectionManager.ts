@@ -1,9 +1,15 @@
 import DataProxyConnect from "lib/connection/connect/dataProxyConnect";
-import CommunicationsManager, {
-  CommunicationsManagerListener,
-} from "./communicationsManager";
-import ClientComm5 from "./comm5/clientComm5";
-import DataProxy from "./dataProxy";
+import CallEvent from "lib/data/callEvent";
+import ConversationTarget from "lib/data/conversationTarget";
+import FileDownloadResult from "lib/data/fileDownloadResult";
+import ServerUpdateData from "lib/data/serverUpdateData";
+import EmitterPromiseTuple from "lib/util/emitterPromiseTuple";
+import {
+  isCryptoPasswordSet,
+  setCryptoPassword,
+} from "lib/util/encryptionUtils";
+import ResolveablePromiseTimeout from "lib/util/resolveablePromiseTimeout";
+import { getSecureLS, SecureStorageKey } from "lib/util/secureStorageUtils";
 import {
   Conversation,
   ConversationItem,
@@ -22,18 +28,12 @@ import {
 } from "../data/stateCodes";
 import EventEmitter, { CachedEventEmitter } from "../util/eventEmitter";
 import promiseTimeout from "../util/promiseTimeout";
+import ClientComm5 from "./comm5/clientComm5";
+import CommunicationsManager, {
+  CommunicationsManagerListener,
+} from "./communicationsManager";
+import DataProxy from "./dataProxy";
 import { TransferAccumulator } from "./transferAccumulator";
-import {
-  isCryptoPasswordSet,
-  setCryptoPassword,
-} from "lib/util/encryptionUtils";
-import { getSecureLS, SecureStorageKey } from "lib/util/secureStorageUtils";
-import FileDownloadResult from "lib/data/fileDownloadResult";
-import ServerUpdateData from "lib/data/serverUpdateData";
-import ResolveablePromiseTimeout from "lib/util/resolveablePromiseTimeout";
-import CallEvent from "lib/data/callEvent";
-import ConversationTarget from "lib/data/conversationTarget";
-import EmitterPromiseTuple from "lib/util/emitterPromiseTuple";
 
 export const warnCommVer: number[] = [5, 4]; //Warn users on a communications version older than this to update
 export const targetCommVer: number[] = [5, 5];
@@ -586,6 +586,8 @@ export function disconnect() {
 }
 
 export function isConnected(): boolean {
+  console.log(connState, "connState");
+
   return connState === "connected";
 }
 
@@ -697,16 +699,23 @@ export function sendFile(
 }
 
 export function fetchConversations(): Promise<LinkedConversation[]> {
+  console.log("fetching conversation");
+
   //Failing immediately if there is no network connection
   if (!isConnected()) return Promise.reject(messageErrorNetwork);
+
+  console.log("we connected", "fetching convos");
 
   //Starting a new promise
   return requestTimeoutArray(
     liteConversationPromiseArray,
     undefined,
     new Promise<LinkedConversation[]>((resolve, reject) => {
+      console.log("sending the request");
+
       //Sending the request
       communicationsManager!.requestLiteConversations();
+      console.log("Recording the promise");
 
       //Recording the promise
       liteConversationPromiseArray.push({ resolve: resolve, reject: reject });
