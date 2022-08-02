@@ -1,10 +1,10 @@
 import {
-  ParticipantActionType,
-  MessageError,
-  MessageStatusCode,
   ConversationItemType,
   ConversationPreviewType,
+  MessageError,
   MessageModifierType,
+  MessageStatusCode,
+  ParticipantActionType,
   TapbackType,
 } from "./stateCodes";
 
@@ -60,6 +60,7 @@ export interface ConversationItemBase {
   readonly chatGuid?: RemoteConversationID;
   readonly chatLocalID?: LocalConversationID;
   readonly date: Date;
+  status: MessageStatusCode;
 }
 
 export interface MessageItem extends ConversationItemBase {

@@ -20,20 +20,24 @@ export default function TapbackRow(props: { tapbacks: TapbackItem[] }) {
     [props.tapbacks]
   );
 
-  return props.tapbacks.map(({ tapbackType, sender }, i) => (
-    <Stack
-      key={i}
-      sx={{
-        zIndex: 1,
-        position: "absolute",
-        top: -15,
-        right: !sender ? -12 : "inherit",
-        left: !sender ? "inherit" : -12,
-      }}
-      direction="row"
-      gap={0.5}
-    >
-      <TapbackChip type={tapbackType} isMine={!sender} count={1} />
-    </Stack>
-  ));
+  return (
+    <>
+      {props.tapbacks.map(({ tapbackType, sender }, i) => (
+        <Stack
+          key={i}
+          sx={{
+            zIndex: 1,
+            position: "absolute",
+            top: -15,
+            right: !sender ? -12 : "inherit",
+            left: !sender ? "inherit" : -12,
+          }}
+          direction="row"
+          gap={0.5}
+        >
+          <TapbackChip type={tapbackType} isMine={!sender} count={1} />
+        </Stack>
+      ))}
+    </>
+  );
 }

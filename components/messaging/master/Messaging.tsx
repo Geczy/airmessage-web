@@ -33,7 +33,13 @@ export default function Messaging(props: { onReset?: VoidFunction }) {
   const router = useRouter();
   const { conversationID } = router.query;
 
-  function openNextChat({ targetIndexDelta, orderedIds }) {
+  function openNextChat({
+    targetIndexDelta,
+    orderedIds,
+  }: {
+    targetIndexDelta: number;
+    orderedIds: number[];
+  }) {
     console.log("openNextChat", targetIndexDelta, orderedIds);
 
     navigateConversation(1);

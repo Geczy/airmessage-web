@@ -5,10 +5,9 @@
   "description": "iMessage for the web",
   "private": true,
   "scripts": {
-    "s1": "pnpm dev -p 3001",
-    "s2": "local-ssl-proxy --source 443 --target 3001 --cert ./web.airmessage.org.pem --key ./web.airmessage.org-key.pem",
-    "dev:local": "pnpm dev -p 3001 | local-ssl-proxy --source 443 --target 3001 --cert ./localhost.pem --key ./localhost-key.pem",
-    "dev": "next dev",
+    "dev:local": "pnpm dev -p 8080 | local-ssl-proxy --source 443 --target 8080 --cert ./localhost.pem --key ./localhost-key.pem",
+    "s": "local-ssl-proxy --source 443 --target 8080 --cert ./web.airmessage.org.pem --key ./web.airmessage.org-key.pem",
+    "dev": "next dev -p 8080",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
