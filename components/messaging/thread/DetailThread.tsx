@@ -71,7 +71,7 @@ export default function DetailThread({
       //Fetch messages from the cache
       setDisplayState({
         type: DisplayType.Messages,
-        messages: localMessageCache.get(conversation.localID) ?? [],
+        messages: localMessageCache.get(conversation?.localID) ?? [],
       });
 
       return;
@@ -94,7 +94,7 @@ export default function DetailThread({
   );
 
   const requestHistoryUnsubscribeContainer = useUnsubscribeContainer([
-    conversation.localID,
+    conversation?.localID,
   ]);
   const requestHistory = useCallback(() => {
     //Return if this is a local conversation, or if the state is already loading or is complete
@@ -150,10 +150,10 @@ export default function DetailThread({
 
   //Request messages when the conversation changes
   useEffect(() => {
-    if (loadedThreadMessages.current === conversation.localID) return;
+    if (loadedThreadMessages.current === conversation?.localID) return;
     requestMessages();
-    loadedThreadMessages.current = conversation.localID;
-  }, [conversation.localID, requestMessages]);
+    loadedThreadMessages.current = conversation?.localID;
+  }, [conversation?.localID, requestMessages]);
 
   const handleMessageUpdate = useCallback(
     (itemArray: ConversationItem[]) => {
@@ -305,7 +305,7 @@ export default function DetailThread({
 
   //Clear subscriptions when the display state or conversation changes
   const uploadSubscriptionsContainer = useUnsubscribeContainer([
-    conversation.localID,
+    conversation?.localID,
     displayState.type,
   ]);
 
@@ -441,7 +441,7 @@ export default function DetailThread({
           serverID: undefined,
           guid: undefined,
           chatGuid: conversation.localOnly ? undefined : conversation.guid,
-          chatLocalID: conversation.localID,
+          chatLocalID: conversation?.localID,
           date: new Date(),
 
           text: messageText,
@@ -475,7 +475,7 @@ export default function DetailThread({
           serverID: undefined,
           guid: undefined,
           chatGuid: !conversation.localOnly ? conversation.guid : undefined,
-          chatLocalID: conversation.localID,
+          chatLocalID: conversation?.localID,
           date: new Date(),
 
           text: undefined,

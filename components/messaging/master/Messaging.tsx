@@ -1,6 +1,6 @@
+import { getHotkeyHandler } from "@mantine/hooks";
 import { Box, Collapse, Divider, List, Stack } from "@mui/material";
 import CallOverlay from "components/calling/CallOverlay";
-import { useHotkeys } from "components/hooks/useHotkeys";
 import DetailCreate from "components/messaging/create/DetailCreate";
 import DetailError from "components/messaging/detail/DetailError";
 import DetailLoading from "components/messaging/detail/DetailLoading";
@@ -58,21 +58,28 @@ export default function Messaging(props: { onReset?: VoidFunction }) {
   );
   const [needsServerUpdate, setNeedsServerUpdate] = useState(false);
 
-  // Support <Alt>+<Up/Down> to navigate between chats
-  useHotkeys(
+  // TODO: hot key handler for opening the next chat
+  const hotkeyHandler = getHotkeyHandler(
     conversations?.length
-      ? {
-          "Alt+ArrowUp": (e: KeyboardEvent) => {
-            e.preventDefault();
-            openNextChat({ targetIndexDelta: -1, orderedIds: [0, 1] });
-          },
-          "Alt+ArrowDown": (e: KeyboardEvent) => {
-            e.preventDefault();
-            openNextChat({ targetIndexDelta: 1, orderedIds: [0, 1] });
-          },
-        }
-      : undefined
+      ? [
+          [
+            "Alt+ArrowUp",
+            () => {
+              openNextChat({ targetIndexDelta: -1, orderedIds: [0, 1] });
+            },
+          ],
+          [
+            "Alt+ArrowDown",
+            () => {
+              openNextChat({ targetIndexDelta: 1, orderedIds: [0, 1] });
+            },
+          ],
+        ]
+      : []
   );
+
+  // Support <Alt>+<Up/Down> to navigate between chats
+  // document.body.addEventListener("keydown", hotkeyHandler);
 
   const navigateConversation = useCallback(
     (conversationID: number | string) => {

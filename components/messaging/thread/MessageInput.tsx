@@ -1,6 +1,7 @@
+import { useFocusTrap } from "@mantine/hooks";
 import { Box, IconButton, InputBase, Stack } from "@mui/material";
 import { QueuedFile } from "lib/data/blocks";
-import React, { ChangeEvent, useCallback, useRef, useState } from "react";
+import React, { ChangeEvent, useCallback, useState } from "react";
 import PushIcon from "../../icon/PushIcon";
 import { QueuedAttachmentProps } from "./queue/QueuedAttachment";
 import QueuedAttachmentGeneric from "./queue/QueuedAttachmentGeneric";
@@ -14,13 +15,6 @@ interface Props {
   onAttachmentRemove: (value: QueuedFile) => void;
 }
 
-const useFocus = (): [any, () => void] => {
-  const htmlElRef = useRef<HTMLInputElement>(null);
-  const setFocus = () => htmlElRef?.current?.focus();
-
-  return [htmlElRef, setFocus];
-};
-
 export default function MessageInput(props: Props) {
   const {
     onMessageSubmit: propsOnMessageSubmit,
@@ -28,7 +22,7 @@ export default function MessageInput(props: Props) {
     onAttachmentAdd: propsOnAttachmentAdd,
   } = props;
   const [propsMessage, propsOnMessageChange] = useState<string>("");
-  const [inputRef, setInputFocus] = useFocus();
+  const focusTrapRef = useFocusTrap(true);
 
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -118,7 +112,7 @@ export default function MessageInput(props: Props) {
           }}
           maxRows="5"
           multiline
-          inputRef={inputRef}
+          inputRef={focusTrapRef}
           fullWidth
           autoFocus
           placeholder={props.placeholder}
