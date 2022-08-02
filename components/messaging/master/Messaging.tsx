@@ -214,8 +214,6 @@ export default function Messaging(props: { onReset?: VoidFunction }) {
           //Request conversation details
           loadConversations()
             .then((conversations) => {
-              console.log(conversations, "geczy");
-
               if (conversations.length > 0) {
                 //If there are any conversations available, select the first one
                 setDetailPane({
