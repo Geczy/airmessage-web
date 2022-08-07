@@ -25,6 +25,7 @@ import {
 } from "lib/util/languageUtils";
 import { getFlowBorderRadius, MessagePartFlow } from "lib/util/messageFlow";
 import { useCallback, useContext, useEffect, useState } from "react";
+import { isAttachmentPreviewable } from "../Message";
 
 const DownloadableButton = styled(ButtonBase, {
   shouldForwardProp: (prop) =>
@@ -160,7 +161,10 @@ export default function MessageBubbleDownloadable(props: {
     setIsDownloading(false);
     setSizeAvailable(props.size);
     setSizeDownloaded(undefined);
-    onClick();
+
+    if (isAttachmentPreviewable(props.type)) {
+      onClick();
+    }
   }, [
     onClick,
     props.guid,

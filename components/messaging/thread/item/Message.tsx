@@ -465,7 +465,7 @@ function getStatusString(message: MessageItem): React.ReactElement | null {
  * Gets whether the attachment of the specified MIME type
  * can be previewed in this app
  */
-function isAttachmentPreviewable(mimeType: string): boolean {
+export function isAttachmentPreviewable(mimeType: string): boolean {
   return (
     mimeType.startsWith("image/") ||
     mimeType.startsWith("video/") ||
